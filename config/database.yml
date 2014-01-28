@@ -1,0 +1,17 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: ember-tutorial_development
+  host: localhost
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: ember-tutorial_test
+  host: localhost
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: ember-tutorial_production
+  host: localhost

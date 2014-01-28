@@ -1,0 +1,22 @@
+!!!
+%html
+  %head
+    %title Vic Ramon's Ember Tutorial
+    = stylesheet_link_tag    "application"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+
+  %body
+    %header
+      %article
+        %nav
+          = link_to "Home", root_path
+          = link_to "Chapters", chapters_path
+          = link_to "About", about_path
+          = link_to "Contact", contact_path
+
+        .logo
+          = link_to root_path do
+            = image_tag 'logo.png'
+
+    = yield
