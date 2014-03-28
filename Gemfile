@@ -13,3 +13,7 @@ gem 'pg'
 gem 'puma'
 gem 'sass-rails'
 gem 'uglifier'
+
+group :test, :development do
+  gem 'pry-rails'
+end
