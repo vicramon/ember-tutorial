@@ -27,6 +27,11 @@ GEM
       tzinfo (~> 0.3.37)
     arel (4.0.2)
     atomic (1.1.16)
+    better_errors (1.1.0)
+      coderay (>= 1.0.0)
+      erubis (>= 2.6.6)
+    binding_of_caller (0.7.2)
+      debug_inspector (>= 0.0.1)
     builder (3.1.4)
     coderay (1.1.0)
     coffee-rails (4.0.1)
@@ -36,6 +41,8 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.7.0)
+    debug_inspector (0.0.2)
+    decent_exposure (2.3.1)
     erubis (2.7.0)
     execjs (2.0.2)
     haml (4.0.5)
@@ -122,7 +129,10 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  better_errors
+  binding_of_caller
   coffee-rails
+  decent_exposure
   haml-rails
   jbuilder
   jquery-rails
