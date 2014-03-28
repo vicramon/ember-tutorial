@@ -55,11 +55,29 @@ section
   width: 630px
 
 section#chapter
-  padding: 30px 0 0 0
+  padding: 22px 0 0 0
   line-height: 1.7
   color: #333
   p + h2
     padding-top: 15px
+  nav
+    padding: 0 0 25px 0
+    text-align: center
+    position: relative
+    height: 20px
+    .back, .next, .toc
+      display: inline-block
+    .back
+      float: left
+    .next
+      float: right
+    .toc
+      position: absolute
+      margin-left: -63px
+      left: 50%
+      top: 0
+      a
+        color: #FF7F00
 
 section#marketing
   padding: 45px 0 0 0
@@ -90,9 +108,15 @@ footer
     font-size: 12px
     color: #777
 
+code, pre
+  font-family: Monaco
+  font-size: 14px
+
 code
   background: #E8E8E8
   padding: 2px 5px
-  font-family: Monaco
-  font-size: 14px
   color: black
+
+pre
+  padding: 6px 14px 7px
+  margin: 0 0 12px
