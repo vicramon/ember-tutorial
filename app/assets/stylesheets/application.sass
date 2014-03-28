@@ -1,24 +1,39 @@
-@import "whitespace-reset"
+@import "whitespace-reset", "vividchalk"
+@import url(http://fonts.googleapis.com/css?family=Lato:400,700,400italic)
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,600,700)
+
 
 $app_width: 88%
 
 body
-  font-family: "Roboto"
-  font-size: 15px
+  font-size: 16px
   color: #222
+  font-family: Roboto
 
-a
+a, a:visited, a:active
+  color: #00E
   text-decoration: none
   &:hover
     text-decoration: underline
 
 p
   margin: 0 0 15px 0
+  line-height: 1.7
+  color: #333
+
+h1, h2
+  font-family: "Roboto"
 
 h1
   font-size: 24px
   font-weight: bold
   padding: 0 0 20px 0
+
+h2
+  font-size: 20px
+  color: #777
+  padding: 0 0 12px 0
+  font-weight: normal
 
 header
   background: #D93600
@@ -31,19 +46,28 @@ header
     nav
       padding: 14px 0 0 0
       float: right
-      a
+      a, a:hover, a:visited, a:active
         margin-right: 30px
         color: white
 
-section#marketing
-  width: $app_width
+section
   margin: 0 auto
-  padding: 55px 0 0 0
+  width: 630px
+
+section#chapter
+  padding: 30px 0 0 0
+  line-height: 1.7
+  color: #333
+  p + h2
+    padding-top: 15px
+
+section#marketing
+  padding: 45px 0 0 0
   p, h1, a
     padding-left: 5px
   article
     background: white
-    width: 550px
+    width: 580px
     margin: 0 auto
     .logo
       text-align: center
@@ -51,6 +75,24 @@ section#marketing
     h1
       padding-bottom: 25px
     article#chapters
+      padding-top: 15px
       a
         display: block
         padding-bottom: 15px
+
+footer
+  background: #DDDDDD
+  height: 65px
+  margin: 60px 0 0 0
+  article#copyright
+    float: right
+    padding: 20px 15% 0 0
+    font-size: 12px
+    color: #777
+
+code
+  background: #E8E8E8
+  padding: 2px 5px
+  font-family: Monaco
+  font-size: 14px
+  color: black
