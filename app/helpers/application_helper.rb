@@ -1,6 +1,6 @@
 module ApplicationHelper
 
-  def highlight(text)
+  def markdown(text)
     renderer = HTMLwithPygments.new(filter_html: false)
     options = {
       autolink: true,
