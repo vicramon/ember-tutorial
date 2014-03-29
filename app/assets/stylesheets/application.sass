@@ -1,7 +1,9 @@
 @import "whitespace-reset", "vividchalk"
-@import url(http://fonts.googleapis.com/css?family=Lato:400,700,400italic)
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,600,700)
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,700,300,400italic)
 
+html
+  position: relative
+  min-height: 100%
 
 $app_width: 88%
 
@@ -9,6 +11,7 @@ body
   font-size: 16px
   color: #222
   font-family: Roboto
+  margin: 0 0 65px
 
 a, a:visited, a:active
   color: #00E
@@ -55,13 +58,15 @@ section
   width: 630px
 
 section#chapter
-  padding: 22px 0 0 0
+  padding: 27px 0 0 0
   line-height: 1.7
   color: #333
   p + h2
     padding-top: 15px
+  article#markdown
+    padding-bottom: 40px
   nav
-    padding: 0 0 25px 0
+    padding: 0 0 35px 0
     text-align: center
     position: relative
     height: 20px
@@ -98,10 +103,16 @@ section#marketing
         display: block
         padding-bottom: 15px
 
+.footer_spacing
+  height: 60px
+
 footer
   background: #DDDDDD
   height: 65px
-  margin: 60px 0 0 0
+  position: absolute
+  left: 0
+  bottom: 0
+  width: 100%
   article#copyright
     float: right
     padding: 20px 15% 0 0

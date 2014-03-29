@@ -1,0 +1,9 @@
+%nav
+  - if next_chapter
+    .next= link_to "#{next_chapter} &#8594;".html_safe, chapter_path(next_chapter.parameterize)
+
+  - if previous
+    .back= link_to "&#8592; #{previous}".html_safe,
+      chapter_path(previous.parameterize)
+
+  .toc= link_to "Table of Contents", chapters_path
