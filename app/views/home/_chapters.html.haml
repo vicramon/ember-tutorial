@@ -1,0 +1,3 @@
+%ul
+  - Chapter.all.each_with_index do |chapter, index|
+    %li= link_to "Chapter #{index + 1}: #{chapter}", chapter_path(chapter.parameterize)

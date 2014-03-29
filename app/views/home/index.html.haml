@@ -18,7 +18,4 @@
     %article#chapters
       %h1 Chapters
 
-      = link_to "Chapter 1: Introduction", chapter_path('introduction')
-      = link_to "Chapter 2: Concepts", chapter_path('concepts')
-      = link_to "Chapter 3: Views", chapter_path('views')
-      = link_to "Chapter 4: Controllers", chapter_path('controller')
+      = render 'chapters'
