@@ -3,16 +3,14 @@
     .logo
       = image_tag 'big_logo.png'
 
-    = image_tag 'fun/chipmunk_vader.jpg'
-
     %h1 Introduction
     %p
-      Welcome. This tutorial gives you an introduction to the Ember JS framework. It shows you how to build an Ember app with a Ruby on Rails backend while explaining all the underlying concepts along the way.
+      Welcome. This tutorial aims to give you an introduction to the Ember JS framework. It shows you how to build an Ember app with a Ruby on Rails backend while explaining all the underlying concepts along the way.
     %p
-      Give it a spin, and please send your questions or feedback to#{mail_to 'vic@vicramon.com'} or
-      tweet#{link_to "@vicramon", 'http://twitter.com/vicramon'} if you're a twittizen.
+      Check it out and please send your feedback to #{mail_to 'vic@vicramon.com'} or
+      tweet #{link_to "@vicramon", 'http://twitter.com/vicramon'} if you're a twittizen.
     %p
-      Yes, there's a reason I've got Darth Vader riding a Hamster. For one, you should never actually need a reason to put this image anywhere. It's great. But it is actually related to Ember, and you'll find out why if you read on...
+      = link_to "Start reading...", chapter_path('introduction')
 
     %article#chapters
       %h1 Chapters

@@ -1,9 +1,6 @@
 # Hello World!
 
-Let’s start with a little bit of code before we go into concepts in-depth. 'Hello World'
-is usually a good place to start when learning a new language or framework. This proves
-the we have our development environment setup and gives us a rudimentary view of how
-things work.
+Let's build a little Hello World app first. We can ensure that we have our development environment setup and get a 10,000 foot view of how things work.
 
 ## Create a New Rails App
 
