@@ -1,76 +1,122 @@
 # Hello World!
 
-Let's build a little Hello World app first. We can ensure that we have our development environment setup and get a 10,000 foot view of how things work.
+Let's build a Hello World app first. We can ensure that we have our development environment setup and get a 10,000 ft view of how things work.
 
 ## Create a New Rails App
 
-`rails new ember-hello-world -d postgresql`
+```
+rails new ember-hello-world -d postgresql
 cd ember-hello-world
+```
 
-Do what you need to do to get your config/database.yml setup right then
-`rake db:create`
+Remove username and password from your `config/database.yml` if necessary, then run `rake db:create`.
 
-## Setup Ember
+If you run `rails s` and visit localhost:3000 then you should see the Rails Welcome Aboard page.
 
-Remove app/assets/javascripts/application.js.
-Remove turbolinks from app/views/layouts/application.html.erb.
+## Remove Turbolinks
 
-Add these to your gemfile:
+You'll need to remove Turbolinks because it conflicts with Ember. Make sure to remove it from all of the following places:
+
+* Gemfile
+* Application Javascript (app/assets/javascripts/application.js)
+* Layout (app/views/layouts/application.html.erb)
+
+[Commit](https://github.com/vicramon/ember-hello-world/commit/2ec275447edd98e2ec004f4f1c281d4fa4418311)
+
+## Add Ember Rails
+
+I am going to use [Ember Rails](https://github.com/emberjs/ember-rails) for this tutorial. It's stable and works great. I think [Ember Appkit Rails](https://github.com/dockyard/ember-appkit-rails) may soon replace Ember Rails as the default Rails/Ember intregration gem, but it's pre 1.0 so I'm going with Ember Rails for this tutorial.
+
+Let's add following gems to our Gemfile.
 
 ```ruby
 gem 'ember-rails'
 gem 'ember-source'
 gem 'emblem-rails'
-gem 'haml-rails'
 ```
 
-Run `bundle`
+```shell
+bundle
+```
 
-Then run `rails g ember:bootstrap -g --javascript-engine coffee -n App`
+This command will generate a skeleton for our Ember app. It generates quite a few files. I'll go over them soon.
 
-Add the following lines to your environment files:
+```shell
+rails g ember:bootstrap -g --javascript-engine coffee -n App
+```
 
-config/environments/test.rb
-`config.ember.variant = :development`
-
-config/environments/development.rb
-`config.ember.variant = :development`
-
-config/environments/production.rb
-`config.ember.variant = :production`
-
-#todo:
-
-remove application.js
-:q
-
-
-## The Ember Code
-
-config/routes.rb
-root to: ‘home#index’
-
-app/controllers/home_controller.rb
+Add the following lines to your environment files. These just tell Ember Rails which version of ember.js to use in each environment.
 
 ```ruby
+# config/environments/test.rb
+config.ember.variant = :development
+
+# config/environments/development.rb
+config.ember.variant = :development
+
+# config/environments/production.rb
+config.ember.variant = :production
+```
+
+Ember Rails generates an `application.js.coffee` for us, so lets use that. Delete `application.js`, and make sure to add jQuery to the top of `application.js.coffee`. Ember needs jQuery.
+
+```coffee
+#= require jquery
+#= require jquery_ujs
+```
+
+[Commit](https://github.com/vicramon/ember-hello-world/commit/8d34669ae4649ca17d80d5a52dccf98535d36786)
+
+## Making Ember Work
+
+We'll need a basic Rails controller and view so that we can output something from Ember. I'm going to make a controller called `HomeController` and make it the root path.
+
+```ruby
+# config/routes.rb
+root to: 'home#index'
+
+# app/controllers/home_controller.rb
 class HomeController < ApplicationController
 end
 ```
 
-app/views/home/index.html.haml
+Now we need a view. It's going to have a Handlebars template with just one tag: `{{ outlet }}`. If you know Rails, you can think of outlet as yield. It's the tag that says "hey, just output everything here." The double brackets tell Handlebars to evaluate the expression inside.
+
+```html
+# app/views/home/index.html.erb
+<script type='text/x-handlebars'>
+  {{ outlet }}
+</script>
+```
+
+Last but not least, we need to create a Handlebars template for Ember to put into our outlet. Ember looks for an index template by default, so all we need to do is create it:
 
 ```haml
-%script{ type: 'text/x-handlebars' }
-  {{ outlet }}
-```
+/ app/assets/javascripts/templates/index.js.emblem
 
-app/assets/javascripts/templates/index.js.emblem
-
-```
 h1 Hello World
 ```
 
-Start your server, then visit localhost:3000. You should see ‘Hello World’ printed on the
-screen.
+Restart your server then visit http://localhost:3000. You should see 'Hello World' printed on the screen. If you see it, congratulations!
 
-Getting this working is the first step in building an Ember app.
+[Commit](https://github.com/vicramon/ember-hello-world/commit/2255b0077f85aeb4d5be6cb8aee041667bc62460)
+
+## Basic Debugging
+
+If you don't see the Hello World output then something has gone horribly wrong.
+
+Open your console and you should see output that looks like the following:
+
+```
+DEBUG: ------------------------------- ember.js?body=1:3522
+DEBUG: Ember      : 1.5.0 ember.js?body=1:3522
+DEBUG: Handlebars : 1.3.0 ember.js?body=1:3522
+DEBUG: jQuery     : 1.11.0 ember.js?body=1:3522
+DEBUG: -------------------------------
+```
+
+If you don't have the correct version of Ember, try running `bundle update ember-source`. Also make sure you have removed `app/assets/application.js`. If none of this helps, you should look at the Ember Inspector...
+
+## Ember Inspector
+
+The Ember Inspector is a 
