@@ -4,15 +4,20 @@ class Chapter
     [
       'Introduction',
       'Hello World',
-      'Ember Concepts',
-      'Our App',
+      'The Ember Object',
+      'Routing in Ember',
+      'Ember Object Flow',
+      'Ember Route',
+      'Ember Controller',
+      'Ember View',
+      'Ember Template',
     ]
   end
 
   attr_reader :name
 
   def initialize(name)
-    @name = name.titleize
+    @name = name.titleize.sub('In', 'in')
   end
 
   def text
