@@ -4,6 +4,7 @@ class Chapter
     [
       'Introduction',
       'Hello World',
+      'Ember Concepts',
       'Our App',
     ]
   end

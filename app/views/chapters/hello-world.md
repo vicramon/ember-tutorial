@@ -5,8 +5,9 @@ Let's build a Hello World app first. We can ensure that we have our development 
 ## Create a New Rails App
 
 ```
-rails new ember-hello-world -d postgresql
-cd ember-hello-world
+rails new ember-tutorial -d postgresql
+cd ember-tutorial
+rvm gemset create ember-tutorial
 ```
 
 Remove username and password from your `config/database.yml` if necessary, then run `rake db:create`.
@@ -103,7 +104,7 @@ Restart your server then visit http://localhost:3000. You should see 'Hello Worl
 
 ## Basic Debugging
 
-If you don't see the Hello World output then something has gone horribly wrong.
+If you don't see the Hello World output then you must have screwed up big time! Just kidding. I'm going to help you figure it out.
 
 Open your console and you should see output that looks like the following:
 
@@ -119,4 +120,14 @@ If you don't have the correct version of Ember, try running `bundle update ember
 
 ## Ember Inspector
 
-The Ember Inspector is a 
+The Ember Inspector is an invaluable tool for debugging Ember. It's a Chrome Extension that helps you see what's going on in your app. You can get it [here](https://chrome.google.com/webstore/detail/ember-inspector/bmdblncegkenkacieihfhpjfppoconhi).
+
+Once it's installed open your console and refresh your browser. You should see a tab titled "Ember". Inside are all sorts of helpful tools. "View Tree" will show you exactly what's being rendered and where it came from. "Routes" show you all the routes in your app. The route you are currently on will be bold. "Data" will show you all the active records in your app. You can click on a record to view all of its attributes.
+
+I can't say enough good things about the Ember Inspector. It makes inner the workings of your app very visible. It's particularly useful for creating routes. By listing your routes it's a sort of `rake routes` for Ember.
+
+## Conclusion
+
+As you've seen it doesn't take much time to get our Ember App up and running. Most of the work is in preparing the Rails app.
+
+If you've still got issues getting this working then please post your issue in the comments below. This app is on [Github](https://github.com/vicramon/ember-hello-world) also if you want to look at it.
