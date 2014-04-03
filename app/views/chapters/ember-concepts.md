@@ -179,6 +179,12 @@ Extending objects is a pattern you will use all the time while developing in Emb
 
 ## Routing
 
+Everything in Ember starts with routes. There are two route functions: `route` and `resource`. Understanding what both of these do will be key to creating routes.
+
+## Route
+
+
+
 ## Routes
 
 ## Controllers
