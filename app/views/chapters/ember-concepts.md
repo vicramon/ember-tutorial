@@ -177,11 +177,114 @@ App.Three = Ember.Object.extend(App.One, App.Two)
 
 Extending objects is a pattern you will use all the time while developing in Ember. You can use it to extract out common functionality or pull in functionality from some other part of your app or another Ember object.
 
-## Routing
+#TODO: reopening objects and object classes
 
-Everything in Ember starts with routes. There are two route functions: `route` and `resource`. Understanding what both of these do will be key to creating routes.
+# Routing
+
+Everything in Ember starts with routes. If you're familiar with routing systems in other frameworks then I don't think Ember's will cause you much trouble.
+
+## Location APIs
+
+First, let's cover the mechanics of routing in Ember. By default Ember uses the `hashchange` event in the browser to know when you've changed routes. It implements its own [HashLocation](http://emberjs.com/api/classes/Ember.HashLocation.html) object to handle this.
+
+With HashLocation, an Ember route will be visible after the `#` in your url. For example, your routes might look like:
+
+`http://myemberapp.com/#/`
+
+`http://myemberapp.com/#/about`
+
+`http://myemberapp.com/#/contact`
+
+`http://myemberapp.com/#/users`
+
+`http://myemberapp.com/#/users/1`
+
+`http://myemberapp.com/#/users/1/edit`
+
+You may not want to serve your Ember app directly from your root url. In this case, just tell Ember what the rootURL should be:
+
+```coffee
+App.Router.reopen
+  rootURL: '/some/path/'
+```
+
+Now your users index route would look like this:
+
+`http://myemberapp.com/some/path/#/users`
+
+While HashLocation is the default, some of you may think that hashes look ugly. There's a solution to that! Ember also implements a [HistoryLocation](http://emberjs.com/api/classes/Ember.HistoryLocation.html) class which will handle routes by using your browser's history API.
+
+Here's how to use HistoryLocation instead of HashLocation:
+
+```coffee
+App.Router.reopen
+  location: 'history'
+```
+
+Boom, it's that simple.
+
+Note that not all browsers implement the history API, so take that into consideration when determining which location system you want to use. You can see browser compatibility [here](http://caniuse.com/history).
+
+However, yet again Ember comes to the rescue. Ember has AutoLocation, which  will use HistoryLocation if the user's browser supports it, otherwise it will use HashLocation.
+
+```coffee
+App.Router.reopen
+  location: 'auto'
+```
+
+Both HashLocation and HistoryLocation implement Ember's [Location API](http://emberjs.com/api/classes/Ember.Location.html#toc_location-api). You could write your own Location class if you wanted to, it would just need to respond properly to the API.
+
+## Writing Routes
+
+A set of CRUD routes would look like this:
+
+```coffee
+# app/assets/javascripts/router.js.coffee
+App.Router.map ->
+  @route 'users'
+  @route 'user.new', path: { '/users/new' }
+  @resource 'user', path: { '/users/:id' }, ->
+    @route 'edit'
+```
+
+This would generate the following routes:
+
+`/users` (index)
+
+`/users/:id/` (show)
+
+`/users/:id/edit` (edit)
+
+`/users/new` (new)
+
+Delete and create would be handled by actions inside our Ember objects, so they don't need to be routes.
+
+Let's dissect this. We see two route functions: `resource` and `route`. The difference between them is important.
+
+You typically use `resource` to take in a param and fetch a specific record.
+
+You typically use `route` to specify some new UI on its parent.
+
+`resource` can take in params, or **dynamic segments**, as they are called in Ember. `route` cannot.
+
+You can nest things under `resource`, whereas `route` is a dead end.
+
+You might be wondering why the the `user.new` and `users` routes aren't nested under the `user` resource. Here's why:
+
+## *Nested Routes Means Nested UI*
+
+Let me repeat that for you:
+
+## *Nested Routes Means Nested UI*
+
+This is totally different from server-side development where every route is a totally different page. If you see a route in Ember in the url bar, that means that it is active and it's UI should be visible. This is a feature. You need to be able to compartmentlize UI, and UI often builds on top of other UI, so this pattern makes a lot of sense.
+
+So to answer your question, the `user.new` and `users` routes live outside the `user` resource because their UI should stand alone &mdash; they should not be nested inside UI that's designed to show a user.
+
+You can read more about routes [here in the Ember docs](http://emberjs.com/guides/routing/)
 
 ## Route
+
 
 
 
