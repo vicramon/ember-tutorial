@@ -11,6 +11,14 @@ class Chapter
       'Ember Controller',
       'Ember View',
       'Ember Template',
+      'Our App',
+      'Creating the Rails API',
+      'Modeling Leads',
+      'Listing Leads',
+      'Showing Leads',
+      'Updating Leads',
+      'Deleting Leads',
+      'Conclusion'
     ]
   end
 
