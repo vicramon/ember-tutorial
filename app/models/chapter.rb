@@ -25,7 +25,7 @@ class Chapter
   attr_reader :name
 
   def initialize(name)
-    @name = name.titleize.sub('In', 'in')
+    @name = better_titleize(name)
   end
 
   def text
@@ -40,8 +40,24 @@ class Chapter
     Chapter.all[index - 1] if index > 0
   end
 
+  private
+
   def index
     @index ||= Chapter.all.index(name)
   end
+
+  def better_titleize(name)
+    name.titleize.tap do |name|
+      TITLE_WORDS.each do |pattern|
+        name.sub!(pattern[:word], pattern[:replacement])
+      end
+    end
+  end
+
+  TITLE_WORDS = [
+    { word: 'In', replacement: 'in' },
+    { word: 'Api', replacement: 'API' },
+    { word: 'The', replacement: 'the' }
+  ]
 
 end
