@@ -4,10 +4,21 @@ Let's build a Hello World app first. We can ensure that we have our development 
 
 ## Create a New Rails App
 
+The app we're going to build later in this tutorial is a CRM. We can reuse this hello world code when we start the app, so let's name our Rails app `ember-crm`.
+
+First create new rvm gemset to sandbox our gems:
+
+```shell
+rvm gemset create ember-crm
+rvm gemset use ember-crm
 ```
-rails new ember-tutorial -d postgresql
-cd ember-tutorial
-rvm gemset create ember-tutorial
+
+Now generate the Rails app:
+
+```shell
+rails new ember-crm -d postgresql
+cd ember-crm
+rvm gemset create ember-crm
 ```
 
 Remove username and password from your `config/database.yml` if necessary, then run `rake db:create`.
@@ -26,7 +37,7 @@ You'll need to remove Turbolinks because it conflicts with Ember. Make sure to r
 
 ## Add Ember Rails
 
-I am going to use [Ember Rails](https://github.com/emberjs/ember-rails) for this tutorial. It's stable and works great. I think [Ember Appkit Rails](https://github.com/dockyard/ember-appkit-rails) may soon replace Ember Rails as the default Rails/Ember intregration gem, but it's pre 1.0 so I'm going with Ember Rails for this tutorial.
+I am going to use [Ember Rails](https://github.com/emberjs/ember-rails) for this tutorial. It's stable and works great. I think [Ember Appkit Rails](https://github.com/dockyard/ember-appkit-rails) may soon replace Ember Rails as the default Rails/Ember integration gem, but it's pre 1.0 so I'm going with Ember Rails for this tutorial.
 
 Let's add following gems to our Gemfile.
 
@@ -40,13 +51,13 @@ gem 'emblem-rails'
 bundle
 ```
 
-This command will generate a skeleton for our Ember app. It generates quite a few files. I'll go over them soon.
+This command will generate a skeleton for our Ember app:
 
 ```shell
 rails g ember:bootstrap -g --javascript-engine coffee -n App
 ```
 
-Add the following lines to your environment files. These just tell Ember Rails which version of ember.js to use in each environment.
+Add the following lines to your environment files. These tell Ember Rails which version of ember.js to use in each environment.
 
 ```ruby
 # config/environments/test.rb
@@ -59,7 +70,7 @@ config.ember.variant = :development
 config.ember.variant = :production
 ```
 
-Ember Rails generates an `application.js.coffee` for us, so lets use that. Delete `application.js`, and make sure to add jQuery to the top of `application.js.coffee`. Ember needs jQuery.
+Ember Rails generates an `application.js.coffee` for us, so lets use that. Delete `application.js`, and make sure to add jQuery to the top of `application.js.coffee` as Ember needs jQuery.
 
 ```coffee
 #= require jquery
@@ -90,7 +101,7 @@ Now we need a view. It's going to have a Handlebars template with just one tag: 
 </script>
 ```
 
-Last but not least, we need to create a Handlebars template for Ember to put into our outlet. Ember looks for an index template by default, so all we need to do is create it:
+Last but not least, we need to create a template for Ember to put into our outlet. Ember looks for an index template by default, so all we need to do is create it:
 
 ```haml
 / app/assets/javascripts/templates/index.js.emblem
@@ -98,15 +109,13 @@ Last but not least, we need to create a Handlebars template for Ember to put int
 h1 Hello World
 ```
 
-Restart your server then visit http://localhost:3000. You should see 'Hello World' printed on the screen. If you see it, congratulations!
+Restart your server then visit http://localhost:3000. You should see 'Hello World' printed on the screen. If you see it then congratulations! You're one step closer to being an Embereño (yes, Ember devs do sometimes call themselves Embereños). If you don't see it, you should clone my hello world repo and see what you've done differently.
 
 [Commit](https://github.com/vicramon/ember-hello-world/commit/2255b0077f85aeb4d5be6cb8aee041667bc62460)
 
 ## Basic Debugging
 
-If you don't see the Hello World output then you must have screwed up big time! Just kidding. I'm going to help you figure it out.
-
-Open your console and you should see output that looks like the following:
+If you open your console you should see output that looks like the following:
 
 ```
 DEBUG: ------------------------------- ember.js?body=1:3522
@@ -115,8 +124,6 @@ DEBUG: Handlebars : 1.3.0 ember.js?body=1:3522
 DEBUG: jQuery     : 1.11.0 ember.js?body=1:3522
 DEBUG: -------------------------------
 ```
-
-If you don't have the correct version of Ember, try running `bundle update ember-source`. Also make sure you have removed `app/assets/application.js`. If none of this helps, you should look at the Ember Inspector...
 
 ## Ember Inspector
 
