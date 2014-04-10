@@ -2,9 +2,9 @@
 
 We need an API so that Ember can communicate with our Rails app. This chapters shows you how to make one.
 
-## The Active Model Serializer Adapter
+## The Active Model Adapter
 
-When we used the ember-rails generate command it setup Ember to use what's called the Active Model Serializer Adapter. You'll see this if you open your store.js file:
+When we used the ember-rails generate command to setup Ember it added what's called the Active Model Adapter. You'll see this if you open your store.js file:
 
 ```coffee
 # app/assets/javascripts/store.js
@@ -12,7 +12,17 @@ App.Store = DS.Store.extend
   adapter: '_ams'
 ```
 
-This adapter enables Ember to communicate with your Rails back-end through  [Active Model Serializers](https://github.com/rails-api/active_model_serializers), which come standard with Rails. This all works together very smoothly.
+This adapter enables Ember to communicate with your Rails back-end through  [Active Model Serializers](https://github.com/rails-api/active_model_serializers), which come standard with Rails.
+
+## Namespace API Requests
+
+We need to tell Ember to prepend all API requests with `api/v1/`, as we'll be versioning our API. Add these two lines to your store file:
+
+```coffee
+# app/assets/javascripts/store.js
+DS.RESTAdapter.reopen
+  namespace: 'api/v1'
+```
 
 ## Modeling Leads in Rails
 
@@ -58,7 +68,6 @@ Add the serializer. Note that you need to list out all the attributes you want t
 
 ```ruby
 # app/serializers/lead.rb
-
 class LeadSerializer < ActiveModel::Serializer
   attributes :id, :first_name, :last_name, :phone, :status, :notes
 end
@@ -70,7 +79,6 @@ Add the routes for the API controller:
 
 ```ruby
 # config/routes.rb
-
 namespace :api do
   namespace :v1 do
     resources :leads
@@ -79,11 +87,10 @@ end
 ```
 
 Now that we have our model and serializer, we can create the API controller.
-The actions here are fairly standard so this shouldn't be anything new to you.
+The actions here are fairly standard:
 
 ```ruby
 # app/controllers/api/v1/leads_controller.rb
-
 class Api::V1::LeadsController < ApplicationController
   respond_to :json
 
@@ -131,7 +138,6 @@ Then create a populate task:
 
 ```ruby
 # lib/tasks/populate.rake
-
 namespace :db do
   task populate: :environment do
 
@@ -141,7 +147,7 @@ namespace :db do
       ['new', 'in progress', 'closed', 'bad'].sample
     end
 
-    30.times do
+    15.times do
       Lead.create(
         first_name: Faker::Name.first_name,
         last_name: Faker::Name.last_name,
@@ -163,7 +169,7 @@ Now you should be able to visit [http://localhost:3000/api/v1/leads.json](http:/
 
 ## Puma
 
-While we're fiddling with Rails let's switch out Webrick for [Puma](http://puma.io/). It's much faster and it's multithreaded. All you have to do is add puma to your Gemfile:
+While we're fiddling with Rails let's switch out Webrick for [Puma](http://puma.io/). It's much faster and it's multithreaded. All you have to do is add Puma to your Gemfile:
 
 ```ruby
 # Gemfile

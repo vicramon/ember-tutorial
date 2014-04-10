@@ -6,7 +6,6 @@ We have a Lead model in Rails but Ember needs to know about leads too in order t
 
 ```coffee
 # app/assets/javascripts/models/lead.js.coffee
-
 App.Lead = DS.Model.extend
   firstName: DS.attr('string')
   lastName: DS.attr('string')
@@ -15,7 +14,7 @@ App.Lead = DS.Model.extend
   notes: DS.attr('string')
 ```
 
-Ember will automatically read in `first_name` to `firstName`, and etc. across the rest of our attributes. We're only using the `string` data type here. The other ones available to you are `number`, `boolean`, and `date`.
+Ember will automatically read in your serializer's `first_name` to `firstName`, and etc. across the rest of our attributes. We're only using the `string` data type here. The other ones available to you are `number`, `boolean`, and `date`.
 
 ## An Aside about DS.Model
 
@@ -36,7 +35,7 @@ model.set('myProperty', 'hello!')
 The main difference between DS.Model instances and regular Ember.Object instances is that you cannot create them the same way. To create a new DS.Model instance you have to go through the `store`:
 
 ```coffee
-@store.createRecord('modelName', { firstName: 'John', lastName: 'Snow' })
+@store.createRecord('modelName', firstName: 'John', lastName: 'Snow')
 ```
 
-This is because the `store` encapsulates your app's knowledge of all the active DS.Model instances, and additional work has to be done when you create this model instance.
+This is because the `store` encapsulates your app's knowledge of all the active DS.Model instances, and the store has to do additional work when you create a model instance.

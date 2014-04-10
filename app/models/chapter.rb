@@ -55,9 +55,9 @@ class Chapter
   end
 
   TITLE_WORDS = [
-    { word: 'In', replacement: 'in' },
-    { word: 'Api', replacement: 'API' },
-    { word: 'The', replacement: 'the' }
+    { word: ' In', replacement: ' in' },
+    { word: ' Api', replacement: ' API' },
+    { word: ' The', replacement: ' the' }
   ]
 
 end

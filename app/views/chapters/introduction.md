@@ -1,5 +1,11 @@
 # Introduction
 
+Welcome to Vic Ramon's Ember Tutorial. I'm Vic Ramon, and you can think of me as your Ember sherpa.
+
+My intent with this guide is to provide enough instruction on how to use Ember that you can start writing your own apps when you're done. I have aimed for my writing to be simple, friendly and concicse. Only you, dear reader, will know if I have achieved these goals, so don't hesitate to send me [feedback](mailto:vic@viramon.com).
+
+Throughout this tutorial I provide links to the Ember documentation. I recommend that you follow these links and explore the Ember docs. You will be spending a bit of time there so it's best to familiarize yourself with them.
+
 ## What is Ember JS
 
 Ember is a front-end javascript framework. You would use a front-end framework for the same reasons you
@@ -25,13 +31,13 @@ record as easy as calling `user.save()`. Want to delete this user?  Call
 
 **Helpful Object APIs**. Ember implments its own set of objects, each of which comes with
 a really friendly API. For example Ember has an Array object with methods like `contains`,
-`filterBy`, and `sortBy`. These things that make your life better.
+`filterBy`, and `sortBy`. These things make your life better.
 
 I think Ember is absolutely worth learning if you find yourself needing to build front-end heavy applications. Ember may seem like a lot, but it's really not that complicated. Once you learn how the various Ember objects interact and get a handle on the basics of the API you'll be coding glorious front-end apps in no time.
 
 Ember is really fun to work with. It opens up new potential for developers to write the crazy front-end apps they've always dreamed of while still maintaing a clean, readable codebase. Also, the Ember core team does a great job of not making any breaking changes within a specific version and getting out bug fixes and improvements very rapidly.
 
-At the end of the day,I reckon that if you're going to choose a front-end framework to learn, I don't think you can go wrong if you pick Ember.
+At the end of the day, I reckon that if you're going to choose a front-end framework to learn, you can't go wrong if you pick Ember.
 
 ## Tutorial Requirements
 
@@ -42,7 +48,7 @@ on Rails. You should have a Rails development environment setup on your computer
 
 I have made the decision to write this tutorial in Coffeescript. I think CoffeeScript is more readable, which directly affects the maintainability of your application. If you're going to do full-time development with Ember then I think you should use CoffeeScript, so you may as well learn it now. Seeing all of my examples in CoffeeScript will certainly help you.  If you know Javscript and Ruby then you'll get CoffeeScript in no time.
 
-I am sure that there are people who disagree with me on this, so yeah &mdash; That's your opinion, *man*. [JS2Coffee.org](http://js2coffee.org/) can convert any of my CoffeeScript examples to Javascript if you really want to.
+I am sure that there are people who disagree with me on this. If you still want to use this tutorial, [JS2Coffee.org](http://js2coffee.org/) can convert any of my CoffeeScript examples to Javascript.
 
 ## Questions & Mistakes
 

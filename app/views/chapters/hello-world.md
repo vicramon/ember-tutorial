@@ -57,6 +57,13 @@ This command will generate a skeleton for our Ember app:
 rails g ember:bootstrap -g --javascript-engine coffee -n App
 ```
 
+Ember-Rails comes with default Ember versions, but let's explicitly install Ember 1.5.0 and Ember Data 1.0.0 beta 7 so that we know for sure we're using the same versions. They will be installed to `vendor/assets/ember`.
+
+```shell
+rails generate ember:install --tag=v1.5.0 --ember
+rails generate ember:install --tag=v1.0.0-beta.7 --ember-data
+```
+
 Add the following lines to your environment files. These tell Ember Rails which version of ember.js to use in each environment.
 
 ```ruby

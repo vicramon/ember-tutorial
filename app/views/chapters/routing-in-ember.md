@@ -12,10 +12,6 @@ With HashLocation, an Ember route will be visible after the `#` in your url. For
 
 `http://myemberapp.com/#/about`
 
-`http://myemberapp.com/#/contact`
-
-`http://myemberapp.com/#/users`
-
 `http://myemberapp.com/#/users/1`
 
 `http://myemberapp.com/#/users/1/edit`
@@ -42,7 +38,7 @@ App.Router.reopen
 
 Boom, it's that simple.
 
-Note that not all browsers implement the history API, so take that into consideration when determining which location system you want to use. You can see browser compatibility [here](http://caniuse.com/history).
+Not all browsers implement the history API, so take that into consideration when determining which location system you want to use. You can see browser compatibility [here](http://caniuse.com/history).
 
 However, Ember comes to the rescue yet again. Ember has AutoLocation, which  will use HistoryLocation if the user's browser supports it, otherwise it will use HashLocation.
 
@@ -55,15 +51,15 @@ Both HashLocation and HistoryLocation implement Ember's [Location API](http://em
 
 ## Writing Routes
 
-A set of CRUD routes looks like this:
+A set of CRUD routes might look like this:
 
 ```coffee
 # app/assets/javascripts/router.js.coffee
 App.Router.map ->
   @route 'users'
-  @route 'user.new', path: { '/users/new' }
-  @resource 'user', path: { '/users/:id' }, ->
-    @route 'edit'
+  @route 'user.new', path: '/users/new'
+  @resource 'user', path: '/users/:id'
+  @resource 'user.edit', path: '/users/:id/edit'
 ```
 
 This would generate the following routes:
@@ -76,29 +72,30 @@ This would generate the following routes:
 
 `/users/new` (new)
 
-Delete and create would be handled by actions inside our Ember objects, so they don't need to be routes.
+Delete and create would be handled by custom actions so they don't need to be routes.
 
 Let's dissect this. There are two functions in use here: `resource` and `route`. The difference between them is important.
 
-You use `resource` to take in a param which will be used to  fetch a record.
+You can use `resource` to take in a param in order to get a specific record. You can nest things under `resource`.
 
-You use `route` to specify some new UI on its parent (either a resource, or the root).
+You use `route` to specify some new UI that doesn't need a specific record. `route` is a dead end -- you cannot nest things under it. It can not take in params.
 
-`resource` can take in params, or **dynamic segments**, as they are called in Ember. `route` cannot.
+The `.` that you see is simply an alternative to using camel case. `user.new` could just as well be `userNew`. Both of these will look for a series of objects who's names start with UserNew. This series of objects will be covered in the next chapter.
 
-You can nest things under `resource`, whereas `route` is a dead end.
+## Nested Routes Means Nested UI
 
-You might be wondering why the the `user.new` and `users` routes aren't nested under the `user` resource. Here's why:
+In Ember, the UI for any active route will be visible. Take for example the following routes:
 
-**Nested Routes Means Nested UI**
+```coffee
+# app/assets/javascripts/router.js.coffee
+App.Router.map ->
+  @resource 'posts', path: '/posts'
+    @route 'new', path: '/new'
+```
 
-Let me repeat that one more time to let it sink in:
+When you visit `http://localhost:3000/posts/new`, you will see both `posts` template and the `posts/new` template. The `posts` template will need an `outlet` tag inside itself to specify where `posts/new` will appear.
 
-**Nested Routes Means Nested UI**
-
-This is totally different from server-side development where every route can have totally different UI. If you see a route in Ember in the url bar, that means that it is active and it's UI should be visible. This is a feature. It allows you to compartmentlize UI that builds on top of other UI, so this pattern makes a lot of sense for the front-end.
-
-So to answer your question, the `user.new` and `users` routes live outside the `user` resource because their UI should stand alone &mdash; it wouldn't make sense for them to be nested inside UI that's designed to show a specific user.
+This is very different from server-side development where every route can have totally different UI. If you see a route in Ember in the url bar, that means that it is active and it's UI should be visible. This is a feature. It allows you to compartmentlize UI that builds on top of other UI, so this pattern makes a lot of sense for the front-end.
 
 ## See Your Routes
 
@@ -106,6 +103,6 @@ I recommend playing around with the router in your hello world app. It's located
 
 ## Conclusion
 
-If you're interested in learning more about routes I reccomend [the Ember docs](http://emberjs.com/guides/routing/) section on routing. There are also two tables in the [Defining your Routes](http://emberjs.com/guides/routing/defining-your-routes/#toc_resources) guide that I think really illuminate how `route` and `resource` work together to get you your ideal routes.
+If you're interested in learning more about routes I reccomend [the Ember docs](http://emberjs.com/guides/routing/) section on routing. There are also two tables in the [Defining your Routes](http://emberjs.com/guides/routing/defining-your-routes/#toc_resources) guide that I think really illuminate how you can use `route` and `resource` to create you your ideal routes.
 
 In the next chapter we'll go over what the route actually does when you hit it.
