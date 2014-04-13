@@ -15,16 +15,15 @@ Now we need to pull in all of our lead records. You use route objects to obtain 
 ```coffee
 # app/assets/javascripts/routes/leads.js.coffee
 App.LeadsRoute = Ember.Route.extend
-  model: ->
-    @store.findAll 'lead'
 
+  model: -> @store.findAll 'lead'
 ```
 
 `model` is a hook that's called whenver the route is entered. The result of the model function is then available to the controller, view, and template.
 
 To be sure this is working properly, simply visit your root route and look at the "Data" tab in the Ember Inspector. You should see all of your leads.
 
-Now that we have our leads we need to show them. We don't need to setup any new data just yet, so let's go straight to the template:
+Now that we have our leads we need to show them. Let's create a template:
 
 ```
 # app/assets/javascripts/templates/leads.js.emblem
@@ -35,7 +34,7 @@ article#leads
         li= lead.fullName
 ```
 
-The problem here is that we want a full name, and we don't have that yet. Let's add it to the model:
+We want to display a full name and we don't have that yet. Let's add it to the model:
 
 ```coffee
 # app/assets/javascripts/models/lead.js.coffee
@@ -45,3 +44,5 @@ fullName: ( ->
 ).property('firstName', 'lastName')
 
 ```
+
+Now refresh the page and you should see your leads listed out on the left. Cool! Now we need to show each lead's data when when we click on it.

@@ -13,11 +13,13 @@ class Chapter
       'Ember Template',
       'Our App',
       'Creating the Rails API',
+      'Creating the Layout',
       'Modeling Leads',
       'Listing Leads',
       'Showing Leads',
       'Updating Leads',
       'Deleting Leads',
+      'Searching Leads',
       'Conclusion'
     ]
   end
