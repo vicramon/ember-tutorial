@@ -8,15 +8,15 @@ When we used the ember-rails generate command to setup Ember it added what's cal
 
 ```coffee
 # app/assets/javascripts/store.js
-App.Store = DS.Store.extend
-  adapter: '_ams'
+App.Store = DS.Store.extend()
+App.ApplicationAdapter = DS.ActiveModelAdapter.extend()
 ```
 
-This adapter enables Ember to communicate with your Rails back-end through  [Active Model Serializers](https://github.com/rails-api/active_model_serializers), which come standard with Rails.
+The adapter enables Ember to communicate with your Rails back-end through  [Active Model Serializers](https://github.com/rails-api/active_model_serializers), which come standard with Rails.
 
 ## Namespace API Requests
 
-We need to tell Ember to prepend all API requests with `api/v1/`, as we'll be versioning our API. Add these two lines to your store file:
+We need to tell Ember to prepend all API requests with `api/v1/`, as we'll be versioning our API. Add these two lines to the top of your store file:
 
 ```coffee
 # app/assets/javascripts/store.js
@@ -29,7 +29,7 @@ DS.RESTAdapter.reopen
 First let's create our leads:
 
 ```shell
-rails g migration create_leads first_name:string last_name:string phone:string status:string notes:text
+rails g migration create_leads first_name:string last_name:string email:string phone:string status:string notes:text
 ```
 
 Open up the migration and make sure to add timestamps:
@@ -40,6 +40,7 @@ class CreateLeads < ActiveRecord::Migration
     create_table :leads do |t|
       t.string :first_name
       t.string :last_name
+      t.string :email
       t.string :phone
       t.string :status
       t.text :notes
@@ -69,7 +70,7 @@ Add the serializer. Note that you need to list out all the attributes you want t
 ```ruby
 # app/serializers/lead.rb
 class LeadSerializer < ActiveModel::Serializer
-  attributes :id, :first_name, :last_name, :phone, :status, :notes
+  attributes :id, :first_name, :last_name, :email, :phone, :status, :notes
 end
 ```
 
@@ -117,7 +118,7 @@ class Api::V1::LeadsController < ApplicationController
   private
 
   def lead_params
-    params.require(:lead).permit(:first_name, :last_name, :phone, :status, :notes)
+    params.require(:lead).permit(:first_name, :last_name, :email, :phone, :status, :notes)
   end
 
 end
@@ -147,10 +148,11 @@ namespace :db do
       ['new', 'in progress', 'closed', 'bad'].sample
     end
 
-    15.times do
+    10.times do
       Lead.create(
         first_name: Faker::Name.first_name,
         last_name: Faker::Name.last_name,
+        email: Faker::Internet.email,
         phone: Faker::PhoneNumber.phone_number,
         status: random_status,
         notes: Faker::Lorem.paragraph(2)

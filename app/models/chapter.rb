@@ -16,9 +16,9 @@ class Chapter
       'Creating the Layout',
       'Modeling Leads',
       'Listing Leads',
-      'Showing Leads',
-      'Updating Leads',
-      'Deleting Leads',
+      'Showing a Lead',
+      'Updating a Lead',
+      'Deleting a Lead',
       'Searching Leads',
       'Conclusion'
     ]
@@ -59,7 +59,8 @@ class Chapter
   TITLE_WORDS = [
     { word: ' In', replacement: ' in' },
     { word: ' Api', replacement: ' API' },
-    { word: ' The', replacement: ' the' }
+    { word: ' The', replacement: ' the' },
+    { word: ' A', replacement: ' a' }
   ]
 
 end
