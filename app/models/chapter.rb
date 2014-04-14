@@ -51,16 +51,16 @@ class Chapter
   def better_titleize(name)
     name.titleize.tap do |name|
       TITLE_WORDS.each do |pattern|
-        name.sub!(pattern[:word], pattern[:replacement])
+        name.sub!(/\s#{pattern[:word]}(\s|\z)/, " " + pattern[:replacement] + " ")
       end
-    end
+    end.strip
   end
 
   TITLE_WORDS = [
-    { word: ' In', replacement: ' in' },
-    { word: ' Api', replacement: ' API' },
-    { word: ' The', replacement: ' the' },
-    { word: ' A', replacement: ' a' }
+    { word: 'In', replacement: 'in' },
+    { word: 'Api', replacement: 'API' },
+    { word: 'The', replacement: 'the' },
+    { word: 'A', replacement: 'a' }
   ]
 
 end
