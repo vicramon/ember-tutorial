@@ -44,13 +44,15 @@ At the end of the day, I reckon that if you're going to choose a front-end frame
 This tutorial is designed for developers with some basic knowledge of Javascript, CoffeeScript, and Ruby
 on Rails. You should have a Rails development environment setup on your computer if you want to follow along.
 
-## CoffeeScript is Great!
+## Why CoffeeScript
 
-I have made the decision to write this tutorial in Coffeescript. I think CoffeeScript is more readable, which directly affects the maintainability of your application. If you're going to do full-time development with Ember then I think you should use CoffeeScript, so you may as well learn it now. Seeing all of my examples in CoffeeScript will certainly help you.  If you know Javscript and Ruby then you'll get CoffeeScript in no time.
+I decided to write this tutorial in Coffeescript because I think it results in cleaner code, which I care deeply about. If you're going to do full-time development with Ember then I feel like you are better off using CoffeeScript.
 
-I am sure that there are people who disagree with me on this. If you still want to use this tutorial, [JS2Coffee.org](http://js2coffee.org/) can convert any of my CoffeeScript examples to Javascript.
+If you don't know it, don't worry because it's fairly easy to learn. The [Coffeescript website](http://coffeescript.org/) provides very good documentation. Also, [JS2Coffee.org](http://js2coffee.org/) can convert any CoffeeScript code to Javascript, and vice versa, which is great for experimentation.
+
+I am sure that there are people who disagree with me on this, and that's fine.
 
 ## Questions & Mistakes
 
 If you have a question or find a mistake then please email me at
-vic@vicramon.com. This tutorial is on [Github](http://www.github.com/vicramon/ember-tutorial) so you can also submit a pull request. Grammar Nazis welcome!
+vic@vicramon.com. The tutorial content is on [Github](http://www.github.com/vicramon/ember-tutorial) so you can also submit a pull request if you feel so inclined.

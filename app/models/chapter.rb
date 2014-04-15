@@ -17,7 +17,8 @@ class Chapter
       'Modeling Leads',
       'Listing Leads',
       'Showing a Lead',
-      'Updating a Lead',
+      'Editing a Lead Part I',
+      'Editing a Lead Part II',
       'Deleting a Lead',
       'Searching Leads',
       'Conclusion'
@@ -60,7 +61,8 @@ class Chapter
     { word: 'In', replacement: 'in' },
     { word: 'Api', replacement: 'API' },
     { word: 'The', replacement: 'the' },
-    { word: 'A', replacement: 'a' }
+    { word: 'A', replacement: 'a' },
+    { word: 'Ii', replacement: 'II' },
   ]
 
 end
