@@ -39,9 +39,7 @@ AboutView = Ember.View.extend
 h1 All about me
 ```
 
-Note that if you visit the about route again only the view will be re-initialized. This is because the controller and route will stay in memory even if you change routes.
-
-Ember actually won't complain if it can't find any of these objects. Instead it will just create them for you in memory. So if you don't need to do anything in the `AboutController`, `AboutView`, or `AboutRoute` then just don't create them.
+Ember actually won't complain if it can't find any of these objects. Instead it will just create them for you in memory. So if you don't need to do anything in the `AboutController`, `AboutView`, or `AboutRoute` then just don't create them. However, if you don't create a template then you won't ever see anything, so you will almost always create a template.
 
 This is what I call the Ember Object Flow. When a route is activated it flows downwards to its associated objects.
 
