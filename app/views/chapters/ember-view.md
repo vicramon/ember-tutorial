@@ -136,7 +136,7 @@ App.UserView = Ember.View.extend
 
 That would log the plain element.
 
-Need to run some jQuery? `@$()` returns the current element wrapped in jQuery:
+Need to get the element and run some jQuery on it? Yould do `$(@get('element'))`, but that's pretty long. Ember gives you a shortcut: `@$()`.
 
 ```coffee
 App.UserView = Ember.View.extend
@@ -145,12 +145,11 @@ App.UserView = Ember.View.extend
     @$('.someClass').fadeOut()
 ```
 
- This would look for `.someClass` inside your current view and make it fade out.
-
+This would look for `.someClass` inside your current view and fade it out.
 
 ## Handling Actions
 
-As mentioned in the Ember Controller chapter, template actions always go straight to the controller. However, UI interactions like click, doubleClick, and mouseEnter are handled on the view.
+As I mentioned in the Ember Controller chapter, template actions always go straight to the controller. However, UI interactions like click, doubleClick, and mouseEnter are handled on the view.
 
 Just define a function with the event name and it will get called when it occurrs:
 
@@ -162,7 +161,8 @@ App.UserView = Ember.View.extend
   mouseLeave: -> console.log 'mouse left'
 ```
 
-A full list of view events can be found [here](http://emberjs.com/api/classes/Ember.View.html#toc_event-names) in the Ember docs.
-
 The event listeners will be applied to the entire view, so clicking anywhere inside it would trigger the click function.
 
+A full list of view events can be found [here](http://emberjs.com/api/classes/Ember.View.html#toc_event-names) in the Ember docs.
+
+That's it for views. Next I'll cover templates. It's the last chapter before we start actually building stuff, so hang in there!
