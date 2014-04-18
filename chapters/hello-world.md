@@ -116,7 +116,7 @@ Last but not least, we need to create a template for Ember to put into our outle
 h1 Hello World
 ```
 
-Restart your server then visit http://localhost:3000. You should see 'Hello World' printed on the screen. If you see it then congratulations! You're one step closer to being an Embereño (yes, Ember devs do sometimes call themselves Embereños). If you don't see it, you should clone my hello world repo and see what you've done differently.
+Restart your server then visit http://localhost:3000. You should see 'Hello World' printed on the screen. If you see it then congratulations! You're one step closer to being an Embereño (yes, Ember devs do sometimes call themselves Embereños, though I kind of like Emberista). If you don't see it, you should clone my hello world repo and see what you've done differently.
 
 [Commit](https://github.com/vicramon/ember-hello-world/commit/2255b0077f85aeb4d5be6cb8aee041667bc62460)
 

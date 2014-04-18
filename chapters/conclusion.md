@@ -10,7 +10,7 @@ After that, I think building your own application is the best way to learn.
 
 ## Take Home Work
 
-A fun exercise could be to add functionlity to create a new lead in the app we just built. I'll get you started. Here's how I'd do the route:
+A fun exercise could be to add functionality to create a new lead in the app we just built. I'll get you started. Here's how I'd do the route:
 
 ```coffee
 # app/assets/javascripts/router.js.coffee
@@ -24,7 +24,7 @@ App.Router.map ->
 
 I'm considering adding more to the tutorial to help cover more Ember topics. If you'd like this then let me know. Also, if there's anything in particular that you think would be cool to add then let me know.
 
-This tutorial is [on Github](https://github.com/vicramon/ember-tutorial-app), so you could even add a chapter yourself if you want to!
+This tutorial is [on GitHub](https://github.com/vicramon/ember-tutorial-app), so you could even add a chapter yourself if you want to!
 
 ## Thanks
 

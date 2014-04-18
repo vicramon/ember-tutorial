@@ -23,7 +23,7 @@ App.LeadsRoute = Ember.Route.extend
   model: -> @store.findAll 'lead'
 ```
 
-`model` is a hook that's called whenver the route is entered. The result of the model function is then available to the controller, view, and template.
+`model` is a hook that's called whenever the route is entered. The result of the model function is then available to the controller, view, and template.
 
 To be sure this is working properly, simply visit your root route and look at the "Data" tab in the Ember Inspector. You should see all of your leads.
 

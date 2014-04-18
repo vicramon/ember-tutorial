@@ -95,7 +95,7 @@ App.Router.map ->
 
 When you visit `http://localhost:3000/posts/new`, you will see both `posts` template and the `posts/new` template. The `posts` template will need an `outlet` tag inside itself to specify where `posts/new` will appear.
 
-This is very different from server-side development where every route can have totally different UI. If you see a route in Ember in the url bar, that means that it is active and it's UI should be visible. This is a feature. It allows you to compartmentlize UI that builds on top of other UI, so this pattern makes a lot of sense for the front-end.
+This is very different from server-side development where every route can have totally different UI. If you see a route in Ember in the url bar, that means that it is active and it's UI should be visible. This is a feature. It allows you to compartmentalize UI that builds on top of other UI, so this pattern makes a lot of sense for the front-end.
 
 ## See Your Routes
 
@@ -103,6 +103,6 @@ I recommend playing around with the router in your hello world app. It's located
 
 ## Conclusion
 
-If you're interested in learning more about routes I reccomend [the Ember docs](http://emberjs.com/guides/routing/) section on routing. There are also two tables in the [Defining your Routes](http://emberjs.com/guides/routing/defining-your-routes/#toc_resources) guide that I think really illuminate how you can use `route` and `resource` to create you your ideal routes.
+If you're interested in learning more about routes I recommend [the Ember docs](http://emberjs.com/guides/routing/) section on routing. There are also two tables in the [Defining your Routes](http://emberjs.com/guides/routing/defining-your-routes/#toc_resources) guide that I think really illuminate how you can use `route` and `resource` to create you your ideal routes.
 
 In the next chapter we'll go over what the route actually does when you hit it.

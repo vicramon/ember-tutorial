@@ -115,7 +115,7 @@ user.showMessage('omg this works!')
 
 ## Observers
 
-Observers are functions that fire whenever the any of thethings they observe change. They look like propertyies, but end with `observes()` instead of `property()`
+Observers are functions that fire whenever the any of the things they observe change. They look like properties, but end with `observes()` instead of `property()`
 
 ```coffee
 App.User = Ember.Object.extend
@@ -127,7 +127,7 @@ App.User = Ember.Object.extend
 
 ```
 
-The above code would fire an alert saying 'yikes' whenver the weight property on this user changes. You can observe as many things as you'd like:
+The above code would fire an alert saying 'yikes' whenever the weight property on this user changes. You can observe as many things as you'd like:
 
 ```coffee
 App.User = Ember.Object.extend

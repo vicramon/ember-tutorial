@@ -139,7 +139,7 @@ contextDidChange: ->
 
 This is a bit complicated, but here we go:
 
-We're using the `contextDidChange` hook, which is called when the model for the current route changes. We need to get the model we were just editing, but by the time you hit this hook the model for the route has already changed, so we can't get the model with `@modelFor('lead')`. Instead we'll do `@controllerFor('lead').get('model')`, because the controller's model hasn't actually been udpated yet (`contextDidChange` is called before `setupController`).
+We're using the `contextDidChange` hook, which is called when the model for the current route changes. We need to get the model we were just editing, but by the time you hit this hook the model for the route has already changed, so we can't get the model with `@modelFor('lead')`. Instead we'll do `@controllerFor('lead').get('model')`, because the controller's model hasn't actually been updated yet (`contextDidChange` is called before `setupController`).
 
 `contextDidChange` is called when you enter the route the first time too, in which case `@controllerFor('lead')` would be empty, so that's why we have the first if statement. If we find a lead model on the controller, we can then ask if it's dirty. If it's dirty, we then prompt the user to either save their changes, or rollback the record to it's previous state.
 

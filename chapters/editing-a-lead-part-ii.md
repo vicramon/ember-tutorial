@@ -14,7 +14,7 @@ Here we go. As always, add a route first. We will place an `edit` route under ou
   @route 'edit'
 ```
 
-Note that you need to add a `, ->` after the `lead` resource, othwerise you'll get an error.
+Note that you need to add a `, ->` after the `lead` resource, otherwise you'll get an error.
 
 This route is going to look for a `LeadEdit` controller, view, and template.
 

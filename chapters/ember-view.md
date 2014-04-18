@@ -136,7 +136,7 @@ App.UserView = Ember.View.extend
 
 That would log the plain element.
 
-Need to get the element and run some jQuery on it? Yould do `$(@get('element'))`, but that's pretty long. Ember gives you a shortcut: `@$()`.
+Need to get the element and run some jQuery on it? Yo could do `$(@get('element'))`, but that's pretty long. Ember gives you a shortcut: `@$()`.
 
 ```coffee
 App.UserView = Ember.View.extend
@@ -151,7 +151,7 @@ This would look for `.someClass` inside your current view and fade it out.
 
 As I mentioned in the Ember Controller chapter, template actions always go straight to the controller. However, UI interactions like click, doubleClick, and mouseEnter are handled on the view.
 
-Just define a function with the event name and it will get called when it occurrs:
+Just define a function with the event name and it will get called when it occurs:
 
 ```coffee
 App.UserView = Ember.View.extend

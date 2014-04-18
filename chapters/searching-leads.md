@@ -1,6 +1,6 @@
 # Searching Leads
 
-Let's create a search box that will instantly serach leads by name as we type.
+Let's create a search box that will instantly search leads by name as we type.
 
 The neat thing about this, as you'll see, is that this can be accomplished in a very clean manner with a surprisingly small amount of code. That, my friend, is the beauty of Ember.
 

@@ -6,7 +6,7 @@ We need to create our layout so we can build stuff inside it. Let's do that now.
 
 ## Rails Layout
 
-You shouldn't have to change your Rails layout, but for reference here's what mine looks like in haml:
+You shouldn't have to change your Rails layout, but for reference here's what mine looks like in Haml:
 
 ```haml
 !!!
@@ -24,11 +24,11 @@ You shouldn't have to change your Rails layout, but for reference here's what mi
   %footer
 ```
 
-This is fairly standard. There are other UI elements we'll want to add in a momenet.
+This is fairly standard. There are other UI elements we'll want to add in a moment.
 
 ## Rails View
 
-My root rails view is actually empty, but it needs to exist, otherwise Rails will complain.
+My root rails view is actually empty, but it needs to exist otherwise Rails will complain.
 
 ```haml
 -# app/views/home/index.html.haml

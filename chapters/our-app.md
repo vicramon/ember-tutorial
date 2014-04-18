@@ -12,7 +12,7 @@ They can click cancel to ignore any changes.
 
 They can click save, and records will be saved via ajax.
 
-As you can see, the main object in this sytem is the Lead. This is what we will be focused on manipulating.
+As you can see, the main object in this system is the Lead. This is what we will be focused on manipulating.
 
 ## Preparing The App
 
@@ -29,7 +29,7 @@ App.Router.reopen
   location: 'auto'
 ```
 
-With Autolcation Ember can read in routes like `/users/3/edit` and know what to load. We also need to specify the rootURL for this to work, otherwise Ember won't know where to start parsing the url.
+With AutoLocation Ember can read in routes like `/users/3/edit` and know what to load. We also need to specify the rootURL for this to work, otherwise Ember won't know where to start parsing the url.
 
 We also need to create a catch-all Rails route to handle whatever arbitrary Ember routes we create, otherwise we'll get a 404 when we reload the page on any subroute.
 

@@ -43,4 +43,4 @@ Ember actually won't complain if it can't find any of these objects. Instead it 
 
 This is what I call the Ember Object Flow. When a route is activated it flows downwards to its associated objects.
 
-Now that you undestand the flow of objects in the Ember system, I'm going to give you a brief overview of each one.
+Now that you understand the flow of objects in the Ember system, I'm going to give you a brief overview of each one.
