@@ -146,3 +146,5 @@ App.LeadController = Ember.ObjectController.extend
 ```
 
 This way future programmers in our code will know that we have an `isEditing` property and it should be `false` by default. We don't have to do this but I think it's good style.
+
+Now that we can edit everything about a lead I'll show you how to delete them.
