@@ -23,6 +23,7 @@ Open the lead template and add the following to the bottom:
 /* app/assets/javascripts/templates/lead.js.emblem */
 p
   label for=view.status.elementId Status:
+  '
   view Ember.Select content=App.Lead.STATUSES value=model.status viewName="status"
 ```
 
