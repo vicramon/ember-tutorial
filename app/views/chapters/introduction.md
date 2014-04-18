@@ -1,8 +1,8 @@
 # Introduction
 
-Welcome to Vic Ramon's Ember Tutorial. I'm Vic Ramon, and you can think of me as your Ember sherpa.
+Welcome to my Ember Tutorial!
 
-My intent with this guide is to provide enough instruction on how to use Ember that you can start writing your own apps when you're done. I have aimed for my writing to be simple, friendly and concicse. Only you will know if I have achieved these goals, so don't hesitate to send me [feedback](mailto:vic@viramon.com).
+My intent with this guide is to provide enough instruction on how to use Ember that you could start writing your own apps when you're done. I have aimed for my writing to be simple, friendly and concicse. I'm very interested in getting feedback and improving this tutorial, so plesae don't hesitate to send me [feedback](mailto:vic@viramon.com) if you have any suggestions.
 
 ## What is Ember JS
 

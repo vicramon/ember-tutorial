@@ -1,10 +1,10 @@
 # Hello World!
 
-Let's build a Hello World app first. We can ensure that we have our development environment setup and get a 10,000 ft view of how things work.
+Let's build a Hello World app first. We can ensure that we have our development environment setup and get a ten thousand foot view of how things work.
 
 ## Create a New Rails App
 
-The app we're going to build later in this tutorial is a CRM. We can reuse this hello world code when we start the app, so let's name our Rails app `ember-crm`.
+The app we're going to build in this tutorial is a CRM. We can reuse this hello world code when we start the app, so let's name our Rails app `ember-crm`.
 
 First create new rvm gemset to sandbox our gems:
 
