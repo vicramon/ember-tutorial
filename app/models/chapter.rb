@@ -21,6 +21,7 @@ class Chapter
       'Editing a Lead Part II',
       'Deleting a Lead',
       'Searching Leads',
+      'Deploying to Heroku',
       'Conclusion'
     ]
   end
@@ -32,7 +33,7 @@ class Chapter
   end
 
   def text
-    File.new("app/views/chapters/#{name.parameterize}.md").read
+    File.new("chapters/#{name.parameterize}.md").read
   end
 
   def next
@@ -63,6 +64,7 @@ class Chapter
     { word: 'The', replacement: 'the' },
     { word: 'A', replacement: 'a' },
     { word: 'Ii', replacement: 'II' },
+    { word: 'To', replacement: 'to' },
   ]
 
 end
