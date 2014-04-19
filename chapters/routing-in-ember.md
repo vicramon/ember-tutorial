@@ -19,6 +19,7 @@ With HashLocation, an Ember route will be visible after the `#` in your url. For
 You may not want to serve your Ember app directly from your root url. In this case, just tell Ember what the root url should be:
 
 ```coffee
+# app/assets/javascripts/router.js.coffee
 App.Router.reopen
   rootURL: '/some/path/'
 ```
@@ -32,6 +33,7 @@ While HashLocation is the default, some of you may think that hashes look ugly. 
 Here's how to use HistoryLocation instead of HashLocation:
 
 ```coffee
+# app/assets/javascripts/router.js.coffee
 App.Router.reopen
   location: 'history'
 ```
@@ -56,10 +58,10 @@ A set of CRUD routes might look like this:
 ```coffee
 # app/assets/javascripts/router.js.coffee
 App.Router.map ->
-  @route 'users'
+  @resource 'users'
   @route 'user.new', path: '/users/new'
   @resource 'user', path: '/users/:id'
-  @resource 'user.edit', path: '/users/:id/edit'
+    @route 'edit'
 ```
 
 This would generate the following routes:
@@ -74,17 +76,17 @@ This would generate the following routes:
 
 Delete and create would be handled by custom actions so they don't need to be routes.
 
-Let's dissect this. There are two functions in use here: `resource` and `route`. The difference between them is important.
+There are two functions in use here: `resource` and `route`. The difference between them is important.
 
 You can use `resource` to take in a param in order to get a specific record. You can nest things under `resource`.
 
 You use `route` to specify some new UI that doesn't need a specific record. `route` is a dead end -- you cannot nest things under it. It can not take in params.
 
-The `.` that you see is simply an alternative to using camel case. `user.new` could just as well be `userNew`. Both of these will look for a series of objects who's names start with UserNew. This series of objects will be covered in the next chapter.
+The `.` that you see is simply an alternative to using camel case. `user.new` could just as well be `userNew`. Both of these will look for a series of objects who's names start with UserNew.
 
 ## Nested Routes Means Nested UI
 
-In Ember, the UI for any active route will be visible. Take for example the following routes:
+In Ember, the UI for any active route will be visible by default. Take for example the following routes:
 
 ```coffee
 # app/assets/javascripts/router.js.coffee
@@ -99,10 +101,10 @@ This is very different from server-side development where every route can have t
 
 ## See Your Routes
 
-I recommend playing around with the router in your hello world app. It's located in `app/assets/javascripts/router.js.coffee`. Once you've added routes you can refresh your page and look at the Ember inspector to see what routes Ember has generated. The Ember Inspector will also show you what Route, Controller, View, and Template that route will look for. This is extremely useful for understanding routes.
+I recommend playing around with the router in your hello world app. It's located in `app/assets/javascripts/router.js.coffee`. Once you've added routes you can refresh your page and look at the Ember inspector to see what routes Ember has generated. The Ember Inspector will also show you which Route, Controller, View, and Template that route will look for. This is extremely useful for making sure your object names match up.
 
 ## Conclusion
 
-If you're interested in learning more about routes I recommend [the Ember docs](http://emberjs.com/guides/routing/) section on routing. There are also two tables in the [Defining your Routes](http://emberjs.com/guides/routing/defining-your-routes/#toc_resources) guide that I think really illuminate how you can use `route` and `resource` to create you your ideal routes.
+If you're interested in learning more about routes I recommend [the Ember docs](http://emberjs.com/guides/routing/) section on routing. There are also two tables in the [Defining your Routes](http://emberjs.com/guides/routing/defining-your-routes/#toc_resources) guide that really illuminate how you can use `route` and `resource` to create you your ideal routes.
 
 In the next chapter we'll go over what the route actually does when you hit it.

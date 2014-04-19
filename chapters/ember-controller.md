@@ -1,14 +1,16 @@
 # Ember Controller
 
-Controllers in Ember function much like normal Ember Objects with a couple of exceptions. First, let's look at the three types of controllers.
+Controllers in Ember are where you put the logic to make a specific part of your app actually work. They typically wrap a model or an array of models. You can put functions, properties, and observers on controllers. They function much like normal Ember Objects with a couple of exceptions.
+
+First we'll look at the three different types of controllers.
 
 ## A Story of Three Controllers
 
-Ember provides three types of controllers to you: `Controller`, `ObjectController`, and `ArrayController`. You use `ObjectController` whenever that controller's route is for a single model. Use `ArrayController` when the route is for a list of models. And finally use `Controller` when the route isn't fetching models at all.
+Ember provides you with three types of controllers: `ObjectController`, `ArrayController`, and `Controller`. You use `ObjectController` whenever that controller's route fetches a single model. Use `ArrayController` when the route fetches an array of models. And finally use `Controller` when the route isn't fetching any models at all.
 
 ## Properties, Observers, and Functions
 
-Controllers don't have any specific hooks that are called upon entering them. You can use `init` if you really need to, but you shouldn't. All setup work should be done in the route.
+Controllers don't have any specific hooks that are called upon entering them. You can use `init` if you really need to, but you shouldn't. All setup work for a controller should be done in the route, usually in the route's `setupController` hook.
 
 So what's left? Properties, observers, and functions. These are your bread and butter.
 
@@ -16,34 +18,52 @@ So what's left? Properties, observers, and functions. These are your bread and b
 # app/assets/javascripts/controllers/user.js.coffee
 App.UserController = ObjectController.extend
 
-  someFunction: -> alert('such function')
+  someFunction: -> alert('so functional')
 
   someProperty: ( ->
-    if @get('model.firstName') is "Joe"
-      "Hey Joe"
+    if @get('model.firstName') is "Gregory"
+      "Hey Gregory"
     else
-      "You're not Joe"
+      "Hey, you're not Gregory"
   ).property('model.firstName')
 
   someObserver: ( ->
-    alert "I see you changed your name, #{@get('model.firstName')}"
+    alert "You changed your name? I don't really see you as a #{@get('model.firstName')}."
   ).observes('model.firstName')
 ```
 
-You can put as many of these as you like in your controller. Properties will be available to the template automatically.
+You can put as many of these as you like in your controller. Any controller properties will be available to the template and view.
+
+## Mixins
+
+If you find yourself duplicating a lot of logic you can extract your code to an `Ember.Mixin` and have your controller extend it like so:
+
+```coffee
+# app/assets/javascripts/mixins/excited.js.coffee
+App.Excited = Ember.Mixin.create
+  levelOfExcitement: "I'm so freaking excited right now!!!"
+
+# app/assets/javascripts/controllers/user.js.coffee
+App.UserController = ObjectController.extend App.Excited,
+  # your controller code
+
+```
+
+Now `UserController` would have the `levelOfExcitement` property. Also notice that mixins are created with `.create` rather than `.extend`.
 
 ## Executing Template Actions
 
-Another major use for controllers is handling actions from templates. For example, a template may have a submit button, or a delete link. These actions could be handled like so:
+Another major use for controllers is handling actions from templates. For example, a template may have a submit button, or a delete link. These actions would be handled like so:
 
 ```coffee
 # app/assets/javascripts/controllers/user.js.coffee
 App.UserController = ObjectController.extend
 
   actions:
-    deleteUser: -> @get('model').deleteRecord()
+
+    deleteUser: -> @get('model').destroyRecord()
 
     saveChanges: -> @get('model').save()
 ```
 
-All action handlers must go inside an `actions` construct in the controller. This is an Ember convention to help keep your code organized.
+All action handlers must go inside an `actions` object in the controller. This is an Ember convention to help keep your code organized.

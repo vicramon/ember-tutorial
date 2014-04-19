@@ -1,8 +1,6 @@
 # Ember View
 
-Views are one of the most fun and powerful objects in Ember.
-
-You can think of a view as a wrapper for a template. It contains all the javascript you might want to execute on the template and all it manages the logic around attributes and class names.
+The View is one of the most powerful objects in Ember. You can think of a view as a wrapper for a template. It contains all the javascript you might want to execute on the template and all it manages the logic around attributes and class names.
 
 ## Talking to the Controller
 
@@ -15,11 +13,11 @@ Like Routes, views have a series of hooks that you can use. Here are three of th
 ```coffee
 App.UserView = Ember.View.extend
 
-  willInsertElement: -> Em.K
+  willInsertElement: ->
 
-  didInsertElement: -> Em.K
+  didInsertElement: ->
 
-  willDestroyElement: -> Em.K
+  willDestroyElement: ->
 ```
 
 `willInsertElement` is called before the view is inserted into the DOM.
@@ -28,9 +26,34 @@ App.UserView = Ember.View.extend
 
 `willDestroyElement` is called when view is about to be removed from the DOM. You can use this for any teardown you need to do.
 
+## Computed Aliases
+
+This isn't related specifically to views, but I'm about to use a computed alias so I need to explain what they are. Computed aliases are essentially shorthand for grabbing properties from other objects.
+
+You just pass `Em.computed.alias` the string name of the property you want to look up. It will look up the property and watch it at the same time. For example:
+
+```coffee
+App.MyController = Ember.Controller.extend
+  name: 'Zelda'
+
+App.MyView = Ember.View.extend
+
+  # this is kind of lame
+  name: ( ->
+    @get('controller.name')
+  ).property('controller.name')
+
+  # instead, use a computed alias
+  name: Em.computed.alias 'controller.name'
+```
+
+Ember provides a whole variety of computed functions that let you create these kind of shorthand properties. For example, `Em.computed.not` returns the inverse of a boolean value. You can view the full list in the [Ember API](http://emberjs.com/api/).
+
+Ok, moving on...
+
 ## Defining the Element
 
-When I said views wrap templates, I meant it quite literally. A view will by default wrap the template in a div with a generated ember id, like `#ember45`.
+When I said views wrap templates, I meant it quite literally. A view will by default wrap the template in a `div` with a generated ember id, like `ember45`.
 
 We can customize this wrapping element very easily.
 
@@ -57,7 +80,7 @@ App.AnimalView = Ember.View.extend
   active: Em.computed.alias 'controller.model.isActive'
 ```
 
-This is the simplest version of class name bindings. A class name of `active` will appear if the `active` property returns true, otherwise it won't appear.
+`classNameBindings` will look for the property you named and execute it. In this case a class name of `active` will appear if the `active` property returns true, otherwise it won't appear.
 
 But what if you need more control than that? Try this:
 
@@ -73,7 +96,7 @@ App.AnimalView = Ember.View.extend
   ).property('model.kind')
 ```
 
-`classNameBindings` will look for the property you named and execute it. In this case, since the return value is not a boolean, it will be used as a class name. If the return value is undefined then it won't do anything. Here, a class of `meow` will be applied if the model is a cat, and `woof` if it's a dog.
+In this case, since the return value is not a boolean, the return value will be used as the class name. If the return value is undefined then it won't do anything. Here, a class of `meow` will be applied if the model is a cat, and `woof` if it's a dog.
 
 There's actually an abbreviated version of this that you can optionally use:
 
@@ -81,9 +104,7 @@ There's actually an abbreviated version of this that you can optionally use:
 App.AnimalView = Ember.View.extend
   classNameBindings: ['isCat:moew:woof']
 
-  isCat: ( -> 
-    @get('model.kind') is "cat"
-  ).property('model.kind')
+  isCat: Em.comptued.equal 'model.kind', 'cat'
 ```
 
 The first value after the colon will be applied if the property returns true, otherwise the second value will be applied. Note that you can omit the second value if only want a class to be applied in the first case.
@@ -163,6 +184,6 @@ App.UserView = Ember.View.extend
 
 The event listeners will be applied to the entire view, so clicking anywhere inside it would trigger the click function.
 
-A full list of view events can be found [here](http://emberjs.com/api/classes/Ember.View.html#toc_event-names) in the Ember docs.
+A full list of view events can be found in the [Ember docs](http://emberjs.com/api/classes/Ember.View.html#toc_event-names).
 
 That's it for views. Next I'll cover templates. It's the last chapter before we start actually building stuff, so hang in there!
