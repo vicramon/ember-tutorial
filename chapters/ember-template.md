@@ -117,4 +117,4 @@ each user in controller
 
 ## Render, View, and Partial Helpers
 
-#TODO
+Ember view
