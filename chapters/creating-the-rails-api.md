@@ -1,25 +1,27 @@
 # Creating the Rails API
 
-We need an API so that Ember can communicate with our Rails app. This chapters shows you how to make one.
+We need an API so that Ember can communicate with our Rails backend.
 
 ## The Active Model Adapter
 
-When we used the ember-rails generate command to setup Ember it added what's called the Active Model Adapter. You'll see this if you open your store.js file:
+When we used the Ember Rails generate command to setup Ember it added what's called the Active Model Adapter. You'll see this if you open store.js.coffee:
 
 ```coffee
-# app/assets/javascripts/store.js
+# app/assets/javascripts/store.js.coffee
 App.Store = DS.Store.extend()
 App.ApplicationAdapter = DS.ActiveModelAdapter.extend()
 ```
 
-The adapter enables Ember to communicate with your Rails back-end through  [Active Model Serializers](https://github.com/rails-api/active_model_serializers), which come standard with Rails.
+If you don't see this code then replace whatever is in your store with this.
+
+The Active Model Adapter enables Ember to communicate with your Rails backend through  [Active Model Serializers](https://github.com/rails-api/active_model_serializers), which come standard with Rails.
 
 ## Namespace API Requests
 
 We need to tell Ember to prepend all API requests with `api/v1/`, as we'll be versioning our API. Add these two lines to the top of your store file:
 
 ```coffee
-# app/assets/javascripts/store.js
+# app/assets/javascripts/store.js.coffee
 DS.RESTAdapter.reopen
   namespace: 'api/v1'
 ```
@@ -55,7 +57,7 @@ end
 rake db:migrate
 ```
 
-Now create the model:
+Now create the Rails model:
 
 ```ruby
 # app/models/lead.rb
@@ -88,6 +90,7 @@ end
 ```
 
 Now that we have our model and serializer, we can create the API controller.
+
 The actions here are fairly standard:
 
 ```ruby
@@ -100,7 +103,7 @@ class Api::V1::LeadsController < ApplicationController
   end
 
   def show
-    respond_with Lead.find(params[:id])
+    respond_with lead
   end
 
   def create
@@ -108,14 +111,18 @@ class Api::V1::LeadsController < ApplicationController
   end
 
   def update
-    respond_with Lead.find(params[:id]).update_attributes(lead_params)
+    respond_with lead.update(lead_params)
   end
 
   def destroy
-    respond_with Lead.find(params[:id]).destroy
+    respond_with lead.destroy
   end
 
   private
+
+  def lead
+    Lead.find(params[:id])
+  end
 
   def lead_params
     params.require(:lead).permit(:first_name, :last_name, :email, :phone, :status, :notes)
@@ -167,7 +174,7 @@ end
 rake db:populate
 ```
 
-Now you should be able to visit [http://localhost:3000/api/v1/leads.json](http://localhost:3000/api/v1/leads.json) and see the JSON output for all 30 leads. [http://localhost:3000/api/v1/leads/1.json](http://localhost:3000/api/v1/leads/1.json) should show you the first lead.
+Restart the server, and now you should be able to visit [http://localhost:3000/api/v1/leads.json](http://localhost:3000/api/v1/leads.json) and see the JSON output for all leads. [http://localhost:3000/api/v1/leads/1.json](http://localhost:3000/api/v1/leads/1.json) should show you the first lead.
 
 ## Puma
 

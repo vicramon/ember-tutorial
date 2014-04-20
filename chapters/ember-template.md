@@ -115,6 +115,75 @@ each user in controller
   user.name
 ```
 
+I think by now you may be getting the idea of handlebars, so I'm going to switch just showing Emblem.
+
 ## Render, View, and Partial Helpers
 
-Ember view
+Templates allow you to call another controller, view or template. This is useful because you can separate out your app logic as much as you need.
+
+The `render` helper calls a controller:
+
+```
+render 'myController'
+```
+
+You can optionally pass the render method a model object:
+
+```
+render 'user' model
+```
+
+This will look for `UserController` and instantiate it. The controller will will then look for `UserView`, and a `user` template, as per the usual Ember Object Flow.
+
+The `view` helper calls a view:
+
+```
+view 'user'
+```
+
+This would look for `UserView`, which would then look for a template named `user`. Using the `view` helpers means that Ember will **not** instantiate a controller, it will skip it.
+
+The `partial` helper only calls a template:
+
+```
+partial 'user'
+```
+
+This would render the `user` template inside the current template. It would not use the controller or view.
+
+As you can see, the `render`, `view`, and `partial` helpers enable you to compartmentalize code as much as you need. If you only need to show additional markup, just use `partial`. If you need markup with some javascript attached, use `view`. If you need markup that has access to its own set of properties and actions, then you'll need to use `render`.
+
+The Ember docs provide a great [comparison table](http://emberjs.com/guides/templates/rendering-with-helpers/#toc_comparison-table) that helps explain how these helpers differ.
+
+## Actions
+
+You can specify what are called **actions** on any element in a template. Actions will call a function in the controller of the same name:
+
+```
+h1 click="gotClicked" Click me
+```
+
+This would call a `gotClicked` method in the controller. The method must be defined inside an `actions` object:
+
+```
+App.MyController = Ember.Controller.extend
+
+  actions:
+    gotClicked: -> alert('you got me!')
+```
+
+## The Link-To Helper
+
+Ember provides a `link-to` helper that will transition you to a different route. You pass it the name of the route and any models that you need to send along.
+
+Say you had an array controller that gave you a list of users, and you wanted to provide a link to each one. Here's how you'd do that:
+
+```
+each userRecord in controller
+  link-to 'user' userRecord
+    user.name
+```
+
+I'm user `userRecord` here just to show you that the first argument is a string name of the route and the second argument is a model.
+
+Ok, now that we've covered Routes, Controllers, Views and Templates, we can actually build something!

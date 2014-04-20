@@ -1,18 +1,10 @@
 # Our App
 
-We are going to build a relatively simple CRM. This is a good project for Ember because we'll be listing data, showing records, editing records, and doing other useful things like searching and filtering. If you can build this app and understand how it works then you will be well on your way to developing your own complex front-end apps. You can see the completed version of the app #TODO here to get an idea of what we'll be doing.
+We are going to build a relatively simple CRM. This is a good project for Ember because we'll be listing data, showing records, editing records, and doing other useful things like searching. If you can build this app and understand how it works then you will be well on your way to developing your own complex front-end apps.
 
-The main view of the app looks like this: #TODO app image.
+You can see [the completed version](http://embercrm.herokuapp.com) of the app to get an idea of what we'll be doing.
 
-Users can click on a lead to see it.
-
-They can click edit to edit that lead.
-
-They can click cancel to ignore any changes.
-
-They can click save, and records will be saved via ajax.
-
-As you can see, the main object in this system is the Lead. This is what we will be focused on manipulating.
+The main object in this system is the **lead**. If you don't know the term, a lead is the same thing as a potential sales prospect . This is what we will be focused on manipulating.
 
 ## Preparing The App
 
@@ -20,7 +12,9 @@ You can use the Hello World app we built earlier as the base for this app. I'm g
 
 ## Preparing Routes
 
-Let's use the AutoLocation API to get rid of ugly hashes:
+Let's use the AutoLocation API to get rid of those ugly hashes in our urls. We also need to set the rootURL to `'/'` so Ember knows where to start parsing the url from.
+
+Open your router and add the following to the top:
 
 ```coffee
 # app/assets/javascripts/router.js.coffee
@@ -29,9 +23,7 @@ App.Router.reopen
   location: 'auto'
 ```
 
-With AutoLocation Ember can read in routes like `/users/3/edit` and know what to load. We also need to specify the rootURL for this to work, otherwise Ember won't know where to start parsing the url.
-
-We also need to create a catch-all Rails route to handle whatever arbitrary Ember routes we create, otherwise we'll get a 404 when we reload the page on any subroute.
+We also need to create a catch-all Rails route to handle whatever arbitrary routes we create in Ember, otherwise we'll get a 404 when we reload the page on a subroute:
 
 ```ruby
 # config/routes.rb
