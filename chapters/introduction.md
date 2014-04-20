@@ -52,6 +52,17 @@ Don't worry if you don't know it because it's fairly easy to learn. The [CoffeeS
 
 I am sure that there are people who disagree with me on this, and that's fine.
 
+## Testing
+
+While I am an ardent believer in TDD and don't ship code without tests, I'm not going to do testing in this tutorial for a couple of reasons.
+
+First, there's a lot to learn here as is, and throwing testing into the mix would make this tutorial just that much more complicated.
+
+Second, you can write integration tests for Ember with Cucumber, and often times this is better than using Ember's built in testing helpers because you can test persistence. Additionally, Cucumber is extremely readable and pleasant to work in. However, we still need unit tests. I recommend looking at [Ember Qunit](https://github.com/rpflorence/ember-qunit) for that. There's also an [Ember guide on testing](http://emberjs.com/guides/testing/) that I recommend you read after this tutorial.
+
+If there's a lot of demand for help with testing then I can write another section on how to do it, just let me know.
+
+
 ## Questions & Mistakes
 
 If you have a question or find a mistake then please email me at
