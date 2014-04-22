@@ -40,18 +40,17 @@ article#leads
         li= lead.fullName
 ```
 
-We want to display a full name and we don't have that property yet. Let's add it to the model:
+We want to display a full name but we don't have that property yet. The lead model is a good place for this logic:
 
 ```coffee
 # app/assets/javascripts/models/lead.js.coffee
-
 fullName: ( -> 
   @get('firstName') + ' ' + @get('lastName')
 ).property('firstName', 'lastName')
 
 ```
 
-Now refresh the page and you should see your leads listed out on the left. Cool!
+Now refresh the page and you should see your leads listed out on the left. Cool, right!?
 
 ## Sorting Leads
 
@@ -67,7 +66,7 @@ App.LeadsController = Ember.ArrayController.extend
 
 `sortProperties` simply takes an array of strings. These strings are the properties you want to sort by with the highest priority going first.
 
-Note that I've made this an `ArrayController`. This is because the controller wraps an array of leads. Ember expects you to do this because `ArrayController` defines certain specific things like `sortProperties` that are not available to regular `Controller` instances.
+Note that I've made this controller an `ArrayController`. If you remember from the Controllers chapter, this is because the controller wraps an array of leads. Ember expects you to do this because `ArrayController` defines certain specific things like `sortProperties` that are not available to regular `Controller` instances.
 
 Refresh the page and marvel at the beauty of your sorted leads.
 

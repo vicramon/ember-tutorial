@@ -53,6 +53,8 @@ class CreateLeads < ActiveRecord::Migration
 end
 ```
 
+Run the migration:
+
 ```shell
 rake db:migrate
 ```
@@ -67,7 +69,7 @@ end
 
 ## The Rails Serializer
 
-Add the serializer. Note that you need to list out all the attributes you want to serialize into JSON and send to Ember.
+Add the serializer. You need to list out all the attributes you want to serialize into JSON and send to Ember:
 
 ```ruby
 # app/serializers/lead.rb
@@ -78,7 +80,9 @@ end
 
 ## The API Controller
 
-Add the routes for the API controller:
+Now that we have our model and serializer, we can create the API controller.
+
+First add the routes for the API controller:
 
 ```ruby
 # config/routes.rb
@@ -89,9 +93,7 @@ namespace :api do
 end
 ```
 
-Now that we have our model and serializer, we can create the API controller.
-
-The actions here are fairly standard:
+Now create the controller. The actions here are fairly standard:
 
 ```ruby
 # app/controllers/api/v1/leads_controller.rb
@@ -169,6 +171,8 @@ namespace :db do
   end
 end
 ```
+
+Run the populate task:
 
 ```shell
 rake db:populate

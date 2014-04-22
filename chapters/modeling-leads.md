@@ -1,8 +1,8 @@
 # Modeling Leads
 
-To handle data we'll be using [Ember Data](https://github.com/emberjs/data). We got it for free with the ember-rails generator so we don't have do anything to start using it. Ember Data is the standard when it comes to Ember data adapters.
+To handle data we'll be using [Ember Data](https://github.com/emberjs/data). We already installed it in Hello World so we don't have do anything to start using it. Although there are a few different data adapters for Ember, Ember Data is the standard.
 
-We have a Lead model in Rails but Ember needs to know about leads too in order to manipulate them. Create a lead model in Ember:
+We have a Lead model in Rails but Ember needs to know about leads too in order to manipulate them. We need to create a lead model in Ember. Ember Data gives us the `DS.Model` object which we'll extend:
 
 ```coffee
 # app/assets/javascripts/models/lead.js.coffee

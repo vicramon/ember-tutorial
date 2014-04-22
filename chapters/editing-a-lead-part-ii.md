@@ -1,12 +1,14 @@
 # Editing a Lead Part II
 
-Now we're going to do the other half of editing. A user clicks an edit link and sees fields to edit the lead's name, phone, and email.
+Now we're going to do the other half of editing. A user clicks on the "edit" link and sees fields to edit the lead's name, phone, and email.
 
 This UI will replace the UI that shows the lead, so we'll have to do some special work to handle that.
 
+Here we go.
+
 ## Add a Route
 
-Here we go. As always, add a route first. We will place an `edit` route under our existing `lead` resource. The `lead` resource handles fetching the lead. We shouldn't repeat that work if we don't need to.
+As always, add a route first. We will place an `edit` route under our existing `lead` resource. The `lead` resource handles fetching the lead. We shouldn't repeat that work if we don't need to.
 
 ```coffee
 # app/assets/javascripts/router.js.coffee
@@ -20,12 +22,15 @@ This route is going to look for a `LeadEdit` controller, view, and template.
 
 ## Create the Template
 
-I'm going to add the template first this time because it will inform us about what actions we need to handle in the controller.
+I'm going to add the template first because it will inform us about what actions we need to handle in the controller.
 
-This template must be located in `templates/lead/`. Since the route is nested inside a `resource`, Ember expects the template to be inside a subdirectory with the name of the resource. If you're not sure where to place a template just look in the Ember Inspector's "Routes" tab to find out.
+Since this `route` is nested inside a `resource`, Ember expects the template to be inside a subdirectory with the name of the resource. Thus, this template must be located in `templates/lead/`.
+
+If you're ever not sure where to place a template just look in the Ember Inspector's "Routes" tab to find out.
+
 
 ```
-# app/assets/javascripts/templates/lead/edit.js.emblem
+/* app/assets/javascripts/templates/lead/edit.js.emblem */
 
 article#lead
   h1
@@ -34,29 +39,31 @@ article#lead
   form
     fieldset
       dl
-        dt: label for=view.firstName.elementId First Name:
-        dd: view Ember.TextField value=firstName viewName="firstName"
+        dt: label First Name:
+        dd: view Ember.TextField value=firstName
 
       dl
-        dt: label for=view.lastName.elementId Last Name:
-        dd: view Ember.TextField value=lastName viewName="lastName"
+        dt: label Last Name:
+        dd: view Ember.TextField value=lastName
 
       dl
-        dt: label for=view.email.elementId Email:
-        dd: view Ember.TextField value=email viewName="email"
+        dt: label Email:
+        dd: view Ember.TextField value=email
 
       dl
-        dt: label for=view.phone.elementId Phone:
-        dd: view Ember.TextField value=phone viewName="phone"
+        dt: label Phone:
+        dd: view Ember.TextField value=phone
 
     fieldset.actions
       input type='submit' value='Save Changes' click="saveChanges"
-      a.cancel href='#' click="cancel" cancel
+      a.cancel click="cancel" cancel
 ```
 
-Ember provides the `Ember.TextField` view which renders a text input. Just assign `value` to the property you want to bind to. For example, for `firstName` text field you could assign the value to `model.firstName` or just `firstName`. The template always looks in the controller first for a property, and if it doesn't find it then it will look to the model.
+Ember gives you a `Ember.TextField` view which renders a text input. Just assign `value` to the property you want to bind to.
 
-The `form` tag actually doesn't do anything, it's just there to provide proper markup.
+Notice that I'm using `firstName` and `lastName` instead of `model.firstName` and `model.lastName`. Using `model` would work just fine, but it's unnecessary. The template always looks to the controller for a property, and if it's not in the controller then it will look to the model. You may want to use `model` for clarity, but it's up to you.
+
+The `form` tag actually doesn't do anything, it's just there for markup.
 
 This template has two actions: `saveChanges` and `cancel`. Let's implement them now.
 
@@ -94,10 +101,12 @@ h1
 
 Open the browser and try clicking the edit link. You should see the URL change, but nothing else should happen. Can you figure out why?
 
-**Outlets**, don't forget about them. If a template doesn't appear, always ask yourself: **did I add an outlet???** Since our `edit` route is nested under `lead`, Ember is trying to render the template into an `outlet` tag inside the `lead` template. Add it to the top of the `lead` template:
+**Outlets**, don't forget about them. If a template doesn't appear, always ask yourself: **did I add an outlet?!?!?** Since our `edit` route is nested under `lead`, Ember is trying to render the template into an `outlet` tag inside the `lead` template. Since it can't find it, nothing happens.
+
+Add an outlet to the top of the `lead` template:
 
 ```coffee
-# app/assets/javascripts/templates/lead.js.emblem
+// app/assets/javascripts/templates/lead.js.emblem
 outlet
 ```
 Now try it. It should work, but now we have a new problem: the show UI for a lead is still be present. That's because **nested routes means nested UI**. Since the `lead` resource is still active, the UI is still active.
@@ -106,7 +115,7 @@ There's a fairly simple fix to this. We'll simply hide the show UI when we're ed
 
 ## I Heard You Like Editing
 
-We'll create an `isEditing` property on the `lead` controller. If it's true, we'll hide the UI we don't want to see.
+We'll create an `isEditing` property on the `lead` controller. We'll hide the UI we don't want to see when it's true.
 
 First add `unless isEditing` to the template and indent all the show UI under it:
 
@@ -119,13 +128,13 @@ unless isEditing
     h1
       fullName
       link-to 'edit' 'lead.edit' model classNames='edit'
-  # etc... 
+  // etc...
 ```
 
 Now whenever we visit the edit route we need to set `isEditing` to true. We can do that inside a `LeadEdit` route. We haven't made one yet, so do it now:
 
 ```coffee
-# app/assets/javascripts/routes/lead_edit.js.coffee
+// app/assets/javascripts/routes/lead_edit.js.coffee
 App.LeadEditRoute = Ember.Route.extend
 
   activate:   -> @controllerFor('lead').set 'isEditing', true
@@ -134,10 +143,10 @@ App.LeadEditRoute = Ember.Route.extend
 
 Now we see those route hooks coming in handy! On `activate` we get the `LeadController` and simply set `isEditing` to true. On `deactivate` we do the opposite. And boom, we're done.
 
-We could do one last thing for clarity: we could add `isEditing` to the `LeadController`.
+We could do one last thing for clarity: we could add `isEditing` to the `LeadController` and default it to false.
 
 ```coffee
-# app/assets/javascripts/controllers/lead.js.coffee
+// app/assets/javascripts/controllers/lead.js.coffee
 App.LeadController = Ember.ObjectController.extend
 
   isEditing: false

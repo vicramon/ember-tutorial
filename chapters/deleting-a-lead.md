@@ -7,7 +7,7 @@ This may be the shortest chapter. Deleting in Ember is typically handled by an a
 Open up the `lead` template and add a delete link immediately above the submit button:
 
 ```
-# app/assets/javascripts/templates/lead.js.emblem
+// app/assets/javascripts/templates/lead.js.emblem
 p
   a.delete href='#' click="delete" delete
   input type='submit' value='Save Changes' click="saveChanges"
@@ -19,7 +19,7 @@ p
 Template actions are handled in the controller, so open up the `LeadController` and add the `delete` action:
 
 ```coffee
-# app/assets/javascripts/controllers/lead.js.coffee
+// app/assets/javascripts/controllers/lead.js.coffee
 actions:
 
   delete: ->

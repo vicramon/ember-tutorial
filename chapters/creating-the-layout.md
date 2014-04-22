@@ -1,48 +1,68 @@
 # Creating the Layout
 
-I built some UI for this project which we can use. All you need to do is follow along with the same markup and your project will turn out looking like mine.
-
 We need to create our layout so we can build stuff inside it. Let's do that now.
 
 ## Rails Layout
 
-You shouldn't have to change your Rails layout, but for reference here's what mine looks like in Haml:
+Your Rails layout should look like this to start:
 
-```haml
-!!!
-%html(lang="en-US")
-  %head
-    %title Ember CRM
-    = stylesheet_link_tag "application"
-    = javascript_include_tag "application"
-    = csrf_meta_tags
-
-  %body
-    #ember-app
-    = yield
-
-  %footer
+```erb
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Ember CRM</title>
+    <%= stylesheet_link_tag    'application'  %>
+    <%= javascript_include_tag 'application' %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <%= yield %>
+  </body>
+</html>
 ```
 
-This is fairly standard. There are other UI elements we'll want to add in a moment.
+Add a footer under yield:
+
+```erb
+<body>
+  <%= yield %>
+  <footer></footer>
+</body>
+```
+
+Ember by default will insert itself at the end of your body tag, which is a problem because we need the footer to be below it. So the workaround here is to tell Ember explicitly where to render.
+
+First, put a div with the id `ember-app` right above the footer`.
+
+```erb
+<body>
+  <div id="ember-app"></div>
+  <%= yield %>
+  <footer></footer>
+</body>
+```
+
+Now, open up `application.js.coffee` and tell Ember what that the `rootElement` is `ember-app`:
+
+```coffee
+window.App = Ember.Application.create(rootElement: '#ember-app')
+```
+
+Now Ember will render everything inside the `ember-app` div.
 
 ## Rails View
 
-My root rails view is actually empty, but it needs to exist otherwise Rails will complain.
-
-```haml
--# app/views/home/index.html.haml
-```
+The Rails view you created for Hello World should still exist but remain empty.
 
 ## Ember Layout
 
-Now we face an interesting question, which you will face multiple times as you build with Ember inside Rails. Should we build it in Ember or in Rails? This really depends.
+Now we face an interesting question. You will face questions like this often as you build with Ember inside Rails. Should we build the layout in Ember or in Rails? This really depends.
 
 If your Ember app is just on a single page, then it might make sense to build the layout in Rails so that it can be used on other non-Ember pages. But if your Ember app truly has multiple pages, and the layout links to these other Ember pages, then it makes sense to do it in Ember.
 
 In our app we only have a single page with Ember, so we could build our layout in Rails and be just fine. However, this tutorial is all about learning Ember, so let's do it in Ember anyways.
 
-Ember always renders the `application` template, so let's make it:
+Ember always renders the `application` template, so we'll use that for the layout:
 
 ```
 # app/assets/javascripts/templates/application.emblem.js
