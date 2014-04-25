@@ -6,8 +6,8 @@ My intent with this guide is to provide enough instruction on how to use Ember t
 
 ## What is Ember JS
 
-Ember is a front-end Javascript framework. You would use it if you need to write
-a complex, front-end heavy app. It gives you an organized
+Ember is a front-end Javascript framework. You can use it to write
+complex, front-end heavy web apps. It gives you an organized
 structure, conventions, and built-in ways to some of the hard things.
 
 Like Angular, Backbone and Knockout, Ember arrived recently to help
@@ -58,11 +58,11 @@ While I typically use TDD and don't ship code without tests, I'm not covering te
 
 First, there's a lot to learn here as is, and throwing testing into the mix would make this tutorial just that much more complicated.
 
-Second, you can write integration tests for Ember with Cucumber (or Rspec), and this can be better than using Ember's built in testing helpers because you can test persistence. However, you still should write Ember unit tests. I recommend [Ember Qunit](https://github.com/rpflorence/ember-qunit) for that. There's also an [Ember guide on testing](http://emberjs.com/guides/testing/) that I recommend you read after this tutorial.
+Second, you can write integration tests for Ember with Cucumber (or Rspec Integration), and this can be better than using Ember's built in testing helpers because you can test persistence. However, I think you still should write unit tests for your Ember code. I recommend [Ember Qunit](https://github.com/rpflorence/ember-qunit) for that. There's also an [Ember guide on testing](http://emberjs.com/guides/testing/) that I recommend you read after this tutorial.
 
 If there's a lot of demand for help with testing then I can write another section on how to do it, just let me know.
 
 ## Questions & Mistakes
 
 If you have a question or find a mistake then please email me at
-vic@vicramon.com. The tutorial content is on [GitHub](http://www.github.com/vicramon/ember-tutorial-app) so you can also submit a pull request if you feel so inclined.
+vic@vicramon.com. The tutorial content is on [GitHub](http://www.github.com/vicramon/ember-tutorial-app) so you can even submit a pull request if you feel so inclined.

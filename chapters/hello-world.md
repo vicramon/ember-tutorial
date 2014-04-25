@@ -11,6 +11,7 @@ First create new rvm gemset to sandbox our gems:
 ```shell
 rvm gemset create ember-crm
 rvm gemset use ember-crm
+gem install rails
 ```
 
 Now generate the Rails app:
@@ -18,10 +19,9 @@ Now generate the Rails app:
 ```shell
 rails new ember-crm -d postgresql
 cd ember-crm
-rvm gemset create ember-crm
+bundle
+rake db:create
 ```
-
-Remove username and password from your `config/database.yml` if necessary, then run `rake db:create`.
 
 If you run `rails s` and visit localhost:3000 then you should see the Rails Welcome Aboard page.
 
@@ -53,7 +53,7 @@ And bundle:
 bundle
 ```
 
-Ember Rails provides a generator for our Ember app. The flags below tell it to use CoffeeScript and to name the Ember app `App`, which is the typical convention.
+Ember Rails provides a generator that will create a skeleton for our Ember app. The flags below tell it to use CoffeeScript and to name the Ember app `App`, which is the typical convention.
 
 ```shell
 rails g ember:bootstrap -g --javascript-engine coffee -n App
@@ -62,8 +62,8 @@ rails g ember:bootstrap -g --javascript-engine coffee -n App
 Ember Rails comes with default Ember versions, but let's explicitly install Ember 1.5.0 and Ember Data 1.0.0 beta 7 so that we know for sure we're using the same versions. They will be installed to `vendor/assets/ember`.
 
 ```shell
-rails generate ember:install --tag=v1.5.0 --ember
-rails generate ember:install --tag=v1.0.0-beta.7 --ember-data
+rails g ember:install --tag=v1.5.0 --ember
+rails g ember:install --tag=v1.0.0-beta.7 --ember-data
 ```
 
 Add the following lines to your environment files. These tell Ember Rails which version of ember.js to use in each environment. The production version is minified and has no logging, while the development version is not minified and allows for logging.
@@ -82,6 +82,7 @@ config.ember.variant = :production
 Ember Rails generates an `application.js.coffee` for us, so lets use that. Delete `application.js`, and make sure to add jQuery to the top of `application.js.coffee`. Ember depends on jQuery.
 
 ```coffee
+# app/assets/javascripts/application.js.coffee
 #= require jquery
 #= require jquery_ujs
 ```
@@ -90,29 +91,32 @@ Ember Rails generates an `application.js.coffee` for us, so lets use that. Delet
 
 ## Making Ember Work
 
-We'll need a basic Rails controller and view so that we can output something from Ember. I'm going to make a controller called `HomeController` with an index view and make it the root path.
+We'll need a basic Rails controller and view so that we can output something from Ember. I'm going to make a controller named `HomeController` with an index view and make it the root path.
+
+Add the route:
 
 ```ruby
 # config/routes.rb
 root to: 'home#index'
+```
+Create the controller:
 
+```ruby
 # app/controllers/home_controller.rb
 class HomeController < ApplicationController
 end
 ```
 
+Create an index view. It's going to be blank:
+
 ```html
-<!-- 
-app/views/home/index.html.erb
-the view should be empty
--->
+<!-- app/views/home/index.html.erb -->
 ```
 
-Last but not least, we need to create a template for Ember to put into our outlet. Ember looks for an application template by default, so all we need to do is create it:
+Last but not least, we need to create a template for Ember to render. Ember looks for an application template by default, so all we need to do is create it:
 
 ```haml
-/ app/assets/javascripts/templates/application.js.emblem
-
+// app/assets/javascripts/templates/application.js.emblem
 h1 Hello World
 ```
 
@@ -138,7 +142,7 @@ If you don't see this output then your Ember javascripts are not being loaded pr
 
 There's a whole page on [debugging Ember](http://emberjs.com/guides/understanding-ember/debugging/) in the guides.  I suggest that you check it out if ever get stuck.
 
-The first thing I usually do if things are working is place a `debugger` in the code and open Chrome dev tools. If that doesn't help then the next thing I'll do is log my route transitions to get more insight:
+The first thing I usually do if things aren't working is place a `debugger` in the code and open Chrome dev tools. If that doesn't help then the next thing I'll do is log my route transitions to get more insight:
 
 ```coffee
 # app/assets/javascripts/application.js.coffe
@@ -159,4 +163,4 @@ I can't say enough good things about the Ember Inspector. It makes inner the wor
 
 As you've seen it doesn't take much time to get our Ember App up and running. Most of the work is in preparing the Rails app.
 
-If you've still got issues getting this working then please post your issue in the comments below. This app is also on [GitHub](https://github.com/vicramon/ember-hello-world) if you want to look at it.
+If you've still got issues getting this working then please post your issue in the comments below. This hello world app is also on [GitHub](https://github.com/vicramon/ember-hello-world) if you want to look at it.
