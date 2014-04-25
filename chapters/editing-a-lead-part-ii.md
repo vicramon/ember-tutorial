@@ -26,11 +26,11 @@ I'm going to add the template first because it will inform us about what actions
 
 Since this `route` is nested inside a `resource`, Ember expects the template to be inside a subdirectory with the name of the resource. Thus, this template must be located in `templates/lead/`.
 
-If you're ever not sure where to place a template just look in the Ember Inspector's "Routes" tab to find out.
+If you're not sure where to place a template just look in the Ember Inspector's "Routes" tab to find out.
 
 
 ```
-/* app/assets/javascripts/templates/lead/edit.js.emblem */
+// app/assets/javascripts/templates/lead/edit.js.emblem
 
 article#lead
   h1
@@ -101,26 +101,28 @@ h1
 
 Open the browser and try clicking the edit link. You should see the URL change, but nothing else should happen. Can you figure out why?
 
-**Outlets**, don't forget about them. If a template doesn't appear, always ask yourself: **did I add an outlet?!?!?** Since our `edit` route is nested under `lead`, Ember is trying to render the template into an `outlet` tag inside the `lead` template. Since it can't find it, nothing happens.
+**Outlets**, don't forget about them. If a template doesn't appear, always ask yourself: **did I add an outlet?!** If you're like me, you'll forget one at some point and be flaggergasted at why your template isn't showing up. 
+
+Our `edit` route is nested under `lead` so Ember is trying to render the template into an `outlet` tag inside the `lead` template. Since it can't find it, nothing happens.
 
 Add an outlet to the top of the `lead` template:
 
-```coffee
+```
 // app/assets/javascripts/templates/lead.js.emblem
 outlet
 ```
 Now try it. It should work, but now we have a new problem: the show UI for a lead is still be present. That's because **nested routes means nested UI**. Since the `lead` resource is still active, the UI is still active.
 
-There's a fairly simple fix to this. We'll simply hide the show UI when we're editing.
+There's a simple fix to this -- we'll just hide the show UI when we're editing.
 
 ## I Heard You Like Editing
 
-We'll create an `isEditing` property on the `lead` controller. We'll hide the UI we don't want to see when it's true.
+Now we'll set an `isEditing` property on the `lead` controller to hide the UI we don't want to see when it's true.
 
 First add `unless isEditing` to the template and indent all the show UI under it:
 
 ```
-# app/assets/javascripts/templates/lead.js.coffee
+// app/assets/javascripts/templates/lead.js.coffee
 outlet
 
 unless isEditing
@@ -131,22 +133,22 @@ unless isEditing
   // etc...
 ```
 
-Now whenever we visit the edit route we need to set `isEditing` to true. We can do that inside a `LeadEdit` route. We haven't made one yet, so do it now:
+Now whenever we visit the edit route we need to set `isEditing` to true. We can do that inside the `LeadEdit` route, because... routes handle setup and teardown! We haven't made one yet, so do it now:
 
 ```coffee
-// app/assets/javascripts/routes/lead_edit.js.coffee
+# app/assets/javascripts/routes/lead_edit.js.coffee
 App.LeadEditRoute = Ember.Route.extend
 
   activate:   -> @controllerFor('lead').set 'isEditing', true
   deactivate: -> @controllerFor('lead').set 'isEditing', false
 ```
 
-Now we see those route hooks coming in handy! On `activate` we get the `LeadController` and simply set `isEditing` to true. On `deactivate` we do the opposite. And boom, we're done.
+Now we see those route hooks coming in handy! On `activate` we get the `LeadController` and set `isEditing` to true. On `deactivate` we do the opposite. And boom, we're done.
 
 We could do one last thing for clarity: we could add `isEditing` to the `LeadController` and default it to false.
 
 ```coffee
-// app/assets/javascripts/controllers/lead.js.coffee
+# app/assets/javascripts/controllers/lead.js.coffee
 App.LeadController = Ember.ObjectController.extend
 
   isEditing: false
@@ -154,6 +156,6 @@ App.LeadController = Ember.ObjectController.extend
   #etc...
 ```
 
-This way future programmers in our code will know that we have an `isEditing` property and it should be `false` by default. We don't have to do this but I think it's good style.
+This way future programmers  will know that we have an `isEditing` property and it should be `false` by default. We don't have to do this but I think it's good style.
 
 Now that we can edit everything about a lead I'll show you how to delete them.

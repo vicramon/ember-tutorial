@@ -29,7 +29,7 @@ App.LeadRoute = Ember.Route.extend
 Our template will show the information about our lead.
 
 ```
-/* app/assets/javascripts/templates/lead.js.emblem */
+// app/assets/javascripts/templates/lead.js.emblem
 article#lead
   h1= model.fullName
 
@@ -53,7 +53,7 @@ The single quote `'` leaves a trailing whitespace after that line.
 Open your leads template so we can create a link to each lead:
 
 ```
-/* app/assets/javascripts/templates/leads.js.emblem */
+// app/assets/javascripts/templates/leads.js.emblem
 article#leads
   h1 Leads
   ul
@@ -64,7 +64,7 @@ article#leads
 = outlet
 ```
 
-Two things are happening here. 
+Two things are happening here.
 
 First, our `li` became a `link-to`. We passed it `tagName=li` so that the html element will remain an `li`. `tagName` is simply a property that we are providing to the view.
 

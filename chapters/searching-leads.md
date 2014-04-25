@@ -2,7 +2,7 @@
 
 Let's create a search box that will instantly search leads by name as we type.
 
-The neat thing about this, as you'll see, is that this can be accomplished in a very clean manner with a surprisingly small amount of code. That, my friend, is the beauty of Ember.
+The neat thing about this, as you'll see, is that it can be accomplished in a very clean manner with a surprisingly small amount of code. That, my friend, is the beauty of Ember.
 
 ## Add the Search Field
 
@@ -23,7 +23,7 @@ I'm binding the text field's value to a property named `search`.
 Right now we're doing `each lead in controller`. We need to manually modify the list of leads, so change it to `each lead in leads`, and we'll create a `leads` property on the controller.
 
 ```
-# app/assets/javascripts/templates/leads.js.emblem
+// app/assets/javascripts/templates/leads.js.emblem
 ul
   each lead in leads
   # etc ...
@@ -47,7 +47,7 @@ Open up `LeadsController` and add the following two properties:
 
 The `leads` property looks to see if there is a search string. If there is, it returns `searchedLeads`. If there isn't, it returns `@`. `@` in an `ArrayController` references the array of models that it is wrapping.
 
-`searchedLeads` gets the search string and lower cases it. It then runs `filter` on `@`, which is the list of leads, and returns the leads for which the search string is inside the full name.
+`searchedLeads` gets the search string and lower cases it. It then runs `filter` on `@`, which is the list of leads, and returns the leads where the full name includes the search string.
 
 `searchedLeads` needs to watch `@each.fullName', which means that the property will be updated whenever the full name of any lead changes.
 

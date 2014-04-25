@@ -2,7 +2,7 @@
 
 The world should see our masterpiece. We can deploy our app to Heroku with very little hassle.
 
-First add the `rails_12factor` gem that Heroku likes you to have. Bundle and commit then:
+First add the `rails_12factor` gem that Heroku likes you to have. Bundle and commit. Then run these commands:
 
 ```shell
 heroku create <whatever-name-you-want>

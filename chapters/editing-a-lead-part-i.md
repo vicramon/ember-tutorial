@@ -6,7 +6,7 @@ Let's start with the status and notes, which will just be additions to our exist
 
 ## Add the Status Select
 
-First we need to tell the app about the different statuses a lead can have. The `Lead` model should know about this, but it's more of class knowledge and instance knowledge, so lets use `reopenClass` to add it to the class.
+First we need to tell the app about the different statuses a lead can have. The `Lead` model should know about this, but it's more class knowledge than instance knowledge, so lets use `reopenClass` to add it to the class.
 
 Add this code after your `Lead` model in the same file:
 
@@ -21,7 +21,7 @@ You will now be able to get to this array through `App.Lead.STATUSES`.
 Open the lead template and add the following to the bottom:
 
 ```
-/* app/assets/javascripts/templates/lead.js.emblem */
+// app/assets/javascripts/templates/lead.js.emblem
 p
   label Status:
   '
@@ -35,7 +35,6 @@ Ember provides a built in select view which we can use. We point `content` to ou
 Add this code after the status select:
 
 ```
-/* app/assets/javascripts/templates/lead.js.emblem */
 p
   label Notes:
   br
@@ -49,7 +48,6 @@ Here we use Ember's text area view and bind it to `model.notes`.
 Here's our submit button:
 
 ```
-/* app/assets/javascripts/templates/lead.js.emblem */
 p
   input type='submit' value='Save Changes' click='saveChanges'
 ```
@@ -70,11 +68,11 @@ App.LeadController = Ember.ObjectController.extend
     saveChanges: -> @get('model').save()
 ```
 
-Note that this controller is an `ObjectController`.
+Note that this controller is an `ObjectController` because it wraps a single lead model.
 
 Our submit button will call the `saveChanges` function. This function must be within `actions` since it is being called from the template. This is an Ember convention to help keep your code organized.
 
-`save()` will actually send an ajax put request to our Rails API, and everything should just work. Try it out in your browser. Edit a record, click "Save Changes", and look at the Network tab in the Chrome console. You should see a put request to `api/v1/leads/{ id of record }`. If you refresh the page the saved record should show your changes.
+`save()` will actually send an ajax put request to our Rails API, and everything should just work. Try it out in your browser. Edit a record, click "Save Changes", and look at the Network tab in the Chrome console. You should see a put request to `api/v1/leads/(id of record)`. If you refresh the page the saved record should show your changes.
 
 Saving is that easy! Just bind and call `save()`. It's fun and it's healthy.
 
@@ -126,6 +124,6 @@ App.LeadController = Ember.ObjectController.extend
   ).property('isDirty', 'isSaving')
 ```
 
-Now, because programming, the message will disappear when the record is saving.
+Our new logic will return false when the record is saving, giving us the result we want.
 
-That's it for editing part one. Upwards and onwards!
+That's it for editing part one. Onwards and upwards!

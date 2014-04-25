@@ -32,7 +32,7 @@ To be sure this is working properly, simply visit your root route and look at th
 Now that we have our leads we need to show them. Let's create a template:
 
 ```
-# app/assets/javascripts/templates/leads.js.emblem
+// app/assets/javascripts/templates/leads.js.emblem
 article#leads
   h1 Leads
     ul
@@ -56,7 +56,7 @@ Now refresh the page and you should see your leads listed out on the left. Cool,
 
 Our leads are not in any particular order. This is chaos! Let's sort them by name.
 
- You sort arrays of models by specifying `sortProperties` in the controller. We don't have a controller yet, so let's make one:
+You can sort arrays of models by specifying `sortProperties` in the controller. We don't have a controller yet, so let's make one:
 
 ```coffee
 # app/assets/javascripts/controllers/leads.js.coffee
