@@ -31,4 +31,4 @@ We call `destroyRecord()` on the model, which sends a `DELETE` request to the se
 
 And that's it!
 
-In the next chapter we'll do something really cool: instantly search leads.
+Next I'll cover adding a new lead.

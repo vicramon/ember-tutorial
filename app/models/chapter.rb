@@ -20,6 +20,7 @@ class Chapter
       'Editing a Lead Part I',
       'Editing a Lead Part II',
       'Deleting a Lead',
+      'Creating a Lead',
       'Searching Leads',
       'Deploying to Heroku',
       'Conclusion'
