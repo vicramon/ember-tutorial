@@ -10,7 +10,7 @@ The main object in this system is the **lead**. If you don't know the term, a le
 
 You can use the Hello World app we built earlier as the base for this app. I'm going to provide you with markup and styles so that you can just focus on the Ember stuff.
 
-#TODO link to styles
+[Download this stylesheet](/tutorial/application.css) and save it to `app/assets/stylesheets/application.css`.
 
 ## Preparing Routes
 

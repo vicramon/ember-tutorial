@@ -1,0 +1,233 @@
+/*
+----------------------------------------
+Tantek Celik's Whitepsace Reset
+     Author:    Tantek Celik, Shane Riley
+    Version:    (CC) 2010 Some Rights Reserved - http://creativecommons.org/licenses/by/2.0
+Description:    Resets default styling of common browsers to a common base
+----------------------------------------
+*/
+
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,700,300,400italic);
+ul, ol {
+  list-style: none;
+}
+
+h1, h2, h3, h4, h5, h6, pre, code {
+  font-size: 1em;
+}
+
+ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, body, html, p, blockquote, fieldset, input, dl, dt, dd, figure, figcaption {
+  margin: 0;
+  padding: 0;
+}
+
+a img, :link img, :visited img, fieldset {
+  border: none;
+}
+
+address {
+  font-style: normal;
+}
+
+header, section, article, nav, footer, hgroup, details, summary, figure {
+  display: block;
+}
+
+mark {
+  color: inherit;
+  background: transparent;
+}
+
+abbr {
+  border: none;
+}
+
+summary::-webkit-details-marker {
+  display: none;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  font-size: 15px;
+  color: #222222;
+  font-family: Roboto;
+  margin: 0 0 65px;
+}
+
+a, a:visited, a:active {
+  color: #236fff;
+  text-decoration: none;
+}
+a:hover, a:visited:hover, a:active:hover {
+  text-decoration: underline;
+}
+
+p {
+  margin: 0 0 20px 0;
+  line-height: 1.7;
+  color: #333333;
+}
+
+h1, h2 {
+  font-family: "Roboto";
+}
+
+h1 {
+  font-size: 26px;
+  font-weight: bold;
+  padding: 0 0 20px 0;
+}
+
+h2 {
+  font-size: 21px;
+  color: #222222;
+  padding: 0 0 12px 0;
+  font-weight: bold;
+}
+
+a.delete {
+  color: #777777;
+  float: right;
+}
+
+header {
+  background: #f57011;
+  height: 47px;
+}
+header article {
+  width: 88%;
+  margin: 0 auto;
+}
+header article .logo {
+  padding: 4px 0 0 0;
+}
+header article .logo a {
+  font-size: 28px;
+  font-family: "Maven Pro";
+  font-weight: 500;
+  color: white;
+}
+header article nav {
+  padding: 15px 0 0 0;
+  float: right;
+  font-family: "Maven Pro";
+  font-weight: medium;
+}
+header article nav a, header article nav a:hover, header article nav a:visited, header article nav a:active {
+  margin-right: 30px;
+  color: white;
+}
+
+section {
+  margin: 0 auto;
+  width: 88%;
+}
+
+form dl {
+  padding: 0 0 12px 0;
+}
+form dt, form dd {
+  display: inline-block;
+}
+form dt {
+  width: 90px;
+  text-align: right;
+  padding: 0 5px 0 0;
+}
+form fieldset.actions {
+  padding: 12px 0 0 95px;
+}
+form fieldset.actions .cancel {
+  padding-left: 15px;
+}
+
+article#leads {
+  margin: 30px 35px 0 0;
+  width: 25%;
+  background: #f6f6f6;
+  float: left;
+  padding: 15px 20px 20px;
+}
+article#leads h1 {
+  font-size: 20px;
+  padding-left: 6px;
+  padding-bottom: 14px;
+}
+article#leads h1 a {
+  font-size: 15px;
+  float: right;
+  font-weight: normal;
+  margin: 3px 0 0 0;
+}
+article#leads input.search {
+  width: 96%;
+  margin: 0 0 12px 5px;
+  padding: 2px 0 3px 3px;
+}
+article#leads ul li {
+  border-bottom: 1px solid #dddddd;
+  padding: 8px 6px 10px;
+  cursor: pointer;
+}
+article#leads ul li:hover, article#leads ul li.active {
+  background: #f8e5ce;
+}
+
+article#lead {
+  margin: 30px;
+  width: 60%;
+  float: left;
+}
+article#lead a.edit {
+  font-size: 15px;
+  font-weight: normal;
+  margin-left: 15px;
+}
+article#lead .unsaved, article#lead .saving {
+  color: #b20000;
+  display: inline-block;
+  padding: 0 0 0 20px;
+}
+article#lead .saving {
+  color: #00d936;
+}
+
+input, select, textarea {
+  font-family: Roboto;
+  font-size: 16px;
+}
+
+textarea {
+  width: 400px;
+  height: 100px;
+}
+
+label {
+  vertical-align: top;
+  width: 90px;
+}
+
+input[type='submit'] {
+  background: #f57011;
+  border: none;
+  padding: 5px 25px 8px;
+  font-weight: 500;
+  color: white;
+  cursor: pointer;
+}
+
+footer {
+  padding: 30px 0 0 0;
+  height: 0px;
+  clear: both;
+}
+
+.error {
+  background: #ffcccb;
+  padding: 7px 15px 10px;
+  margin: 0px 0 18px;
+}
