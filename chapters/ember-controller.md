@@ -1,6 +1,6 @@
 # Ember Controller
 
-Controllers in Ember are where you put the logic to make a specific part of your app actually work. They typically wrap a model or an array of models. You can put functions, properties, and observers on controllers. They function much like normal Ember Objects with a couple of exceptions.
+Controllers handle non-persisted logic related to a specific piece of UI. They typically wrap a model or an array of models. You can put functions, properties, and observers on controllers. They function much like normal Ember Objects with a couple of exceptions.
 
 First we'll look at the three different types of controllers.
 
@@ -53,7 +53,7 @@ Now `UserController` would have the `levelOfExcitement` property. Also notice th
 
 ## Executing Template Actions
 
-Another major use for controllers is handling actions from templates. For example, a template may have a submit button, or a delete link. These actions would be handled like so:
+Another major use for controllers is handling actions from templates. For example, a template may have a submit button or a delete link. These actions would be handled like so:
 
 ```coffee
 # app/assets/javascripts/controllers/user.js.coffee

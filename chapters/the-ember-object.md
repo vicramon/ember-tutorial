@@ -4,17 +4,17 @@ We could start coding right away, but I think that if you haven't seen Ember-fla
 
 If you are dying to code you can skip directly the [Our App](/our-app) chapter, but if you want to know what's going on then I recommend that you stick around.
 
-The following few chapters will be a whirlwind tour of Ember Objects, Routing, Routes, Controllers, Views, and Templates.
+The following few chapters will be a whirlwind tour of Ember Objects, Routing, Routes, Controllers, Views, and Templates. I'm only going to cover the basics so we can start coding as soon as possible. You can do a deep dive through the [Ember Guides](http://emberjs.com/guides/) once you've completed this tutorial.
 
 # The Ember Object
 
-Ember implements its own object system. The base object is called Ember.Object. All of the other objects in Ember extend Ember.Object.
+Ember implements its own object system. The base object is Ember.Object. All of the other objects in Ember extend Ember.Object.
 
-While most of the time you will be using an object like Ember.Controller or Ember.View, you can also use Ember.Object itself. As an example, you might use it to create a service object that handles some non-persisted logic.
+Most of the time you will be using an object that extends Ember.Object like Ember.Controller or Ember.View, but you can also use Ember.Object itself. One common use for Ember.Object is for service objects that handle some specific non-persisted logic.
 
 If you open your browser's console in your Hello World app you'll be able to follow along with these commands, though you'll need to convert the CoffeeScript to Javascript.
 
-You can create a basic object like this:
+You can instantiate a basic object like this:
 
 ```coffee
 user = Ember.Object.create()
@@ -43,13 +43,13 @@ user.toString() #=> <Ember.Object:ember{objectId}>
 
 ## Defining Objects
 
-So far we've just been using Ember.Object. What if you want to create our own object? You can do that like this:
+So far we've just been using Ember.Object. You can create a sort of "subclass" of Ember.Object by using `extend`. Say we want to make a user Object class:
 
 ```coffee
 App.User = Ember.Object.extend()
 ```
 
-Boom! Now you can instantiate a user like so:
+Now you can instantiate a user with `create`:
 
 ```coffee
 user = App.User.create()
@@ -57,7 +57,7 @@ user = App.User.create()
 
 Note that I'm putting this User object inside `App`. Ember needs to place all of the app data inside a variable, and Ember devs typically use `App`. So when you define some kind of Object in ember you always want to have it on `App`.
 
-Now what we've done is great and all, but we probably want to add things to our User object. Let's do it!
+Now what we've done is great and all, but we probably want to add things to our User object.
 
 Objects can have three types of things inside them: properties, functions, and observers. I'll cover each of these.
 
@@ -96,7 +96,7 @@ Finally, we have to tell `property()` which other properties this property depen
 
 # Functions
 
-Functions are quite simple. Example:
+Functions are quite simple:
 
 ```coffee
 App.User = Ember.Object.extend
@@ -114,7 +114,7 @@ Here's how you actually call a function:
 
 ```coffee
 user = App.User.create()
-user.showMessage('omg this works!')
+user.showMessage('it works')
 ```
 
 ## Observers
@@ -131,13 +131,13 @@ App.User = Ember.Object.extend
 
 ```
 
-The above code would fire an alert saying 'yikes' whenever the weight property on this user changes and is greater than 400. You can observe as many things as you'd like:
+The above code would fire an alert saying "yikes" whenever the weight property on this user changes and is greater than 400. You can observe as many things as you'd like:
 
 ```coffee
 App.User = Ember.Object.extend
 
   bodyObserver: ( ->
-    alert("Lookin' good man.")
+    alert("You've changed. I feel like I don't even know you anymore.")
   ).observes('weight', 'height')
 
 ```
@@ -164,6 +164,9 @@ human.get('likesFood') #=> true
 Properties, functions, and observers in the child object will override those in the parent:
 
 ```coffee
+App.Animal = Ember.Object.extend
+  likesFood: true
+
 App.Bird = App.Animal.extend
   likesFood: false
 
@@ -210,7 +213,7 @@ francis = App.Human.create()
 francis.get('name') #=> 'Señor Bacon'
 ```
 
-As you've seen, objects function like classes do in other languages. You can even define a sort of class method on objects by calling `reopenClass`:
+As you've seen, base objects can function like classes do in other languages. You can even define a sort of class method on objects by calling `reopenClass`:
 
 ```coffee
 App.Human = Ember.Object.extend()
@@ -219,10 +222,10 @@ App.Human.reopenClass
   sayUncle: -> alert("uncle")
 ```
 
-Then call the class method on the object itself:
+Then call the class method on the object definition itself:
 
 ```coffee
 App.Human.uncle()
 ```
 
-Ember Objects provide us with the ability to write very object-oriented javascript. This is one of Ember's best features.
+Ember Objects provide us with the ability to write object-oriented javascript. This is one of Ember's best features.

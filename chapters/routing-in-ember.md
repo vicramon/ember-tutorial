@@ -28,7 +28,7 @@ Now your users index route would look like this:
 
 `http://myemberapp.com/some/path/#/users`
 
-While HashLocation is the default, some of you may think that hashes look ugly. There's a solution to that! Ember also implements a [HistoryLocation](http://emberjs.com/api/classes/Ember.HistoryLocation.html) class which will handle routes by using your browser's history API.
+Some of you may think that hashes look ugly. There's a solution to that! Ember also implements a [HistoryLocation](http://emberjs.com/api/classes/Ember.HistoryLocation.html) class which will handle routes by using your browser's history API.
 
 Here's how to use HistoryLocation instead of HashLocation:
 
@@ -40,9 +40,7 @@ App.Router.reopen
 
 Boom, it's that simple.
 
-Not all browsers implement the history API, so take that into consideration when determining which location system you want to use. You can see browser compatibility [here](http://caniuse.com/history).
-
-However, Ember comes to the rescue yet again. Ember has AutoLocation, which  will use HistoryLocation if the user's browser supports it, otherwise it will use HashLocation.
+Not all browsers implement the history API. Luckily Ember comes to the rescue again with AutoLocation, which  will use HistoryLocation if the user's browser supports it, otherwise it will use HashLocation.
 
 ```coffee
 App.Router.reopen

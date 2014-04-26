@@ -1,8 +1,8 @@
 # Ember Route
 
-The first object we'll be covering is the Ember Route object. This is different from the Router. The **Router** creates url routes that map to a flow of objects. A **Route** object is a specific type of Ember object that helps you setup and manage what happens when you visit that url route.
+The first object we'll be covering is the Ember Route object. This is different from the Router. The **Router** creates named url routes. A **Route** object is a specific type of Ember object that helps you setup and manage what happens when you visit that url route.
 
-Let's say we want to show a list of users. First we would add the following route:
+Let's say we want to show a list of users. First we would add a line to the router:
 
 ```coffee
 App.Router.map ->
@@ -39,7 +39,8 @@ App.UsersRoute = Ember.Route.extend
   activate: ->
 
   setupController: (controller, model) ->
-    @_super(controller, model) # or @_super(arguments...)
+    controller.set 'model', model
+    #or @_super(arguments...)
 
   deactivate: ->
 ```
@@ -52,9 +53,9 @@ App.UsersRoute = Ember.Route.extend
 
 `activate` is called after the all the model hooks have completed, meaning that the route is now active.
 
-`setupController` is where you would do any controller setup. You get access to the controller itself as an argument. Note that if you implement `setupController` you will need to call super if your route is getting a model. If you don't super then the controller will not have the `model` property set.
+`setupController` is where you would do any controller setup. You get access to the controller itself as an argument. Note that if you implement `setupController` you will need to set the `model` property of the controller to the `model` argument, because this hook overrides the parent. If you don't do this then the controller will not have its `model` property set. You could also call `@super(arguments...)` to accomplish the same thing.
 
-`deactivate` is called when you exit the route. Note that it will not get called if you just change the model but stay on the same route. For example `deactivate` would not get called if you changed from `/users/1` to `/users/2`
+`deactivate` is called when you exit the route. It will **not** get called if you just change the model but stay on the same route. For example `deactivate` would not get called if you changed from `/users/1` to `/users/2`
 
 ## The Transition Object
 
@@ -71,9 +72,9 @@ Here I'm using `afterModel`, because the model is resolved and I can ask for it'
 
 ## Grabbing Other Objects
 
-Routes are the one place where we can reach across our app. Usually you do this give the controller the information it needs.
+Routes are the one place where you can reach across your app. Usually you do this give the controller the information it needs.
 
-`@modelFor('routeName')` will return the current model for that route. You often use this to get the model of a route that that your current route is nested under.
+`@modelFor('routeName')` will return the current model for that route.
 
 `@controllerFor('controllerName')` will get that controller object. Sometimes you may want to get the model for that controller, in which case you would do `@controllerFor('controllerName').get('model')`.
 

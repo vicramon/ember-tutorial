@@ -21,7 +21,7 @@ Emblem:
 name
 ```
 
-Emblem tries to parse the first word on each line as a helper or html tag, so if you want to immediately output plain text then use a pipe: `|`. Emblem parses everything after a pipe as a string.
+Emblem expects the the first word on each line to be either a controller property, a Handlebars helper, or an html tag, so if you want to immediately output plain text then use a pipe: `|`. Emblem parses everything after a pipe as a string.
 
 
 ## Outputting View Properties
@@ -31,14 +31,14 @@ The template also has access to view properties, but you must prefix calls to th
 Handlebars:
 
 ```handlebars
-Name: {{view.name}}
+Name: {{view.someViewProperty}}
 ```
 
 Emblem:
 
 ```emblem
 | Name:
-view.name
+view.someViewProperty
 ```
 
 ## If, Else, Unless
@@ -183,7 +183,5 @@ each userRecord in controller
   link-to 'user' userRecord
     user.name
 ```
-
-I'm user `userRecord` here just to show you that the first argument is a string name of the route and the second argument is a model.
 
 Ok, now that we've covered Routes, Controllers, Views and Templates, we can actually build something!

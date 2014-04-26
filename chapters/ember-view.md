@@ -49,8 +49,6 @@ App.MyView = Ember.View.extend
 
 Ember provides a whole variety of computed functions that let you create these kind of shorthand properties. For example, `Em.computed.not` returns the inverse of a boolean value. You can view the full list in the [Ember API](http://emberjs.com/api/).
 
-Ok, moving on...
-
 ## Defining the Element
 
 When I said views wrap templates, I meant it quite literally. A view will by default wrap the template in a `div` with a generated ember id, like `ember45`.
@@ -71,7 +69,7 @@ If you *really* need to set an id on an element, you can use `elementId: 'myId'`
 
 ## Class Bindings
 
-Now comes the fancy stuff. What if you want to dynamically assign class names? Ember's got your back.
+Now comes the fancy stuff. What if you want to dynamically assign class names? Ember has got your back.
 
 ```coffee
 App.AnimalView = Ember.View.extend
@@ -98,7 +96,7 @@ App.AnimalView = Ember.View.extend
 
 In this case, since the return value is not a boolean, the return value will be used as the class name. If the return value is undefined then it won't do anything. Here, a class of `meow` will be applied if the model is a cat, and `woof` if it's a dog.
 
-There's actually an abbreviated version of this that you can optionally use:
+There's actually an abbreviated version of this that you can use:
 
 ```coffee
 App.AnimalView = Ember.View.extend
@@ -168,11 +166,9 @@ App.UserView = Ember.View.extend
 
 This would look for `.someClass` inside your current view and fade it out.
 
-## Handling Actions
+## Handling Events
 
-As I mentioned in the Ember Controller chapter, template actions always go straight to the controller. However, UI interactions like click, doubleClick, and mouseEnter are handled on the view.
-
-Just define a function with the event name and it will get called when it occurs:
+UI events like click, doubleClick, and mouseEnter are accessibly by the view. Just define a function with the event name and it will get called when the event occurs:
 
 ```coffee
 App.UserView = Ember.View.extend
