@@ -16,7 +16,7 @@ p
 
 ## Create the Controller Action
 
-Template actions are handled in the controller, so open up the `LeadController` and add the `delete` action:
+Template actions are handled in the controller, so open up the `LeadController` and add a `delete` action:
 
 ```coffee
 # app/assets/javascripts/controllers/lead.js.coffee

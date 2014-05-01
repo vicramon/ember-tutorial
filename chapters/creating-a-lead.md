@@ -28,7 +28,7 @@ App.LeadsNewRoute = Ember.Route.extend
 
 ## Create the Template
 
-And here's our new lead template. Note that it goes in `/templates/leads/` because it's a `route` nested under a resource named `leads`.
+And here's our new lead template. Note that it goes in `templates/leads/` because it's a `route` nested under a resource named `leads`.
 
 ```
 // app/assets/javascripts/templates/leads/new.js.emblem
@@ -95,11 +95,11 @@ article#leads
     link-to 'leads.new' | New Lead
 ```
 
-Now refresh and try it. Everything should work, but it's not perfect. As is you can create leads where every attribute is null. We should perform some validations here to prevent this.
+Now refresh and try it. Everything should work, but it's not perfect. You can create leads where every attribute is null. We should perform a validation here to prevent this.
 
 ## Perform Validations
 
-Validation libraries for Ember exist and if you want to use one I recommend [Dockyard's Ember Validations](https://github.com/dockyard/ember-validations) library. However, given Ember's robust object system and the control it gives you over the client, you don't necessarily need a library.
+Validation libraries for Ember exist and if you want to use one I recommend [Dockyard's Ember Validations](https://github.com/dockyard/ember-validations) library. However, given Ember's robust object system and the large amount of control it gives you over the client, you don't necessarily need a library.
 
 I'm going to do these validations by hand. There are any number of different ways to do validations, this is just one.
 
@@ -149,6 +149,8 @@ setupController: (controller) ->
    controller.set 'showError', false
 ```
 
-Now if you create the error, leave, then come back, the form should be fully reset. That's it for adding leads. This chapter feels a bit dry, but creating new records is probably something you'll do a lot so it's good to know.
+Now if you create the error, leave, then come back, the form should be fully reset.
+
+That's it for adding leads. This chapter feels a bit dry, but creating new records is probably something you'll do a lot so it's good to know.
 
 The next chapter is more exciting: we're going to instantly search leads.

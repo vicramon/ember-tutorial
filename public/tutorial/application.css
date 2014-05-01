@@ -111,6 +111,9 @@ header article .logo a {
   font-weight: 500;
   color: white;
 }
+header article .logo a:hover {
+  text-decoration: none;
+}
 header article nav {
   padding: 15px 0 0 0;
   float: right;

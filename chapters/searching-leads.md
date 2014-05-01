@@ -2,17 +2,20 @@
 
 Let's create a search box that will instantly search leads by name as we type.
 
-The neat thing about this, as you'll see, is that it can be accomplished in a very clean manner with a surprisingly small amount of code. That, my friend, is the beauty of Ember.
+The neat thing about this is that it can be accomplished with a surprisingly small amount of code in a very clean manner. That, my friend, is the beauty of Ember.
 
 ## Add the Search Field
 
-This will go at the top of the list of leads, right under the `h1`:
+Add a text field view at the top of the list of leads, right under the `h1`:
 
 ```
 # app/assets/javascripts/templates/leads.js.emblem
 article#leads
-  h1 Leads
+  h1
+    | Leads
+    link-to 'leads.new' | New Lead
   view Ember.TextField value=search placeholder="search" classNames="search"
+  ul
   # etc ...
 ```
 
@@ -49,12 +52,12 @@ The `leads` property looks to see if there is a search string. If there is, it r
 
 `searchedLeads` gets the search string and lower cases it. It then runs `filter` on `@`, which is the list of leads, and returns the leads where the full name includes the search string.
 
-`searchedLeads` needs to watch `@each.fullName', which means that the property will be updated whenever the full name of any lead changes.
+`searchedLeads` needs to depend on `@each.fullName', which means that the property will be updated whenever the full name of any lead changes.
 
 ## Try It
 
 It should work right now. There are two cool things to notice here.
 
-First, as you search the list of names stays sorted by first and last name. That's `sortProperties` in action.
+First, as you search the list of names they stay sorted by first and last name. That's `sortProperties` in action.
 
 Second, try clicking on a lead, then entering a search string that doesn't match. Then, edit the lead's name to something that matches and watch it appear in the search list. That's pretty cool, and it's a good example of how everything is properly bound together.

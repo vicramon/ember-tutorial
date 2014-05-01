@@ -41,15 +41,15 @@ article#lead
 
   p
     ' Name:
-    = model.fullName
+    model.fullName
 
   p
     ' Email:
-    = model.email
+    model.email
 
   p
     ' Phone:
-    = model.phone
+    model.phone
 ```
 
 The single quote `'` leaves a trailing whitespace after the line.
