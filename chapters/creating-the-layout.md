@@ -30,19 +30,19 @@ Add a footer under yield:
 </body>
 ```
 
-Ember by default will insert itself at the end of your body tag, which is a problem because we need the footer to be below it. So the workaround here is to tell Ember explicitly where to render.
+Ember will insert itself at the end of your body tag by default, which is a problem because we need the footer to be below it. The workaround here is to explicitly tell Ember where to render.
 
-First, put a div with the id `ember-app` right above the footer`.
+First, put a div with the id `ember-app` right above the footer.
 
 ```erb
 <body>
-  <div id="ember-app"></div>
   <%= yield %>
+  <div id="ember-app"></div>
   <footer></footer>
 </body>
 ```
 
-Now, open up `application.js.coffee` and tell Ember what that the `rootElement` is `ember-app`:
+Now, open up `application.js.coffee` and tell Ember that the `rootElement` is `ember-app`:
 
 ```coffee
 window.App = Ember.Application.create(rootElement: '#ember-app')
@@ -60,7 +60,7 @@ Now we face an interesting question. You will face questions like this often as 
 
 If your Ember app is just on a single page, then it might make sense to build the layout in Rails so that it can be used on other non-Ember pages. But if your Ember app truly has multiple pages, and the layout links to these other Ember pages, then it makes sense to do it in Ember.
 
-In our app we only have a single page with Ember, so we could build our layout in Rails and be just fine. However, this tutorial is all about learning Ember, so let's do it in Ember anyways.
+In our app we only have a single page with Ember, so we could build our layout in Rails and be just fine. However, this tutorial is all about learning Ember, so let's do it in Ember anyway.
 
 Ember always renders the `application` template, so we'll use that for the layout:
 
@@ -70,12 +70,10 @@ header
   article
     .logo
       h1
-        = link-to 'lead' | Ember CRM
+        a href="#" Ember CRM
 
 section#main
   = outlet
 ```
-
-The pipe operator `|` in Emblem signifies the end of that particular element, so you can start nesting things inside it on the same line. In this case we want `Ember CRM` to be inside the `link-to`, so this keeps things on a single line while giving us the proper format.
 
 Now if you refresh you should see the orange Ember CRM banner across the top. Next we'll be dealing with getting and showing data.

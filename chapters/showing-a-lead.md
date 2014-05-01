@@ -1,21 +1,23 @@
 # Showing a Lead
 
-When we click on a lead we should see its data populated on the right. Here's how we do that.
+When we click on a lead we should see it appear on the right. Let's do it.
 
-## Add a Route
+## Add a Resource
 
-First add a route to show a specific lead:
+First we'll need to add a resource to show a specific lead. Since we want the list of leads to still remain present on the page when we show a lead, this resource should be nested under the leads resource.
 
 ```coffee
 # app/assets/javascripts/router.js.coffee
-@resource 'lead', path: '/lead/:id'
+App.Router.map ->
+  @resource 'leads', path: '/', ->
+    @resource 'lead', path: '/lead/:id'
 ```
+
+Make sure to add `, ->` after the leads resource.
 
 ## Create a Route Object
 
-We need a Route Object to pull down our specific lead. We have access to our dynamic segment `/:id` through the `params` object, which `model` takes in as an argument.
-
-The `@store.find` function gets a record by its id.
+We need a Route Object to pull down our specific lead.
 
 ```coffee
 # app/assets/javascripts/routes/lead.js.coffee
@@ -23,6 +25,10 @@ App.LeadRoute = Ember.Route.extend
 
   model: (params) -> @store.find 'lead', params.id
 ```
+
+We have access to `id` through the `params` argument.
+
+The `@store.find` function gets a record by its id. It actually returns a [promise](http://emberjs.com/api/classes/Ember.RSVP.Promise.html) which Ember will attempt to resolve.
 
 ## Create the Template
 
@@ -46,11 +52,11 @@ article#lead
     = model.phone
 ```
 
-The single quote `'` leaves a trailing whitespace after that line.
+The single quote `'` leaves a trailing whitespace after the line.
 
 ## Link to Each Lead
 
-Open your leads template so we can create a link to each lead:
+Open your leads template so you can create a link to each lead:
 
 ```
 // app/assets/javascripts/templates/leads.js.emblem
@@ -58,19 +64,19 @@ article#leads
   h1 Leads
   ul
     each lead in controller
-      = link-to 'lead' lead tagName="li"
-        = lead.fullName
+      link-to 'lead' lead tagName="li"
+        lead.fullName
 
-= outlet
+outlet
 ```
 
 Two things are happening here.
 
-First, our `li` became a `link-to`. We passed it `tagName=li` so that the html element will remain an `li`. `tagName` is simply a property that we are providing to the view.
+First, our `li` became a `link-to`. We passed it `tagName="li"` so that the html element will be an `li`. You can set any property on a view this same way, `propertyName="value"`, when you are using the view helper.
 
-Second, we've placed an `outlet` tag at the end of the template. Since the lead route is nested under leads, all of it's content will be output in the outlet of leads. In this case the markup is on the same level in the DOM so this doesn't present a problem. If you had a situation where you needed to output the content elsewhere on the page you could use the [renderTemplate](http://emberjs.com/api/classes/Ember.Route.html#method_renderTemplate) method in the route to specify an outlet somewhere else.
+Second, we've placed an `outlet` tag at the end of the template. Since the lead route is nested under leads, it's content will appear in this outlet. In this case the markup is on the same level in the DOM so this doesn't present a problem. If you had a situation where you needed to output the content elsewhere on the page you could use the [renderTemplate](http://emberjs.com/api/classes/Ember.Route.html#method_renderTemplate) method in the route to specify an outlet somewhere else.
 
-One nice thing about the `link-to` helper is that it automatically adds a class of `active` to the element when you are on the route it's linking to. My css takes advantage of this to highlight the currently selected lead.
+One nice thing about the `link-to` helper is that it automatically adds a class of `active` to the element when you are on the route it's linking to. Our stylesheet takes advantage of this to highlight the currently selected lead.
 
 Now refresh the page and click on a lead. You should see that lead's information show up on the right, and it should be snappy.
 

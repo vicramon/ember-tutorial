@@ -1,6 +1,6 @@
 # Creating the Rails API
 
-We need an API so that Ember can communicate with our Rails backend.
+We need a Rails API for Ember to communicate with to handle persistence.
 
 ## The Active Model Adapter
 
@@ -82,7 +82,7 @@ end
 
 Now that we have our model and serializer, we can create the API controller.
 
-First add the routes for the API controller:
+First we need routes for the API controller. Add them to the top of your Rails router:
 
 ```ruby
 # config/routes.rb
@@ -151,7 +151,7 @@ Then create a populate task:
 namespace :db do
   task populate: :environment do
 
-    Lead.delete_all
+    Lead.destroy_all
 
     def random_status
       ['new', 'in progress', 'closed', 'bad'].sample

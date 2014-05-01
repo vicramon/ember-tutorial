@@ -14,7 +14,7 @@ App.Router.map ->
 
 ## Create a Route Object
 
-Now we need to pull in all of our lead records. You use route objects to obtain your models, so let's create a `LeadsRoute`:
+Next we need to fetch all lead records. Let's create a `LeadsRoute`:
 
 ```coffee
 # app/assets/javascripts/routes/leads.js.coffee
@@ -23,7 +23,7 @@ App.LeadsRoute = Ember.Route.extend
   model: -> @store.findAll 'lead'
 ```
 
-`model` is a hook that's called whenever the route is entered. The result of the model function is then available to the controller, view, and template.
+Remember that `model` is a hook that's called whenever the route is entered. The result of the model function is then available to the controller, view, and template.
 
 To be sure this is working properly, simply visit your root route and look at the "Data" tab in the Ember Inspector. You should see all of your leads.
 
@@ -35,22 +35,30 @@ Now that we have our leads we need to show them. Let's create a template:
 // app/assets/javascripts/templates/leads.js.emblem
 article#leads
   h1 Leads
-    ul
-      each lead in controller
-        li= lead.fullName
+  ul
+    each lead in controller
+      li= lead.firstName
 ```
 
-We want to display a full name but we don't have that property yet. The lead model is a good place for this logic:
+Now refresh the page and you should see your leads' listed on the left. Cool, right!?
+
+## Show Full Names
+
+Let's create a property to display the leads' full names. Open the lead model and add it:
 
 ```coffee
 # app/assets/javascripts/models/lead.js.coffee
-fullName: ( -> 
+fullName: ( ->
   @get('firstName') + ' ' + @get('lastName')
 ).property('firstName', 'lastName')
 
 ```
 
-Now refresh the page and you should see your leads listed out on the left. Cool, right!?
+Then modify the template:
+
+```
+li= lead.fullName
+```
 
 ## Sorting Leads
 
@@ -64,9 +72,9 @@ App.LeadsController = Ember.ArrayController.extend
   sortProperties: ['firstName', 'lastName']
 ```
 
-`sortProperties` simply takes an array of strings. These strings are the properties you want to sort by with the highest priority going first.
+`sortProperties` takes an array of strings. These strings are the properties you want to sort by with the highest priority first.
 
-Note that I've made this controller an `ArrayController`. If you remember from the Controllers chapter, this is because the controller wraps an array of leads. Ember expects you to do this because `ArrayController` defines certain specific things like `sortProperties` that are not available to regular `Controller` instances.
+Note that I've made this controller an `ArrayController`. If you remember from the Controllers chapter, this is because the controller wraps an array of leads. Ember expects you to do this because `ArrayController` defines certain things like `sortProperties` that are not available on regular `Controller` instances.
 
 Refresh the page and marvel at the beauty of your sorted leads.
 

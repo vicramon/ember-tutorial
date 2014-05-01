@@ -2,19 +2,20 @@
 
 To handle data we'll be using [Ember Data](https://github.com/emberjs/data). We already installed it in Hello World so we don't have do anything to start using it. Although there are a few different data adapters for Ember, Ember Data is the standard.
 
-We have a Lead model in Rails but Ember needs to know about leads too in order to manipulate them. We need to create a lead model in Ember. Ember Data gives us the `DS.Model` object which we'll extend:
+We have a Lead model in Rails but Ember needs to know about leads too. To do that we'll create a lead model in Ember. Ember Data gives us the `DS.Model` object which we'll extend:
 
 ```coffee
 # app/assets/javascripts/models/lead.js.coffee
 App.Lead = DS.Model.extend
   firstName: DS.attr('string')
   lastName: DS.attr('string')
+  email: DS.attr('string')
   phone: DS.attr('string')
   status: DS.attr('string', defaultValue: 'new')
   notes: DS.attr('string')
 ```
 
-Ember will automatically read in your serializer's `first_name` to `firstName`, and etc. across the rest of our attributes. We're only using the `string` data type here. The other ones available to you are `number`, `boolean`, and `date`.
+Ember will automatically read in the json api's `first_name` to `firstName`, and etc. across the rest of our attributes. We're only using the `string` data type here. The other ones available to you are `number`, `boolean`, and `date`.
 
 ## An Aside about DS.Model
 

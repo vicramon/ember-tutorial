@@ -2,7 +2,7 @@
 
 There are two places to edit a lead in the app. We have status and notes which are immediately visible on lead show, and we can also click an "edit" link that will let us edit the lead's basic info like name, email, and phone.
 
-Let's start with the status and notes, which will just be additions to our existing lead route and template.
+Let's start with the status and notes. These will be additions to our existing lead template.
 
 ## Add the Status Select
 
@@ -18,7 +18,7 @@ App.Lead.reopenClass
 
 You will now be able to get to this array through `App.Lead.STATUSES`.
 
-Open the lead template and add the following to the bottom:
+Open the lead template and add the following to the bottom, in line with the other `p` tags:
 
 ```
 // app/assets/javascripts/templates/lead.js.emblem
@@ -45,7 +45,7 @@ Here we use Ember's text area view and bind it to `model.notes`.
 
 ## Add a Submit Button
 
-Here's our submit button:
+Add a submit button below the notes field:
 
 ```
 p
@@ -58,7 +58,7 @@ The `click` attribute specifies a function to call when you click this button. E
 
 Now everything in our form is wired up except the submit button.
 
-Create a `LeadController` to handle the `saveChanges` click action:
+Since we're in the middle of the lead object flow, Create a `LeadController` to handle the `saveChanges` click action:
 
 ```coffee
 # app/assets/javascripts/controllers/lead.js.coffee
@@ -70,7 +70,7 @@ App.LeadController = Ember.ObjectController.extend
 
 Note that this controller is an `ObjectController` because it wraps a single lead model.
 
-Our submit button will call the `saveChanges` function. This function must be within `actions` since it is being called from the template. This is an Ember convention to help keep your code organized.
+Our submit button will call the `saveChanges` function. This function must be within `actions` since it is being called from a template action. This is an Ember convention to help keep your code organized.
 
 `save()` will actually send an ajax put request to our Rails API, and everything should just work. Try it out in your browser. Edit a record, click "Save Changes", and look at the Network tab in the Chrome console. You should see a put request to `api/v1/leads/(id of record)`. If you refresh the page the saved record should show your changes.
 
@@ -84,9 +84,9 @@ saveChanges: -> @get('model').save() if @get('model.isDirty')
 
 ## Show Helpful Feedback
 
-Now we're going to get fancy and give the user some nice feedback around saving. When there are unsaved changes, we'll show **unsaved changes**, and when the record is actually saving we'll show **saving...**.
+Now we're going to get fancy and give the user some nice feedback around saving. When there are unsaved changes we will show a message saying "unsaved changes", and when the record is actually saving we'll show "saving...".
 
-First add these to the template after the submit button:
+Add these messages immediately below the submit button:
 
 ```
 p
@@ -97,14 +97,14 @@ p
     .saving saving...
 ```
 
-Ember will look in the controller to find `isDirty` and `isSaving`. If the controller doesn't find them it will look in the model. Both `isSaving` and `isDirty` come built-in with `DS.Model`, so we are actually done.
+Ember will look in the controller to find `isDirty` and `isSaving`. If the controller doesn't find them it will look in the model. Both `isSaving` and `isDirty` come built-in with `DS.Model`, so we are good.
 
-Try it out it in the browser. You should see **unsaved changes** appear in red next to the save button if you add anything to notes or change the status of a lead. Click "save changes" to see **saving...** in green. It will probably appear only briefly -- since you are in development the server is going to be quick.
+Try it out it in the browser. You should see "unsaved changes" appear in red next to the save button if you add anything to notes or change the status of a lead. Click "save changes" to see "saving..." in green. It will probably appear only briefly -- since you are in development the server is going to be quick.
 
 
-## Prettifying "Saving..."
+## Prettifying the Feedback
 
-We have a little problem here. **unsaved changes** is still visible while you are saving a record. You can see this more easily if you add `sleep 1` to the top of your `update` action in the leads API controller. This is because the record remains dirty until saving is completed, as you would expect. Let's do some work to hide this text while saving.
+We have a little problem here. "unsaved changes" is still visible while you are saving a record. You can see this more easily if you add `sleep 1` to the top of your `update` action in the leads API controller. This is because the record remains dirty until saving is completed, as you would expect. Let's do some work to hide this text while saving.
 
 We'll make a property called `showUnsavedMessage`. Replace `isDirty` with `showUnsavedMessage` in the template:
 
@@ -119,7 +119,7 @@ Open the controller and add the property:
 # app/assets/javascripts/controllers/lead.js.coffee
 App.LeadController = Ember.ObjectController.extend
 
-  showUnsaved: ( ->
+  showUnsavedMessage: ( ->
     @get('isDirty') and !@get('isSaving')
   ).property('isDirty', 'isSaving')
 ```

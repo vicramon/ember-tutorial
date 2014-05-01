@@ -9,7 +9,7 @@ App.Router.map ->
 
 What actually happens when you go to it? It will instantiate a series of objects with the same name as the route... kind of like Rails!
 
-When a route is activated Ember flows downwards from Route, to Controller, to View, to Template. In this case our about route will look for the following in this order: `AboutRoute`, `AboutController`, `AboutView`, and a template named `about.js.emblem` (or `about.html.hbs` if you're using Handlebars).
+When a route is activated Ember flows downwards from Route, to Controller, to View, to Template. In this case our about route will look for the following in this order: `AboutRoute`, `AboutController`, `AboutView`, and a template named `about.js.emblem` (or `about.hbs` if you're using Handlebars).
 
 When it finds each object it will call specific functions, or hooks on that object. I'm going to cover those hooks later, so for now I'm just going to place a console log in `init` so you can see that these objects are instantiated.
 

@@ -43,7 +43,7 @@ view.someViewProperty
 
 ## If, Else, Unless
 
-Handlebars gives you `if`, `else` and `unless`, with the rather limiting caveat that `if` and `unless` can only accept a single argument:
+Handlebars gives you `if`, `else` and `unless`. They only accept a single argument:
 
 Handlebars:
 
@@ -66,9 +66,9 @@ else
 
 There are no `and`s or `or`s allowed in Handlebars. It is designed to contain zero application logic. If you need some kind of combined boolean then you need to do it in the controller.
 
-You can do nested `if` statements, but that starts to get ugly real quick.
+You *can* use nested `if` statements, but that gets ugly quickly.
 
-This example really shows why I prefer Emblem. That's 112 characters for the Handlebars version and 57 for Emblem. That's almost one half the code! Less code, as long as it's readable, is always a win in my book.
+The above example really shows why I prefer Emblem. That's 112 characters for the Handlebars version and 57 for Emblem. That's almost one half the code! Less code, as long as it's readable, is always a win in my book.
 
 ## Loops
 
@@ -115,25 +115,25 @@ each user in controller
   user.name
 ```
 
-I think by now you may be getting the idea of handlebars, so I'm going to switch just showing Emblem.
+I think by now you may be getting the idea of Handlebars, so I'm going to switch just showing Emblem.
 
 ## Render, View, and Partial Helpers
 
-Templates allow you to call another controller, view or template. This is useful because you can separate out your app logic as much as you need.
+Templates come with helpers that allow you to render another controller, view or template. This helps you reuse and compartmentalize logic.
 
 The `render` helper calls a controller:
 
 ```
-render 'myController'
+render 'user'
 ```
+
+This will look for `UserController` and instantiate it. The controller will will then look for `UserView`, and a `user` template, as per the usual Ember Object Flow.
 
 You can optionally pass the render method a model object:
 
 ```
 render 'user' model
 ```
-
-This will look for `UserController` and instantiate it. The controller will will then look for `UserView`, and a `user` template, as per the usual Ember Object Flow.
 
 The `view` helper calls a view:
 
@@ -149,7 +149,7 @@ The `partial` helper only calls a template:
 partial 'user'
 ```
 
-This would render the `user` template inside the current template. It would not use the controller or view.
+This would render the `user` template inside the current template. It would not use the controller or view. Unlike Rails, Ember does not expect your template to be prefixed with an underscore.
 
 As you can see, the `render`, `view`, and `partial` helpers enable you to compartmentalize code as much as you need. If you only need to show additional markup, just use `partial`. If you need markup with some javascript attached, use `view`. If you need markup that has access to its own set of properties and actions, then you'll need to use `render`.
 
@@ -160,16 +160,16 @@ The Ember docs provide a great [comparison table](http://emberjs.com/guides/temp
 You can specify what are called **actions** on any element in a template. Actions will call a function in the controller of the same name:
 
 ```
-h1 click="gotClicked" Click me
+h1 click="tickle" Tickle Me
 ```
 
-This would call a `gotClicked` method in the controller. The method must be defined inside an `actions` object:
+This would call a `gotClicked` method in the controller when a user clicks on the `h1`. The method must be defined inside an `actions` object:
 
 ```
 App.MyController = Ember.Controller.extend
 
   actions:
-    gotClicked: -> alert('you got me!')
+    tickle: -> alert('hahaha')
 ```
 
 ## The Link-To Helper
@@ -181,7 +181,7 @@ Say you had an array controller that gave you a list of users, and you wanted to
 ```
 each userRecord in controller
   link-to 'user' userRecord
-    user.name
+    userRecord.name
 ```
 
 Ok, now that we've covered Routes, Controllers, Views and Templates, we can actually build something!
