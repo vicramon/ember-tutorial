@@ -33,8 +33,6 @@ You'll need to remove Turbolinks because it conflicts with Ember. Make sure to r
 * Application Javascript (app/assets/javascripts/application.js)
 * Layout (app/views/layouts/application.html.erb)
 
-[Commit](https://github.com/vicramon/ember-hello-world/commit/2ec275447edd98e2ec004f4f1c281d4fa4418311)
-
 ## Add Ember Rails
 
 I am going to use [Ember Rails](https://github.com/emberjs/ember-rails) for this tutorial. It's stable and works great. I think [Ember Appkit Rails](https://github.com/dockyard/ember-appkit-rails) may eventually replace Ember Rails as the default Rails/Ember integration gem, but it's pre 1.0 right now so I'm going with Ember Rails for this tutorial.
@@ -79,15 +77,14 @@ config.ember.variant = :development
 config.ember.variant = :production
 ```
 
-Ember Rails generates an `application.js.coffee` for us, so lets use that. Delete `application.js`, and make sure to add jQuery to the top of `application.js.coffee`. Ember depends on jQuery.
+Ember Rails generates an `application.js.coffee` for us, so lets use that. Delete `application.js`.
+
+The generated `application.js.coffee` requires `jquery`, but not `jquery_ujs`, so make sure to require it right below `jquery`:
 
 ```coffee
 # app/assets/javascripts/application.js.coffee
-#= require jquery
 #= require jquery_ujs
 ```
-
-[Commit](https://github.com/vicramon/ember-hello-world/commit/8d34669ae4649ca17d80d5a52dccf98535d36786)
 
 ## Making Ember Work
 
@@ -123,8 +120,6 @@ h1 Hello World
 Restart your server then visit http://localhost:3000. You should see 'Hello World' printed on the screen. If you see it then congratulations! You're one step closer to being an Embereño. Yes, Embereño is a thing, though I kind of like Emberista. 
 
 If you don't `Hello World`, you should clone my hello world repo and see what you've done differently.
-
-[Commit](https://github.com/vicramon/ember-hello-world/commit/2255b0077f85aeb4d5be6cb8aee041667bc62460)
 
 ## Very Basic Debugging
 
