@@ -119,7 +119,7 @@ h1 Hello World
 
 Restart your server then visit http://localhost:3000. You should see 'Hello World' printed on the screen. If you see it then congratulations! You're one step closer to being an Embereño. Yes, Embereño is a thing, though I kind of like Emberista. 
 
-If you don't `Hello World`, you should clone my hello world repo and see what you've done differently.
+If you don't see `Hello World`, you should clone my hello world repo and see what you've done differently.
 
 ## Very Basic Debugging
 
