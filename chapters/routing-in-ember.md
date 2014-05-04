@@ -66,7 +66,7 @@ This would generate the following routes:
 
 `/users` (index)
 
-`/users/:id/` (show)
+`/users/:id` (show)
 
 `/users/:id/edit` (edit)
 
