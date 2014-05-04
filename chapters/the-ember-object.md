@@ -225,7 +225,7 @@ App.Human.reopenClass
 Then call the class method on the object definition itself:
 
 ```coffee
-App.Human.uncle()
+App.Human.sayUncle()
 ```
 
 Ember Objects provide us with the ability to write object-oriented javascript. This is one of Ember's best features.
