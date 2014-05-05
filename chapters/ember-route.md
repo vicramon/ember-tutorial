@@ -19,7 +19,7 @@ App.UsersRoute = Ember.Route.extend
 
 `model` is a function hook that's called upon entering a route. The result of the model function is then accessible by other objects.
 
-The `store` is an Ember data construct that you go through when dealing with persisted records. `findAll` fetches all the records of the type you pass it. It returns a `DS.RecordArray` object, which is essentially an array of models.
+The `store` is an Ember data construct that you go through when dealing with persisted records. `findAll` fetches all the records of the type you pass it. It returns a promise, which will return a `DS.RecordArray` object once you call `then` on it. `DS.RecordArray` is essentially an array of models.
 
 ## Route Hooks
 
