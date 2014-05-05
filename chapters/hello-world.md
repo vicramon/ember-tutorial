@@ -152,7 +152,7 @@ The Ember Inspector is an invaluable tool for debugging Ember. It's a Chrome Ext
 
 Once it's installed refresh your browser and open Chrome dev tools. You should see a tab titled **Ember**. Inside are all sorts of helpful tools. **View Tree** will show you exactly what's being rendered and where it came from. **Routes** show you all the routes in your app, and what other objects each one looks for. The route you are currently on will be bold. **Data** will show you all the active records in your app. You can click on a record to view all of its attributes.
 
-I can't say enough good things about the Ember Inspector. It makes inner the workings of your app very visible.
+I can't say enough good things about the Ember Inspector. It makes the inner workings of your app very visible.
 
 ## Conclusion
 
