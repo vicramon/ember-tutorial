@@ -53,7 +53,7 @@ App.UsersRoute = Ember.Route.extend
 
 `activate` is called after the all the model hooks have completed, meaning that the route is now active.
 
-`setupController` is where you would do any controller setup. You get access to the controller itself as an argument. Note that if you implement `setupController` you will need to set the `model` property of the controller to the `model` argument, because this hook overrides the parent. If you don't do this then the controller will not have its `model` property set. You could also call `@super(arguments...)` to accomplish the same thing.
+`setupController` is where you would do any controller setup. You get access to the controller itself as an argument. Note that if you implement `setupController` you will need to set the `model` property of the controller to the `model` argument, because this hook overrides the parent. If you don't do this then the controller will not have its `model` property set. You could also call `@_super(arguments...)` to accomplish the same thing.
 
 `deactivate` is called when you exit the route. It will **not** get called if you just change the model but stay on the same route. For example `deactivate` would not get called if you changed from `/users/1` to `/users/2`
 
