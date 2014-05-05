@@ -66,13 +66,9 @@ This would generate the following routes:
 
 `/users` (index)
 
-<<<<<<< HEAD
 `/users/new` (new)
 
-`/users/:id/` (show)
-=======
 `/users/:id` (show)
->>>>>>> Fix routing typo
 
 `/users/:id/edit` (edit)
 
