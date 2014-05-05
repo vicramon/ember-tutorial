@@ -31,11 +31,11 @@ record as easy as calling `user.save()`. Want to delete this user?  Call
 a really friendly API. For example Ember has an Array object with methods like `contains`,
 `filterBy`, and `sortBy`. These come in handy all the time.
 
-I think Ember is absolutely worth learning if you find yourself needing to build complex front-end applications. Ember may seem like big, but it's really not that complicated. Once you learn how the various Ember objects interact and get a handle on the basics of the API you'll be coding glorious front-end apps in no time.
+I think Ember is absolutely worth learning if you find yourself needing to build complex front-end applications. Ember may seem big, but it's really not that complicated. Once you learn how the various Ember objects interact and get a handle on the basics of the API you'll be coding glorious front-end apps in no time.
 
 ## Ember is Fun
 
-My takeaway from working in Ember is that it's really *fun*. It opens up new potential for developers to write the crazy front-end apps they've always dreamed of while still maintaining a clean, readable codebase. Also, the Ember core team does a great job of consistently releasing bug fixes and improvements, while keeping the changes non-breaking for a specific version.
+My takeaway from working in Ember is that it's really *fun*. It opens up new potential for developers to write the crazy front-end apps they've always dreamed of while still maintaining a clean, readable codebase. Also, the Ember core team does a great job of consistently releasing bug fixes and improvements, while keeping a stable codebase.
 
 At the end of the day, I reckon that if you're going to choose a front-end framework to learn, you can't go wrong if you pick Ember.
 

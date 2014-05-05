@@ -72,7 +72,7 @@ App.User = Ember.Object.extend
   favoriteDirector: 'Tarantino'
 ```
 
-`isGreat`, `temperature`, and `favoriteDirector` would now be accessible with `.get`. These are the basic versions of Ember properties. We can also create computed properties that actually do some work and call other properites:
+`isHuman`, `temperature`, and `favoriteDirector` would now be accessible with `.get`. These are the basic versions of Ember properties. We can also create computed properties that actually do some work and call other properites:
 
 ```coffee
 App.User = Ember.Object.extend

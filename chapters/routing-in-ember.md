@@ -66,11 +66,11 @@ This would generate the following routes:
 
 `/users` (index)
 
+`/users/new` (new)
+
 `/users/:id/` (show)
 
 `/users/:id/edit` (edit)
-
-`/users/new` (new)
 
 Delete and create would be handled by custom actions so they don't need to be routes.
 
