@@ -155,7 +155,7 @@ App.UserView = Ember.View.extend
 
 That would log the plain element.
 
-Need to get the element and run some jQuery on it? Yo could do `$(@get('element'))`, but that's pretty long. Ember gives you a shortcut: `@$()`.
+Need to get the element and run some jQuery on it? You could do `$(@get('element'))`, but that's pretty long. Ember gives you a shortcut: `@$()`.
 
 ```coffee
 App.UserView = Ember.View.extend
