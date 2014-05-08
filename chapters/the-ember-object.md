@@ -29,7 +29,7 @@ user = Ember.Object.create(firstName: 'Sam', lastName: 'Smith')
 You can get a property from the object by calling `.get` on it and passing the string name of the property:
 
 ```coffee
-user = Ember.Object.create(firstName: 'Sam', lastName: 'Smith')
+user = Ember.Object.create({firstName: 'Sam', lastName: 'Smith'})
 user.get('firstName') == 'Sam' #=> true
 user.get('lastName') == 'Sam' #=> true
 ```
