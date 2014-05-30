@@ -53,11 +53,19 @@ bundle
 
 Ember Rails provides a generator that will create a skeleton for our Ember app. The flags below tell it to use CoffeeScript and to name the Ember app `App`, which is the typical convention.
 
+For Javascript:
+
 ```shell
-rails g ember:bootstrap -g --javascript-engine coffee -n App
+rails g ember:bootstrap -g -n App
 ```
 
-Ember Rails comes with default Ember versions, but let's explicitly install Ember 1.5.0 and Ember Data 1.0.0 beta 7 so that we know for sure we're using the same versions. They will be installed to `vendor/assets/ember`.
+If you want the generated files to use CoffeeScript then add a flag:
+
+```shell
+rails g ember:bootstrap -g -n App --javascript-engine coffee
+```
+
+Ember Rails comes with default Ember versions, but let's explicitly install Ember 1.5.0 and Ember Data 1.0.0 beta 7 so that your version is the same as mine. They will be installed to `vendor/assets/ember`.
 
 ```shell
 rails g ember:install --tag=v1.5.0 --ember

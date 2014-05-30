@@ -4,7 +4,7 @@ We need a Rails API for Ember to communicate with to handle persistence.
 
 ## The Active Model Adapter
 
-When we used the Ember Rails generate command to setup Ember it added what's called the Active Model Adapter. You'll see this if you open store.js.coffee:
+When we used the Ember Rails generate command to setup Ember it added what's called the Active Model Adapter. You'll see this if you open the store file:
 
 ```coffee
 # app/assets/javascripts/store.js.coffee
