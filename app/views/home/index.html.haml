@@ -12,11 +12,7 @@
 
     %p Choose your language:
     .switch.switch-orange
-      %input(type="radio" class="switch-input" name="language" value="coffeescript" id="coffeescript" checked)
-      %label(for="coffeescript" class="switch-label switch-label-off") CoffeeScript
-      %input(type="radio" class="switch-input" name="language" value="javascript" id="javascript")
-      %label(for="javascript" class="switch-label switch-label-on") Javascript
-      %span(class="switch-selection")
+      = render 'toggle'
 
     %p
       = link_to "And start reading &#8594;".html_safe, chapter_path('introduction')

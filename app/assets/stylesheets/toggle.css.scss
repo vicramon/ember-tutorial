@@ -19,6 +19,23 @@ $height: 35px;
   background: #ddd;
 }
 
+.switch-small {
+  display: inline-block;
+  margin: 0;
+  height: 26px;
+  padding: 0;
+  margin-bottom: -8px;
+
+  .switch-label {
+    line-height: 26px;
+  }
+
+  .switch-selection {
+    height: 22px;
+  }
+
+}
+
 .switch-label {
   position: relative;
   z-index: 2;

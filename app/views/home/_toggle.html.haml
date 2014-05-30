@@ -1,0 +1,5 @@
+%input{ type: "radio", class: "switch-input", name: "language", value: "coffeescript", id: "coffeescript", checked: ("checked" if language == "coffeescript") }
+%label(for="coffeescript" class="switch-label switch-label-off") CoffeeScript
+%input{ type: "radio", class: "switch-input", name: "language", value: "javascript", id: "javascript", checked: ("checked" if language == "javascript") }
+%label(for="javascript" class="switch-label switch-label-on") Javascript
+%span(class="switch-selection")
