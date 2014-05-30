@@ -9,8 +9,17 @@
     %p
       Check it out and please send your feedback to #{mail_to 'vic@vicramon.com'} or
       tweet #{link_to "@vicramon", 'http://twitter.com/vicramon'}.
+
+    %p Choose your language:
+    .switch.switch-blue
+      %input(type="radio" class="switch-input" name="view2" value="week2" id="week2" checked)
+      %label(for="week2" class="switch-label switch-label-off") CoffeeScript
+      %input(type="radio" class="switch-input" name="view2" value="month2" id="month2")
+      %label(for="month2" class="switch-label switch-label-on") Javascript
+      %span(class="switch-selection")
+
     %p
-      = link_to "Start reading &#8594;".html_safe, chapter_path('introduction')
+      = link_to "And start reading &#8594;".html_safe, chapter_path('introduction')
 
     %article#chapters
       %h1 Chapters
