@@ -6,6 +6,11 @@ Let's say we have a route called `about`.
 App.Router.map ->
   @route 'about'
 ```
+```javascript
+App.Router.map(function() {
+  this.route('about');
+})
+```
 
 What actually happens when you go to it? It will instantiate a series of objects with the same name as the route... kind of like Rails!
 
@@ -36,6 +41,36 @@ AboutView = Ember.View.extend
     console.log "view called"
 
 # app/assets/javascripts/templates/about.js.emblem
+h1 Template rendered!
+```
+
+```coffee
+// app/assets/javascripts/routes/about.js
+AboutRoute = Ember.Route.extend({
+  init: function() {
+    this._super();
+    console.log('route called');
+  }
+})
+
+// app/assets/javascripts/controllers/about.js
+AboutController = Ember.Controller.extend({
+  init: function() {
+    this._super();
+    console.log('controller called');
+  }
+})
+
+
+// app/assets/javascripts/views/about.js
+AboutView = Ember.View.extend({
+  init: function() {
+    this._super();
+    console.log('view called');
+  }
+})
+
+// app/assets/javascripts/templates/about.js.emblem
 h1 Template rendered!
 ```
 

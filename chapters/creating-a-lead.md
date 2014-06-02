@@ -9,6 +9,12 @@ By now you know the drill...
 @resource 'leads', path: '/', ->
   @route 'new'
 ```
+```javascript
+// app/assets/javascripts/router.js
+this.resource('leads', { path: '/' }, function() {
+  this.route('new');
+});
+```
 
 New lead will be a `route` and not a `resource` because it does not need to load an existing model in our system.
 
@@ -24,6 +30,16 @@ App.LeadsNewRoute = Ember.Route.extend
 
   setupController: (controller) ->
     controller.set 'fields', {}
+```
+```javascript
+// app/assets/javascripts/routes/leads_new.js
+App.LeadsNewRoute = Ember.Route.extend({
+
+  setupController: function(controller) {
+    controller.set('fields', {})
+  }
+
+});
 ```
 
 ## Create the Template
@@ -57,7 +73,7 @@ article#lead
       input type='submit' value='Create Lead' click="createLead"
 ```
 
-As you can see, I've bound all of the inputs to the `fields` property. 
+As you can see, I've bound all of the inputs to the `fields` property.
 
 The submit has a click action called `createLead`, which we'll deal with now.
 
@@ -75,6 +91,20 @@ App.LeadsNewController = Ember.Controller.extend
       lead = @store.createRecord 'lead', @get('fields')
       lead.save().then =>
         @transitionToRoute 'lead', lead
+```
+```javascript
+// app/assets/javascripts/controllers/leads_new.js
+App.LeadsNewController = Ember.Controller.extend({
+  actions: {
+    createLead: function() {
+      var self = this;
+      var lead = this.store.createRecord('lead', this.get('fields'));
+      lead.save().then(function() {
+        self.transitionToRoute('lead', lead);
+      });
+    }
+  }
+});
 ```
 
 This action first calls `createRecord`, which we pass the string name of the model and an object with the attributes we want to give the new model. Since we bound `fields` to all the attributes we can just use it as is. If you logged `fields` you would see something like `{ firstName: 'Sam', lastName: 'Smith', email: 'sam@example.com', phone: '123-456-7890' }`.
@@ -112,6 +142,16 @@ App.Lead.reopenClass
   valid: (fields) ->
     fields.firstName and fields.lastName
 ```
+```javascript
+// app/assets/javascripts/models/lead.js
+App.Lead.reopenClass({
+
+  valid: function(fields) {
+    return fields.firstName && fields.lastName
+  }
+
+});
+```
 
 We pass this method an object with the attributes we want to assign to a lead, and it tells us if this collection of attributes is valid or not.
 
@@ -127,6 +167,23 @@ createLead: ->
       @transitionToRoute 'lead', lead
   else
     @set 'showError', true
+```
+```javascript
+// app/assets/javascripts/controllers/leads_new.js
+createLead: function() {
+
+  var fields = this.get('fields')
+
+  if (App.Lead.valid(fields)) {
+    var self = this;
+    var lead = this.store.createRecord('lead', fields)
+    lead.save().then(function(lead) {
+      self.transitionToRoute 'lead', lead
+    });
+  } else {
+    this.set('showError', true)
+  }
+}
 ```
 
 We check to see if these fields are valid. If they are, create the record. If they aren't, set the `showError` property to true. Now we can use the `showError` property to display a message to the user:
@@ -147,6 +204,13 @@ One last thing: controller instances remain active, so if you created this error
 setupController: (controller) ->
    # etc...
    controller.set 'showError', false
+```
+```javascript
+// app/assets/javascripts/routes/leads_new.js
+setupController: function(controller) {
+   // etc...
+   controller.set('showError', false)
+  }
 ```
 
 Now if you create the error, leave, then come back, the form should be fully reset.

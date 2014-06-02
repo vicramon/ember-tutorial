@@ -31,6 +31,26 @@ App.UserController = ObjectController.extend
     alert "You changed your name? I don't really see you as a #{@get('model.firstName')}."
   ).observes('model.firstName')
 ```
+```javascript
+// app/assets/javascripts/controllers/user.js
+App.UserController = ObjectController.extend({
+
+  someFunction: function() { alert('so functional'); },
+
+  someProperty: function() {
+    if (this.get('model.firstName') == "Gregory") {
+      return "Hey Gregory"
+    } else {
+      return "Hey, you're not Gregory"
+    }
+  }.property('model.firstName'),
+
+  someObserver: function() {
+    alert("You changed your name? I don't really see you as a "" + this.get('model.firstName'));
+  }.observes('model.firstName')
+
+})
+```
 
 You can put as many of these as you like in your controller. Any controller properties will be available to the template and view.
 
@@ -48,6 +68,17 @@ App.UserController = ObjectController.extend App.Excited,
   # your controller code
 
 ```
+```javascript
+// app/assets/javascripts/mixins/excited.js
+App.Excited = Ember.Mixin.create({
+  levelOfExcitement: "I'm so freaking excited right now!!!"
+})
+
+// app/assets/javascripts/controllers/user.js
+App.UserController = ObjectController.extend(App.Excited, {
+  // your controller code
+})
+```
 
 Now `UserController` would have the `levelOfExcitement` property. Also notice that mixins are created with `.create` rather than `.extend`.
 
@@ -64,6 +95,19 @@ App.UserController = ObjectController.extend
     deleteUser: -> @get('model').destroyRecord()
 
     saveChanges: -> @get('model').save()
+```
+```javascript
+# app/assets/javascripts/controllers/user.js
+App.UserController = ObjectController.extend({
+
+  actions: {
+
+    deleteUser: function() { this.get('model').destroyRecord() },
+
+    saveChanges: function() { this.get('model').save() }
+
+    }
+})
 ```
 
 All action handlers must go inside an `actions` object in the controller. This is an Ember convention to help keep your code organized.

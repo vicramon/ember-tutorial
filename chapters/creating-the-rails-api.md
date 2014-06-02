@@ -11,6 +11,11 @@ When we used the Ember Rails generate command to setup Ember it added what's cal
 App.Store = DS.Store.extend()
 App.ApplicationAdapter = DS.ActiveModelAdapter.extend()
 ```
+```javascript
+// app/assets/javascripts/store.js
+App.Store = DS.Store.extend()
+App.ApplicationAdapter = DS.ActiveModelAdapter.extend()
+```
 
 If you don't see this code then replace whatever is in your store with this.
 
@@ -24,6 +29,12 @@ We need to tell Ember to prepend all API requests with `api/v1/`, as we'll be ve
 # app/assets/javascripts/store.js.coffee
 DS.RESTAdapter.reopen
   namespace: 'api/v1'
+```
+```javascript
+// app/assets/javascripts/store.js
+DS.RESTAdapter.reopen({
+  namespace: 'api/v1'
+})
 ```
 
 ## Modeling Leads in Rails

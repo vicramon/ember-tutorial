@@ -20,6 +20,10 @@ You can instantiate a basic object like this:
 user = Ember.Object.create()
 ```
 
+```javascript
+var user = Ember.Object.create();
+```
+
 Initialize it with properties by just passing them to create:
 
 ```coffee

@@ -13,6 +13,12 @@ As always, add a route first. We will place an `edit` route under our existing `
 @resource 'lead', path: 'leads/:id', ->
   @route 'edit'
 ```
+```javascript
+// app/assets/javascripts/router.js
+this.resource('lead', { path: 'leads/:id' }, function() {
+  this.route('edit')
+}
+```
 
 Make sure to add `, ->` after the lead resource.
 
@@ -80,6 +86,28 @@ App.LeadEditController = Ember.ObjectController.extend
       @get('model').rollback()
       @transitionToRoute 'lead'
 ```
+```javascript
+// app/assets/javascripts/controllers/lead_edit.js.coffee
+App.LeadEditController = Ember.ObjectController.extend({
+
+  actions: {
+
+    saveChanges: function() {
+      var self = this;
+      this.get('model').save().then(function() {
+        self.transitionToRoute('lead');
+      })
+    },
+
+    cancel: function() {
+      this.get('model').rollback();
+      this.transitionToRoute('lead');
+    }
+
+  }
+
+})
+```
 
 This part is fairly simple, though you might not be familiar with `.then`. `save()` returns a `Promise` object, which we can call `.then` on to execute code when the promise is resolved. Basically what this means is that `transitionToRoute` won't be called until the server has confirmed that the model was saved.
 
@@ -87,8 +115,8 @@ This part is fairly simple, though you might not be familiar with `.then`. `save
 
 We need a way to get to our new route. Add a link inside the `h1` tag in the `lead` template. Don't worry, the stylesheet will make it look pretty.
 
-```coffee
-# app/assets/javascripts/templates/lead.js.coffee
+```emblem
+// app/assets/javascripts/templates/lead.js.emblem
 h1
   model.fullName
   link-to 'edit' 'lead.edit' model classNames='edit'
@@ -122,7 +150,7 @@ Now we'll set an `isEditing` property on the `lead` controller to hide the UI we
 First add `unless isEditing` to the template and indent all the show UI under it:
 
 ```
-// app/assets/javascripts/templates/lead.js.coffee
+// app/assets/javascripts/templates/lead.js.emblem
 outlet
 
 unless isEditing
@@ -142,6 +170,15 @@ App.LeadEditRoute = Ember.Route.extend
   activate:   -> @controllerFor('lead').set 'isEditing', true
   deactivate: -> @controllerFor('lead').set 'isEditing', false
 ```
+```javascript
+# app/assets/javascripts/routes/lead_edit.js
+App.LeadEditRoute = Ember.Route.extend({
+
+  activate:   function() { this.controllerFor('lead').set('isEditing', true) },
+  deactivate: function() { this.controllerFor('lead').set('isEditing', false) }
+
+})
+```
 
 Now we see those route hooks coming in handy! On `activate` we get the `LeadController` and set `isEditing` to true. On `deactivate` we do the opposite. And boom, we're done.
 
@@ -154,6 +191,16 @@ App.LeadController = Ember.ObjectController.extend
   isEditing: false
 
   #etc...
+```
+```javascript
+// app/assets/javascripts/controllers/lead.js
+App.LeadController = Ember.ObjectController.extend({
+
+  isEditing: false,
+
+  // etc...
+
+})
 ```
 
 This way future programmers (or our future selves) will know that we have an `isEditing` property on this controller and it should be `false` by default. We don't have to do this but I think it's good style.

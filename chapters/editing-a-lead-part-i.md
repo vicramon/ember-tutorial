@@ -15,6 +15,12 @@ Add this code after your `Lead` model in the same file:
 App.Lead.reopenClass
   STATUSES: ['new', 'in progress', 'closed', 'bad']
 ```
+```javascript
+// app/assets/javascripts/models/lead/js
+App.Lead.reopenClass({
+  STATUSES: ['new', 'in progress', 'closed', 'bad']
+});
+```
 
 You will now be able to get to this array through `App.Lead.STATUSES`.
 
@@ -67,6 +73,18 @@ App.LeadController = Ember.ObjectController.extend
   actions:
     saveChanges: -> @get('model').save()
 ```
+```javascript
+// app/assets/javascripts/controllers/lead.js.coffee
+App.LeadController = Ember.ObjectController.extend({
+
+  actions: {
+    saveChanges: function() {
+      this.get('model').save();
+    }
+  }
+
+});
+```
 
 Note that this controller is an `ObjectController` because it wraps a single lead model.
 
@@ -80,6 +98,13 @@ Ember will always send an API request on save, even if the record isn't dirty. Y
 
 ```coffee
 saveChanges: -> @get('model').save() if @get('model.isDirty')
+```
+```javascript
+saveChanges: function() {
+  if (this.get('model.isDirty')) {
+    this.get('model').save();
+  }
+}
 ```
 
 ## Show Helpful Feedback
@@ -122,6 +147,16 @@ App.LeadController = Ember.ObjectController.extend
   showUnsavedMessage: ( ->
     @get('isDirty') and !@get('isSaving')
   ).property('isDirty', 'isSaving')
+```
+```javascript
+# app/assets/javascripts/controllers/lead.js
+App.LeadController = Ember.ObjectController.extend({
+
+  showUnsavedMessage: function() {
+    return this.get('isDirty') && !this.get('isSaving')
+  }.property('isDirty', 'isSaving')
+
+})
 ```
 
 Our new logic will return false when the record is saving, giving us the result we want.

@@ -42,10 +42,18 @@ First, put a div with the id `ember-app` right above the footer.
 </body>
 ```
 
+<div class="coffee">
 Now, open up `application.js.coffee` and tell Ember that the `rootElement` is `ember-app`:
+</div>
+<div class="javascript">
+Now, open up `application.js` and tell Ember that the `rootElement` is `ember-app`:
+</div>
 
 ```coffee
 window.App = Ember.Application.create(rootElement: '#ember-app')
+```
+```javascript
+window.App = Ember.Application.create({rootElement: '#ember-app'})
 ```
 
 Now Ember will render everything inside the `ember-app` div.

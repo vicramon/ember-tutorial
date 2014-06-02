@@ -26,6 +26,19 @@ actions:
     @get('model').destroyRecord().then =>
       @transitionToRoute 'leads'
 ```
+```javascript
+// app/assets/javascripts/controllers/lead.js
+actions: {
+
+  delete: function() {
+    var self = this;
+    this.get('model').destroyRecord().then(function() {
+      self.transitionToRoute('leads');
+    });
+  }
+
+}
+```
 
 We call `destroyRecord()` on the model, which sends a `DELETE` request to the server. After we delete the record we need to transition back to the `leads` route.
 
