@@ -34,6 +34,13 @@ App.Router.reopen
   location: 'auto'
   rootURL: '/'
 ```
+```javascript
+# app/assets/javascripts/router.js
+App.Router.reopen({
+  location: 'auto',
+  rootURL: '/'
+})
+```
 
 We also need to create a catch-all Rails route to handle whatever arbitrary routes we create in Ember, otherwise we'll get a 404 when we try to reload the page on an Ember subroute:
 

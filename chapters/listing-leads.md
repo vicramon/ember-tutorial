@@ -11,6 +11,12 @@ Everything always starts with routes. Open up your Ember Router and create a lea
 App.Router.map ->
   @resource 'leads', path: '/'
 ```
+```javascript
+// app/assets/javascripts/router.js
+App.Router.map(function() {
+  this.resource('leads', { path: '/' })
+}
+```
 
 ## Create a Route Object
 
@@ -21,6 +27,14 @@ Next we need to fetch all lead records. Let's create a `LeadsRoute`:
 App.LeadsRoute = Ember.Route.extend
 
   model: -> @store.findAll 'lead'
+```
+```javascript
+// app/assets/javascripts/routes/leads.js
+App.LeadsRoute = Ember.Route.extend({
+
+  model: function() { this.store.findAll('lead') }
+
+})
 ```
 
 Remember that `model` is a hook that's called whenever the route is entered. The result of the model function is then available to the controller, view, and template.
@@ -51,7 +65,12 @@ Let's create a property to display the leads' full names. Open the lead model an
 fullName: ( ->
   @get('firstName') + ' ' + @get('lastName')
 ).property('firstName', 'lastName')
-
+```
+```javascript
+// app/assets/javascripts/models/lead.js
+fullName: function() {
+  this.get('firstName') + ' ' + this.get('lastName')
+}.property('firstName', 'lastName')
 ```
 
 Then modify the template:
@@ -70,6 +89,12 @@ You can sort arrays of models by specifying `sortProperties` in the controller. 
 # app/assets/javascripts/controllers/leads.js.coffee
 App.LeadsController = Ember.ArrayController.extend
   sortProperties: ['firstName', 'lastName']
+```
+```javascript
+// app/assets/javascripts/controllers/leads.js.coffee
+App.LeadsController = Ember.ArrayController.extend({
+  sortProperties: ['firstName', 'lastName']
+})
 ```
 
 `sortProperties` takes an array of strings. These strings are the properties you want to sort by with the highest priority first.

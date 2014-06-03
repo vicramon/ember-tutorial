@@ -23,6 +23,12 @@ You may not want to serve your Ember app directly from your root url. In this ca
 App.Router.reopen
   rootURL: '/some/path/'
 ```
+```javascript
+// app/assets/javascripts/router.js.coffee
+App.Router.reopen({
+  rootURL: '/some/path/'
+})
+```
 
 Now your users index route would look like this:
 
@@ -37,6 +43,12 @@ Here's how to use HistoryLocation instead of HashLocation:
 App.Router.reopen
   location: 'history'
 ```
+```javascript
+# app/assets/javascripts/router.js
+App.Router.reopen({
+  location: 'history'
+})
+```
 
 Boom, it's that simple.
 
@@ -45,6 +57,11 @@ Not all browsers implement the history API. Luckily Ember comes to the rescue ag
 ```coffee
 App.Router.reopen
   location: 'auto'
+```
+```javascript
+App.Router.reopen({
+  location: 'auto'
+})
 ```
 
 Both HashLocation and HistoryLocation implement Ember's [Location API](http://emberjs.com/api/classes/Ember.Location.html#toc_location-api). You could write your own Location class if you wanted to use something other than hashes or history, it would just need to respond properly to the API.
@@ -58,8 +75,18 @@ A set of CRUD routes might look like this:
 App.Router.map ->
   @resource 'users'
   @route 'user.new', path: '/users/new'
-  @resource 'user', path: '/users/:id'
+  @resource 'user', path: '/users/:id', ->
     @route 'edit'
+```
+```javascript
+# app/assets/javascripts/router.js
+App.Router.map(function() {
+  this.resource('users');
+  this.route('user.new', { path: '/users/new' });
+  this.resource('user', { path: '/users/:id' }, function () {
+    this.route('edit);
+  }
+})
 ```
 
 This would generate the following routes:
@@ -89,8 +116,16 @@ In Ember, the UI for any active route will be visible by default. Take for examp
 ```coffee
 # app/assets/javascripts/router.js.coffee
 App.Router.map ->
-  @resource 'posts', path: '/posts'
+  @resource 'posts', path: '/posts', ->
     @route 'new', path: '/new'
+```
+```javascript
+// app/assets/javascripts/router.js
+App.Router.map(function() {
+  this.resource('posts', { path: '/posts' }, function() {
+    this.route('new', { path: '/new' });
+  }
+})
 ```
 
 When you visit `http://localhost:3000/posts/new`, you will see both `posts` template and the `posts/new` template. The `posts` template will need an `outlet` tag inside itself to specify where `posts/new` will appear.

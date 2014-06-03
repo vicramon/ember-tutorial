@@ -19,6 +19,16 @@ App.UserView = Ember.View.extend
 
   willDestroyElement: ->
 ```
+```javascript
+App.UserView = Ember.View.extend({
+
+  willInsertElement: function() {  },
+
+  didInsertElement: function() {  },
+
+  willDestroyElement: function() {  }
+})
+```
 
 `willInsertElement` is called before the view is inserted into the DOM.
 
@@ -46,6 +56,23 @@ App.MyView = Ember.View.extend
   # instead, use a computed alias
   name: Em.computed.alias 'controller.name'
 ```
+```javascript
+App.MyController = Ember.Controller.extend({
+  name: 'Zelda'
+})
+
+App.MyView = Ember.View.extend({
+
+  // this is kind of lame
+  name: function() {
+    this.get('controller.name')
+  }.property('controller.name'),
+
+  // instead, use a computed alias
+  name: Em.computed.alias('controller.name')
+
+})
+```
 
 Ember provides a whole variety of computed functions that let you create these kind of shorthand properties. For example, `Em.computed.not` returns the inverse of a boolean value. You can view the full list in the [Ember API](http://emberjs.com/api/).
 
@@ -59,6 +86,12 @@ We can customize this wrapping element very easily.
 App.UserView = Ember.View.extend
   tagName: 'article'
   classNames: ['myClass', 'anotherClass']
+```
+```javascript
+App.UserView = Ember.View.extend({
+  tagName: 'article',
+  classNames: ['myClass', 'anotherClass']
+})
 ```
 
 `tagName` specifies the html element that the view uses.
@@ -77,6 +110,12 @@ App.AnimalView = Ember.View.extend
 
   active: Em.computed.alias 'controller.model.isActive'
 ```
+```javascript
+App.AnimalView = Ember.View.extend({
+  classNameBindings: ['active'],
+  active: Em.computed.alias('controller.model.isActive')
+})
+```
 
 `classNameBindings` will look for the property you named and execute it. In this case a class name of `active` will appear if the `active` property returns true, otherwise it won't appear.
 
@@ -93,6 +132,18 @@ App.AnimalView = Ember.View.extend
       "woof"
   ).property('model.kind')
 ```
+```javascript
+App.AnimalView = Ember.View.extend({
+  classNameBindings: ['soundClass']
+
+  soundClass: function() {
+    if (this.get('model.kind') == "cat") {
+      "meow"
+    } else {
+      "woof"
+    }
+  }.property('model.kind')
+```
 
 In this case, since the return value is not a boolean, the return value will be used as the class name. If the return value is undefined then it won't do anything. Here, a class of `meow` will be applied if the model is a cat, and `woof` if it's a dog.
 
@@ -103,6 +154,12 @@ App.AnimalView = Ember.View.extend
   classNameBindings: ['isCat:moew:woof']
 
   isCat: Em.comptued.equal 'model.kind', 'cat'
+```
+```javascript
+App.AnimalView = Ember.View.extend({
+  classNameBindings: ['isCat:moew:woof'],
+  isCat: Em.comptued.equal('model.kind', 'cat')
+})
 ```
 
 The first value after the colon will be applied if the property returns true, otherwise the second value will be applied. Note that you can omit the second value if only want a class to be applied in the first case.
@@ -118,6 +175,13 @@ App.ImageView = Ember.View.extend
 
   src: Em.computed.alias 'controller.model.src'
 ```
+```javascript
+App.ImageView = Ember.View.extend({
+  tagName: 'img',
+  attributeBindings: ['src'],
+  src: Em.computed.alias('controller.model.src')
+})
+```
 
 This is the simplest case of attribute bindings. Ember will create an attribute with the name of the property (`src`), and the value of the attribute will be the return value of the property.
 
@@ -130,6 +194,13 @@ App.ImageView = Ember.View.extend
 
   srcProperty: Em.computed.alias 'controller.model.src'
 ```
+```javascript
+App.ImageView = Ember.View.extend({
+  tagName: 'img',
+  attributeBindings: ['srcProperty:src'],
+  srcProperty: Em.computed.alias('controller.model.src')
+})
+```
 
 Now there will be a `src` attribute that's set to the result of `srcProperty`.
 
@@ -140,6 +211,11 @@ A `UserView` will look for a `user` template, but if you want to use a different
 ```coffee
 App.UserView = Ember.View.extend
   templateName: 'someOtherTemplate'
+```
+```javascript
+App.UserView = Ember.View.extend({
+  templateName: 'someOtherTemplate'
+})
 ```
 
 ## Getting the Current Element
@@ -152,6 +228,15 @@ App.UserView = Ember.View.extend
   didInsertElement: ->
     console.log @get('element')
 ```
+```javascript
+App.UserView = Ember.View.extend({
+
+  didInsertElement: function() {
+    console.log this.get('element')
+  }
+
+})
+```
 
 That would log the plain element.
 
@@ -162,6 +247,15 @@ App.UserView = Ember.View.extend
 
   didInsertElement: ->
     @$('.someClass').fadeOut()
+```
+```javascript
+App.UserView = Ember.View.extend({
+
+  didInsertElement: function() {
+    this.$('.someClass').fadeOut()
+  }
+
+})
 ```
 
 This would look for `.someClass` inside your current view and fade it out.
@@ -176,6 +270,13 @@ App.UserView = Ember.View.extend
   click: -> console.log 'clicked'
   mouseEnter: -> console.log 'mouse entered'
   mouseLeave: -> console.log 'mouse left'
+```
+```javascript
+App.UserView = Ember.View.extend({
+  click: function() { console.log 'clicked' },
+  mouseEnter: function() { console.log 'mouse entered' },
+  mouseLeave: function() { console.log 'mouse left' }
+})
 ```
 
 The event listeners will be applied to the entire view, so clicking anywhere inside it would trigger the click function.

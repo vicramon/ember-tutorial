@@ -19,7 +19,6 @@ You can instantiate a basic object like this:
 ```coffee
 user = Ember.Object.create()
 ```
-
 ```javascript
 var user = Ember.Object.create();
 ```
@@ -29,11 +28,19 @@ Initialize it with properties by just passing them to create:
 ```coffee
 user = Ember.Object.create(firstName: 'Sam', lastName: 'Smith')
 ```
+```javascript
+var user = Ember.Object.create({ firstName: 'Sam', lastName: 'Smith' })
+```
 
 You can get a property from the object by calling `.get` on it and passing the string name of the property:
 
 ```coffee
-user = Ember.Object.create({firstName: 'Sam', lastName: 'Smith'})
+user = Ember.Object.create( firstName: 'Sam', lastName: 'Smith' )
+user.get('firstName') is 'Sam' #=> true
+user.get('lastName') is 'Sam' #=> true
+```
+```javascript
+var user = Ember.Object.create({ firstName: 'Sam', lastName: 'Smith' })
 user.get('firstName') == 'Sam' #=> true
 user.get('lastName') == 'Sam' #=> true
 ```
@@ -44,12 +51,19 @@ Inquire about the object with `.toString()`. In this case we see that it's just 
 user = Ember.Object.create()
 user.toString() #=> <Ember.Object:ember{objectId}>
 ```
+```javascript
+var user = Ember.Object.create()
+user.toString() #=> <Ember.Object:ember{objectId}>
+```
 
 ## Defining Objects
 
-So far we've just been using Ember.Object. You can create a sort of "subclass" of Ember.Object by using `extend`. Say we want to make a user Object class:
+So far we've just been using Ember.Object. You can create a "subclass" of Ember.Object by using `extend`. Say we want to make a user Object class:
 
 ```coffee
+App.User = Ember.Object.extend()
+```
+```javascript
 App.User = Ember.Object.extend()
 ```
 
@@ -57,6 +71,9 @@ Now you can instantiate a user with `create`:
 
 ```coffee
 user = App.User.create()
+```
+```javascript
+var user = App.User.create()
 ```
 
 Note that I'm putting this User object inside `App`. Ember needs to place all of the app data inside a variable, and Ember devs typically use `App`. So when you define some kind of Object in ember you always want to have it on `App`.
@@ -75,6 +92,13 @@ App.User = Ember.Object.extend
   temperature: 98.6
   favoriteDirector: 'Tarantino'
 ```
+```javascript
+App.User = Ember.Object.extend({
+  isHuman: true,
+  temperature: 98.6,
+  favoriteDirector: 'Tarantino'
+})
+```
 
 `isHuman`, `temperature`, and `favoriteDirector` would now be accessible with `.get`. These are the basic versions of Ember properties. We can also create computed properties that actually do some work and call other properites:
 
@@ -85,7 +109,15 @@ App.User = Ember.Object.extend
     @get('firstName') + ' ' + @get('lastName')
   ).property('firstName', 'lastName')
 
+```
+```javascript
+App.User = Ember.Object.extend({
 
+  fullName: function() {
+    this.get('firstName') + ' ' + this.get('lastName')
+  }.property('firstName', 'lastName')
+
+})
 ```
 
 Let's dissect this.
@@ -108,8 +140,15 @@ App.User = Ember.Object.extend
   showMessage: (message) -> alert(message)
 
   showName: -> @showMessage(@get('fullName'))
+```
+```javascript
+App.User = Ember.Object.extend({
 
+  showMessage: function(message) { alert(message); },
 
+  showName: function() { this.showMessage(this.get('fullName')) }
+
+})
 ```
 
 Our `showMessage` function takes one argument: the message we want to alert. The `showName` function calls the `showMessage` function with the `fullName` of our user (assuming we've implemented the `fullName` property).
@@ -118,6 +157,10 @@ Here's how you actually call a function:
 
 ```coffee
 user = App.User.create()
+user.showMessage('it works')
+```
+```javascript
+var user = App.User.create()
 user.showMessage('it works')
 ```
 
@@ -131,8 +174,15 @@ App.User = Ember.Object.extend
   weightChanged: ( ->
     alert('yikes') if @get('weight') > 400
   ).observes('weight')
+```
+```javascript
+App.User = Ember.Object.extend({
 
+  weightChanged: function() {
+    if (this.get('weight') > 400) alert('yikes')
+  }.observes('weight')
 
+})
 ```
 
 The above code would fire an alert saying "yikes" whenever the weight property on this user changes and is greater than 400. You can observe as many things as you'd like:
@@ -143,7 +193,15 @@ App.User = Ember.Object.extend
   bodyObserver: ( ->
     alert("You've changed. I feel like I don't even know you anymore.")
   ).observes('weight', 'height')
+```
+```javascript
+App.User = Ember.Object.extend({
 
+  bodyObserver: function() {
+    alert("You've changed. I feel like I don't even know you anymore.");
+  }.observes('weight', 'height')
+
+})
 ```
 
 This would fire every time `weight` or `height` changed.
@@ -164,6 +222,17 @@ human = App.Human.create()
 
 human.get('likesFood') #=> true
 ```
+```javascript
+App.Animal = Ember.Object.extend({
+  likesFood: true
+})
+
+App.Human = App.Animal.extend()
+
+var human = App.Human.create()
+
+human.get('likesFood') #=> true
+```
 
 Properties, functions, and observers in the child object will override those in the parent:
 
@@ -177,6 +246,14 @@ App.Bird = App.Animal.extend
 bird = App.Bird.create()
 bird.get('likesFood') #=> false
 ```
+```javascript
+App.Animal = Ember.Object.extend({ likesFood: true })
+
+App.Bird = App.Animal.extend({ likesFood: false })
+
+var bird = App.Bird.create()
+bird.get('likesFood') #=> false
+```
 
 You can even extend multiple objects:
 
@@ -186,6 +263,14 @@ App.Two = Ember.Object.extend()
 
 App.Three = App.One.extend(App.Two)
 # or
+App.Three = Ember.Object.extend(App.One, App.Two)
+```
+```javascript
+App.One = Ember.Object.extend()
+App.Two = Ember.Object.extend()
+
+App.Three = App.One.extend(App.Two)
+// or
 App.Three = Ember.Object.extend(App.One, App.Two)
 ```
 
@@ -199,6 +284,13 @@ All ember objects call an `init` function when they are first initialized. You c
 App.Human = Ember.Object.extend
 
   init: -> alert("I think, therefore I am")
+```
+```javascript
+App.Human = Ember.Object.extend({
+
+  init: function() { alert("I think, therefore I am"); }
+
+})
 ```
 
 This is fine with basic Ember Objects, but if you are using other, more specific Ember Objects like Route or Controller, then you should try to avoid using init and instead opt for other Ember conventions. If you must use it in one of these objects make sure that you call `@_super()` in the `init` function, otherwise you may break things.
@@ -216,6 +308,14 @@ App.Human.reopen
 francis = App.Human.create()
 francis.get('name') #=> 'Señor Bacon'
 ```
+```javascript
+App.Human = Ember.Object.extend()
+
+App.Human.reopen({ name: 'Señor Bacon' })
+
+var francis = App.Human.create()
+francis.get('name') #=> 'Señor Bacon'
+```
 
 As you've seen, base objects can function like classes do in other languages. You can even define a sort of class method on objects by calling `reopenClass`:
 
@@ -225,10 +325,20 @@ App.Human = Ember.Object.extend()
 App.Human.reopenClass
   sayUncle: -> alert("uncle")
 ```
+```javascript
+App.Human = Ember.Object.extend()
+
+App.Human.reopenClass({
+  sayUncle: function() { alert("uncle"); }
+})
+```
 
 Then call the class method on the object definition itself:
 
 ```coffee
+App.Human.sayUncle()
+```
+```javascript
 App.Human.sayUncle()
 ```
 

@@ -12,8 +12,18 @@ App.Router.map ->
   @resource 'leads', path: '/', ->
     @resource 'lead', path: '/lead/:id'
 ```
+```javascript
+# app/assets/javascripts/router.js
+App.Router.map(function() {
+  this.resource('leads', { path: '/' }, function() {
+    this.resource('lead', { path: '/lead/:id' });
+  }
+})
+```
 
+<div class="coffeescript">
 Make sure to add `, ->` after the leads resource.
+</div>
 
 ## Create a Route Object
 
@@ -24,6 +34,14 @@ We need a Route Object to pull down our specific lead.
 App.LeadRoute = Ember.Route.extend
 
   model: (params) -> @store.find 'lead', params.id
+```
+```javascript
+# app/assets/javascripts/routes/lead.js
+App.LeadRoute = Ember.Route.extend({
+
+  model: function(params) { this.store.find('lead', params.id) }
+
+})
 ```
 
 We have access to `id` through the `params` argument.

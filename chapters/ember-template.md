@@ -165,11 +165,20 @@ h1 click="tickle" Tickle Me
 
 This would call a `gotClicked` method in the controller when a user clicks on the `h1`. The method must be defined inside an `actions` object:
 
-```
+```coffee
 App.MyController = Ember.Controller.extend
 
   actions:
     tickle: -> alert('hahaha')
+```
+```javascript
+App.MyController = Ember.Controller.extend({
+
+  actions: {
+    tickle: function() { alert('hahaha'); }
+  }
+
+})
 ```
 
 ## The Link-To Helper

@@ -85,9 +85,11 @@ config.ember.variant = :development
 config.ember.variant = :production
 ```
 
+<div class="coffeescript">
 Ember Rails generates an `application.js.coffee` for us, so lets use that. Delete `application.js`.
 
 The generated `application.js.coffee` requires `jquery`, but not `jquery_ujs`, so make sure to require it right below `jquery`:
+</div>
 
 ```coffee
 # app/assets/javascripts/application.js.coffee
@@ -150,6 +152,10 @@ The first thing I usually do if things aren't working is place a `debugger` in t
 ```coffee
 # app/assets/javascripts/application.js.coffe
 window.App = Ember.Application.create(LOG_TRANSITIONS_INTERNAL: true)
+```
+```javascript
+// app/assets/javascripts/application.js
+window.App = Ember.Application.create({LOG_TRANSITIONS_INTERNAL: true})
 ```
 
 Beyond that I suggest reading in the guides for more detailed tips on debugging, and of course using the Ember Inspector...

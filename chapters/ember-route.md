@@ -8,6 +8,11 @@ Let's say we want to show a list of users. First we would add a line to the rout
 App.Router.map ->
   @resource 'users'
 ```
+```javascript
+App.Router.map( function() {
+  this.resource('users');
+}
+```
 
 Now when you visit `/users`, Ember will look for a `UsersRoute` object. Here's how that could look:
 
@@ -15,6 +20,13 @@ Now when you visit `/users`, Ember will look for a `UsersRoute` object. Here's h
 App.UsersRoute = Ember.Route.extend
 
   model: -> @store.findAll 'user'
+```
+```javascript
+App.UsersRoute = Ember.Route.extend({
+
+  model: function() { this.store.findAll('user') }
+
+})
 ```
 
 `model` is a function hook that's called upon entering a route. The result of the model function is then accessible by other objects.
@@ -44,6 +56,24 @@ App.UsersRoute = Ember.Route.extend
 
   deactivate: ->
 ```
+```javascript
+App.UsersRoute = Ember.Route.extend
+
+  beforeModel: function(transition) { },
+
+  model: function(params, transition) { },
+
+  afterModel: function(model, transition) { },
+
+  activate: function() { },
+
+  setupController: function(controller, model) {
+    controller.set('model', model)
+    // or this._super(arguments...)
+  },
+
+  deactivate: function() { }
+```
 
 `beforeModel` is called immediately before `model` is called.
 
@@ -67,6 +97,15 @@ App.HouseRoute = Ember.Route.extend
   afterModel: (model, transition) ->
     transition.abort() if model.get('color') is 'red'
 ```
+```javascript
+App.HouseRoute = Ember.Route.extend({
+
+  afterModel: function(model, transition) {
+    if (model.get('color') == 'red') {  transition.abort() }
+  }
+
+})
+```
 
 Here I'm using `afterModel`, because the model is resolved and I can ask for it's color property. If you abort, Ember will just go back to whatever route you came from. This can be handy for error checking, confirmation dialogs, and locking certain parts of your app depending on state.
 
@@ -74,8 +113,18 @@ Here I'm using `afterModel`, because the model is resolved and I can ask for it'
 
 Routes are the one place where you can reach across your app. Usually you do this give the controller the information it needs.
 
+<div class="coffeescript">
 `@modelFor('routeName')` will return the current model for that route.
+</div>
+<div class="javascript">
+`this.modelFor('routeName')` will return the current model for that route.
+</div>
 
+<div class="coffeescript">
 `@controllerFor('controllerName')` will get that controller object. Sometimes you may want to get the model for that controller, in which case you would do `@controllerFor('controllerName').get('model')`.
+</div>
+<div class="javascript">
+`this.controllerFor('controllerName')` will get that controller object. Sometimes you may want to get the model for that controller, in which case you would do `this.controllerFor('controllerName').get('model')`.
+</div>
 
 Route objects are your friend. You'll find that all of their hooks are extremely handy when you start trying to do fancy things in your app.

@@ -38,21 +38,43 @@ Open up `LeadsController` and add the following two properties:
 
 ```coffee
 # app/assets/javascripts/controllers/leads.js.coffee
- leads: ( ->
-   if @get('search') then @get('searchedLeads') else @
- ).property('search', 'searchedLeads')
+leads: ( ->
+  if @get('search') then @get('searchedLeads') else @
+).property('search', 'searchedLeads')
 
- searchedLeads: ( ->
-   search = @get('search').toLowerCase()
-   @filter (lead) => lead.get('fullName').toLowerCase().indexOf(search) != -1
- ).property('search', '@each.fullName')
+searchedLeads: ( ->
+  search = @get('search').toLowerCase()
+  @filter (lead) => lead.get('fullName').toLowerCase().indexOf(search) != -1
+).property('search', '@each.fullName')
+```
+```javascript
+// app/assets/javascripts/controllers/leads.js
+leads: function() {
+  return if (this.get('search')) { this.get('searchedLeads') } else { this }
+}.property('search', 'searchedLeads')
+
+searchedLeads: function() {
+  search = this.get('search').toLowerCase()
+  return this.filter function(lead) {
+   lead.get('fullName').toLowerCase().indexOf(search) != -1
+  }
+}.property('search', 'this.each.fullName')
 ```
 
+<div class="coffeescript">
 The `leads` property looks to see if there is a search string. If there is, it returns `searchedLeads`. If there isn't, it returns `@`. `@` in an `ArrayController` references the array of models that it is wrapping.
 
 `searchedLeads` gets the search string and lower cases it. It then runs `filter` on `@`, which is the list of leads, and returns the leads where the full name includes the search string.
 
 `searchedLeads` needs to depend on `@each.fullName', which means that the property will be updated whenever the full name of any lead changes.
+</div>
+<div class="javascript">
+The `leads` property looks to see if there is a search string. If there is, it returns `searchedLeads`. If there isn't, it returns `this`. `this` in an `ArrayController` references the array of models that it is wrapping.
+
+`searchedLeads` gets the search string and lower cases it. It then runs `filter` on `this`, which is the list of leads, and returns the leads where the full name includes the search string.
+
+`searchedLeads` needs to depend on `thiseach.fullName', which means that the property will be updated whenever the full name of any lead changes.
+</div>
 
 ## Try It
 

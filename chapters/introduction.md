@@ -41,16 +41,15 @@ At the end of the day, I reckon that if you're going to choose a front-end frame
 
 ## Tutorial Requirements
 
-This tutorial is designed for developers with basic knowledge of Javascript, CoffeeScript, and Ruby
-on Rails. You should have a Rails development environment setup on your computer if you want to follow along.
+This tutorial is designed for developers with basic knowledge of Javascript and Ruby on Rails. You should have a Rails development environment setup on your computer if you want to follow along.
 
-## It's in CoffeeScript
+## There are both Javascript and CoffeeScript Versions
 
-I wrote this tutorial in CoffeeScript because I use CoffeeScript when I write Ember. I think it results in cleaner code, which I care deeply about. If you're going to do full-time development with Ember then I feel like you are better off using CoffeeScript.
+I originally wrote this tutorial in CoffeeScript because I use CoffeeScript when I write Ember. I think it results in cleaner code. If you're going to do full-time development with Ember then I feel like you are better off with CoffeeScript.
 
-I'm not necessarily anti-javascript though, so if you'd like a Javascript version of this tutorial let me know. If I get enough demand for it I'll do it. I considered doing it regardless, but I just wanted to get this thing published.
+However, I know that there are many people don't know or like CoffeeScript, so I went ahead and made a Javascript version too. Just use the toggle in the upper right of the page to switch languages.
 
-As a heads up, [JS2Coffee.org](http://js2coffee.org/) can convert any CoffeeScript code to Javascript and vice versa.
+As a heads up for CoffeeScript learners, [JS2Coffee.org](http://js2coffee.org/) can convert any CoffeeScript code to Javascript and vice versa.
 
 ## Testing
 
@@ -58,11 +57,11 @@ While I typically use TDD and don't ship code without tests, I'm not covering te
 
 First, there's a lot to learn here as is, and throwing testing into the mix would make this tutorial just that much more complicated.
 
-Second, you can write integration tests for Ember with Cucumber (or Rspec Integration), and this can be better than using Ember's built in testing helpers because you can test persistence. However, I think you still should write unit tests for your Ember code. I recommend [Ember Qunit](https://github.com/rpflorence/ember-qunit) for that. There's also an [Ember guide on testing](http://emberjs.com/guides/testing/) that I recommend you read after this tutorial.
+Second, you can write integration tests for Ember with Cucumber (or Rspec Integration), and this can be better than using Ember's built in testing helpers because you can test persistence. However, I think you still should write unit tests for your Ember code. I recommend [Ember Qunit](https://github.com/rpflorence/ember-qunit) for that. There's also an [Ember guide on testing](http://emberjs.com/guides/testing/) that you can read after this tutorial.
 
 If there's a lot of demand for help with testing then I can write another section on how to do it, just let me know.
 
 ## Questions & Mistakes
 
 If you have a question or find a mistake then please email me at
-vic@vicramon.com. The tutorial content is on [GitHub](http://www.github.com/vicramon/ember-tutorial-app) so you can even submit a pull request if you feel so inclined.
+vic@vicramon.com or submit a [pull request](http://www.github.com/vicramon/ember-tutorial-app).
