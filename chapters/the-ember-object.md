@@ -12,7 +12,7 @@ Ember implements its own object system. The base object is Ember.Object. All of 
 
 Most of the time you will be using an object that extends Ember.Object like Ember.Controller or Ember.View, but you can also use Ember.Object itself. One common use for Ember.Object is for service objects that handle some specific non-persisted logic.
 
-If you open your browser's console in your Hello World app you'll be able to follow along with these commands, though you'll need to convert the CoffeeScript to Javascript.
+If you open your browser's console in your Hello World app you'll be able to follow along with these commands<span class="coffeescript">, though you'll need to convert the CoffeeScript to Javascript (or just click the toggle at the op of the page)</span>.
 
 You can instantiate a basic object like this:
 
@@ -41,8 +41,8 @@ user.get('lastName') is 'Sam' #=> true
 ```
 ```javascript
 var user = Ember.Object.create({ firstName: 'Sam', lastName: 'Smith' });
-user.get('firstName') == 'Sam' #=> true
-user.get('lastName') == 'Sam' #=> true
+user.get('firstName') == 'Sam' //=> true
+user.get('lastName') == 'Sam' //=> true
 ```
 
 Inquire about the object with `.toString()`. In this case we see that it's just Ember.Object.
@@ -53,7 +53,7 @@ user.toString() #=> <Ember.Object:ember{objectId}>
 ```
 ```javascript
 var user = Ember.Object.create();
-user.toString() #=> <Ember.Object:ember{objectId}>
+user.toString() //=> <Ember.Object:ember{objectId}>
 ```
 
 ## Defining Objects
@@ -252,7 +252,7 @@ App.Animal = Ember.Object.extend({ likesFood: true })
 App.Bird = App.Animal.extend({ likesFood: false })
 
 var bird = App.Bird.create();
-bird.get('likesFood') #=> false
+bird.get('likesFood') //=> false
 ```
 
 You can even extend multiple objects:
@@ -314,7 +314,7 @@ App.Human = Ember.Object.extend();
 App.Human.reopen({ name: 'Señor Bacon' });
 
 var francis = App.Human.create();
-francis.get('name') #=> 'Señor Bacon'
+francis.get('name') //=> 'Señor Bacon'
 ```
 
 As you've seen, base objects can function like classes do in other languages. You can even define a sort of class method on objects by calling `reopenClass`:

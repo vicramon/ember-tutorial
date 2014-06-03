@@ -43,8 +43,7 @@ AboutView = Ember.View.extend
 # app/assets/javascripts/templates/about.js.emblem
 h1 Template rendered!
 ```
-
-```coffee
+```javascript
 // app/assets/javascripts/routes/about.js
 AboutRoute = Ember.Route.extend({
   init: function() {
