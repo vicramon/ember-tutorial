@@ -12,7 +12,7 @@ Beyond that, I think building your own applications is the best way to learn.
 
 I'm considering adding more to the tutorial to cover more Ember topics. If you'd like this then let me know. Also, if there's anything in particular that you think would be cool to add then please tell me.
 
-This tutorial is [on GitHub](https://github.com/vicramon/ember-tutorial-app), so you could even add a chapter yourself if you want to!
+This tutorial is [on GitHub](https://github.com/vicramon/ember-tutorial), so you could even add a chapter yourself if you want to!
 
 ## Thanks
 

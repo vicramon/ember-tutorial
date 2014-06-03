@@ -64,4 +64,4 @@ If there's a lot of demand for help with testing then I can write another sectio
 ## Questions & Mistakes
 
 If you have a question or find a mistake then please email me at
-vic@vicramon.com or submit a [pull request](http://www.github.com/vicramon/ember-tutorial-app).
+vic@vicramon.com or submit a [pull request](http://www.github.com/vicramon/ember-tutorial).
