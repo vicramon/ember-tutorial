@@ -15,7 +15,7 @@ App.Lead = DS.Model.extend
   notes: DS.attr('string')
 ```
 ```javascript
-# app/assets/javascripts/models/lead.js
+// app/assets/javascripts/models/lead.js
 App.Lead = DS.Model.extend({
   firstName: DS.attr('string'),
   lastName: DS.attr('string'),
@@ -38,9 +38,9 @@ model.rollback() # wipe clean any unsaved changes
 model.destroyRecord() # delete a record from the database
 ```
 ```javascript
-model.save() # save changes to the database
-model.rollback() # wipe clean any unsaved changes
-model.destroyRecord() # delete a record from the database
+model.save() // save changes to the database
+model.rollback() // wipe clean any unsaved changes
+model.destroyRecord() // delete a record from the database
 ```
 
 Note that DS.Model extends Ember.Object, so all of the things you learned about Ember Objects will still work with DS.Model. For example, you can set an arbitrary property on a DS.Model instance like so:
@@ -49,7 +49,7 @@ Note that DS.Model extends Ember.Object, so all of the things you learned about 
 model.set('myProperty', 'hello!')
 ```
 ```javascript
-model.set('myProperty', 'hello!')
+model.set('myProperty', 'hello!');
 ```
 
 The main difference between DS.Model instances and regular Ember.Object instances is that you cannot create them the same way. To create a new DS.Model instance you have to go through the `store`:
@@ -58,7 +58,7 @@ The main difference between DS.Model instances and regular Ember.Object instance
 @store.createRecord('modelName', firstName: 'John', lastName: 'Snow')
 ```
 ```javascript
-this.store.createRecord('modelName', { firstName: 'John', lastName: 'Snow' })
+this.store.createRecord('modelName', { firstName: 'John', lastName: 'Snow' });
 ```
 
 This is because the `store` encapsulates your app's knowledge of all the active DS.Model instances, and the store has to do additional work when you create a model instance.

@@ -13,7 +13,7 @@ App.Router.map ->
     @resource 'lead', path: '/lead/:id'
 ```
 ```javascript
-# app/assets/javascripts/router.js
+// app/assets/javascripts/router.js
 App.Router.map(function() {
   this.resource('leads', { path: '/' }, function() {
     this.resource('lead', { path: '/lead/:id' });
@@ -36,7 +36,7 @@ App.LeadRoute = Ember.Route.extend
   model: (params) -> @store.find 'lead', params.id
 ```
 ```javascript
-# app/assets/javascripts/routes/lead.js
+// app/assets/javascripts/routes/lead.js
 App.LeadRoute = Ember.Route.extend({
 
   model: function(params) { this.store.find('lead', params.id) }
@@ -46,7 +46,7 @@ App.LeadRoute = Ember.Route.extend({
 
 We have access to `id` through the `params` argument.
 
-The `@store.find` function gets a record by its id. It actually returns a [promise](http://emberjs.com/api/classes/Ember.RSVP.Promise.html) which Ember will attempt to resolve.
+The `this.store.find` function gets a record by its id. It actually returns a [promise](http://emberjs.com/api/classes/Ember.RSVP.Promise.html) which Ember will attempt to resolve.
 
 ## Create the Template
 

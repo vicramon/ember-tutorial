@@ -9,9 +9,9 @@ App.Router.map ->
   @resource 'users'
 ```
 ```javascript
-App.Router.map( function() {
+App.Router.map(function() {
   this.resource('users');
-}
+})
 ```
 
 Now when you visit `/users`, Ember will look for a `UsersRoute` object. Here's how that could look:
@@ -113,18 +113,8 @@ Here I'm using `afterModel`, because the model is resolved and I can ask for it'
 
 Routes are the one place where you can reach across your app. Usually you do this give the controller the information it needs.
 
-<div class="coffeescript">
-`@modelFor('routeName')` will return the current model for that route.
-</div>
-<div class="javascript">
 `this.modelFor('routeName')` will return the current model for that route.
-</div>
 
-<div class="coffeescript">
-`@controllerFor('controllerName')` will get that controller object. Sometimes you may want to get the model for that controller, in which case you would do `@controllerFor('controllerName').get('model')`.
-</div>
-<div class="javascript">
 `this.controllerFor('controllerName')` will get that controller object. Sometimes you may want to get the model for that controller, in which case you would do `this.controllerFor('controllerName').get('model')`.
-</div>
 
 Route objects are your friend. You'll find that all of their hooks are extremely handy when you start trying to do fancy things in your app.

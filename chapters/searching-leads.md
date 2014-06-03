@@ -9,7 +9,7 @@ The neat thing about this is that it can be accomplished with a surprisingly sma
 Add a text field view at the top of the list of leads, right under the `h1`:
 
 ```
-# app/assets/javascripts/templates/leads.js.emblem
+// app/assets/javascripts/templates/leads.js.emblem
 article#leads
   h1
     | Leads
@@ -61,20 +61,11 @@ searchedLeads: function() {
 }.property('search', 'this.each.fullName')
 ```
 
-<div class="coffeescript">
-The `leads` property looks to see if there is a search string. If there is, it returns `searchedLeads`. If there isn't, it returns `@`. `@` in an `ArrayController` references the array of models that it is wrapping.
-
-`searchedLeads` gets the search string and lower cases it. It then runs `filter` on `@`, which is the list of leads, and returns the leads where the full name includes the search string.
-
-`searchedLeads` needs to depend on `@each.fullName', which means that the property will be updated whenever the full name of any lead changes.
-</div>
-<div class="javascript">
 The `leads` property looks to see if there is a search string. If there is, it returns `searchedLeads`. If there isn't, it returns `this`. `this` in an `ArrayController` references the array of models that it is wrapping.
 
 `searchedLeads` gets the search string and lower cases it. It then runs `filter` on `this`, which is the list of leads, and returns the leads where the full name includes the search string.
 
 `searchedLeads` needs to depend on `thiseach.fullName', which means that the property will be updated whenever the full name of any lead changes.
-</div>
 
 ## Try It
 

@@ -149,7 +149,7 @@ App.LeadController = Ember.ObjectController.extend
   ).property('isDirty', 'isSaving')
 ```
 ```javascript
-# app/assets/javascripts/controllers/lead.js
+// app/assets/javascripts/controllers/lead.js
 App.LeadController = Ember.ObjectController.extend({
 
   showUnsavedMessage: function() {

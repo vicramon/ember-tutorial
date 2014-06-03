@@ -31,9 +31,7 @@ App.LeadsRoute = Ember.Route.extend
 ```javascript
 // app/assets/javascripts/routes/leads.js
 App.LeadsRoute = Ember.Route.extend({
-
   model: function() { this.store.findAll('lead') }
-
 })
 ```
 

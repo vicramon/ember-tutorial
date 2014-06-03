@@ -20,7 +20,9 @@ this.resource('lead', { path: 'leads/:id' }, function() {
 }
 ```
 
+<p class="coffeescript">
 Make sure to add `, ->` after the lead resource.
+</p>
 
 This route is going to look for a `LeadEdit` controller, view, and template.
 
@@ -31,7 +33,6 @@ I'm going to add the template first because it will inform us about what actions
 Since this `route` is nested inside a `resource`, Ember expects the template to be inside a subdirectory with the name of the resource. So this template will be `app/assets/javascripts/templates/lead/edit.js.emblem`.
 
 If you're not sure where to place a template just look in the Ember Inspector's "Routes" tab.
-
 
 ```
 // app/assets/javascripts/templates/lead/edit.js.emblem
@@ -171,7 +172,7 @@ App.LeadEditRoute = Ember.Route.extend
   deactivate: -> @controllerFor('lead').set 'isEditing', false
 ```
 ```javascript
-# app/assets/javascripts/routes/lead_edit.js
+// app/assets/javascripts/routes/lead_edit.js
 App.LeadEditRoute = Ember.Route.extend({
 
   activate:   function() { this.controllerFor('lead').set('isEditing', true) },

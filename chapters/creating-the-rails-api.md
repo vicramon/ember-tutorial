@@ -13,8 +13,8 @@ App.ApplicationAdapter = DS.ActiveModelAdapter.extend()
 ```
 ```javascript
 // app/assets/javascripts/store.js
-App.Store = DS.Store.extend()
-App.ApplicationAdapter = DS.ActiveModelAdapter.extend()
+App.Store = DS.Store.extend();
+App.ApplicationAdapter = DS.ActiveModelAdapter.extend();
 ```
 
 If you don't see this code then replace whatever is in your store with this.

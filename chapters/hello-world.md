@@ -51,7 +51,7 @@ And bundle:
 bundle
 ```
 
-Ember Rails provides a generator that will create a skeleton for our Ember app. The flags below tell it to use CoffeeScript and to name the Ember app `App`, which is the typical convention.
+Ember Rails provides a generator that will create a skeleton for our Ember app. The -n flag tells it to name the Ember app `App`, which is the typical convention.
 
 For Javascript:
 
@@ -85,11 +85,11 @@ config.ember.variant = :development
 config.ember.variant = :production
 ```
 
-<div class="coffeescript">
+<p class="coffeescript">
 Ember Rails generates an `application.js.coffee` for us, so lets use that. Delete `application.js`.
 
 The generated `application.js.coffee` requires `jquery`, but not `jquery_ujs`, so make sure to require it right below `jquery`:
-</div>
+</p>
 
 ```coffee
 # app/assets/javascripts/application.js.coffee

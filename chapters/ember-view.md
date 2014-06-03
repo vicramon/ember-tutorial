@@ -4,7 +4,7 @@ The View is one of the most powerful objects in Ember. You can think of a view a
 
 ## Talking to the Controller
 
-The view can get the controller through `@get('controller')`. The view does not have the current model by default, so to get the model you'll have to do `@get('controller.model')`. To get a property on the controller you would do `@get('controller.myProperty')`.
+The view can get the controller through `this.get('controller')`. The view does not have the current model by default, so to get the model you'll have to do `this.get('controller.model')`. To get a property on the controller you would do `this.get('controller.myProperty')`.
 
 ## View Hooks
 
@@ -240,7 +240,7 @@ App.UserView = Ember.View.extend({
 
 That would log the plain element.
 
-Need to get the element and run some jQuery on it? You could do `$(@get('element'))`, but that's pretty long. Ember gives you a shortcut: `@$()`.
+Need to get the element and run some jQuery on it? You could do `$(this.get('element'))`, but that's pretty long. Ember gives you a shortcut: `this.$()`.
 
 ```coffee
 App.UserView = Ember.View.extend
@@ -273,9 +273,9 @@ App.UserView = Ember.View.extend
 ```
 ```javascript
 App.UserView = Ember.View.extend({
-  click: function() { console.log 'clicked' },
-  mouseEnter: function() { console.log 'mouse entered' },
-  mouseLeave: function() { console.log 'mouse left' }
+  click: function() { console.log('clicked') },
+  mouseEnter: function() { console.log('mouse entered') },
+  mouseLeave: function() { console.log('mouse left') }
 })
 ```
 

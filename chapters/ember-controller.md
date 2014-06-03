@@ -35,7 +35,7 @@ App.UserController = ObjectController.extend
 // app/assets/javascripts/controllers/user.js
 App.UserController = ObjectController.extend({
 
-  someFunction: function() { alert('so functional'); },
+  someFunction: function() { alert('so functional') },
 
   someProperty: function() {
     if (this.get('model.firstName') == "Gregory") {
@@ -46,7 +46,7 @@ App.UserController = ObjectController.extend({
   }.property('model.firstName'),
 
   someObserver: function() {
-    alert("You changed your name? I don't really see you as a "" + this.get('model.firstName'));
+    alert("You changed your name? I don't really see you as a " + this.get('model.firstName'));
   }.observes('model.firstName')
 
 })
@@ -97,7 +97,7 @@ App.UserController = ObjectController.extend
     saveChanges: -> @get('model').save()
 ```
 ```javascript
-# app/assets/javascripts/controllers/user.js
+// app/assets/javascripts/controllers/user.js
 App.UserController = ObjectController.extend({
 
   actions: {

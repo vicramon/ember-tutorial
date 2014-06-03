@@ -29,7 +29,7 @@ Initialize it with properties by just passing them to create:
 user = Ember.Object.create(firstName: 'Sam', lastName: 'Smith')
 ```
 ```javascript
-var user = Ember.Object.create({ firstName: 'Sam', lastName: 'Smith' })
+var user = Ember.Object.create({ firstName: 'Sam', lastName: 'Smith' });
 ```
 
 You can get a property from the object by calling `.get` on it and passing the string name of the property:
@@ -40,7 +40,7 @@ user.get('firstName') is 'Sam' #=> true
 user.get('lastName') is 'Sam' #=> true
 ```
 ```javascript
-var user = Ember.Object.create({ firstName: 'Sam', lastName: 'Smith' })
+var user = Ember.Object.create({ firstName: 'Sam', lastName: 'Smith' });
 user.get('firstName') == 'Sam' #=> true
 user.get('lastName') == 'Sam' #=> true
 ```
@@ -48,11 +48,11 @@ user.get('lastName') == 'Sam' #=> true
 Inquire about the object with `.toString()`. In this case we see that it's just Ember.Object.
 
 ```coffee
-user = Ember.Object.create()
+user = Ember.Object.create();
 user.toString() #=> <Ember.Object:ember{objectId}>
 ```
 ```javascript
-var user = Ember.Object.create()
+var user = Ember.Object.create();
 user.toString() #=> <Ember.Object:ember{objectId}>
 ```
 
@@ -64,7 +64,7 @@ So far we've just been using Ember.Object. You can create a "subclass" of Ember.
 App.User = Ember.Object.extend()
 ```
 ```javascript
-App.User = Ember.Object.extend()
+App.User = Ember.Object.extend();
 ```
 
 Now you can instantiate a user with `create`:
@@ -73,7 +73,7 @@ Now you can instantiate a user with `create`:
 user = App.User.create()
 ```
 ```javascript
-var user = App.User.create()
+var user = App.User.create();
 ```
 
 Note that I'm putting this User object inside `App`. Ember needs to place all of the app data inside a variable, and Ember devs typically use `App`. So when you define some kind of Object in ember you always want to have it on `App`.
@@ -144,7 +144,7 @@ App.User = Ember.Object.extend
 ```javascript
 App.User = Ember.Object.extend({
 
-  showMessage: function(message) { alert(message); },
+  showMessage: function(message) { alert(message) },
 
   showName: function() { this.showMessage(this.get('fullName')) }
 
@@ -229,7 +229,7 @@ App.Animal = Ember.Object.extend({
 
 App.Human = App.Animal.extend()
 
-var human = App.Human.create()
+var human = App.Human.create();
 
 human.get('likesFood') #=> true
 ```
@@ -251,7 +251,7 @@ App.Animal = Ember.Object.extend({ likesFood: true })
 
 App.Bird = App.Animal.extend({ likesFood: false })
 
-var bird = App.Bird.create()
+var bird = App.Bird.create();
 bird.get('likesFood') #=> false
 ```
 
@@ -309,11 +309,11 @@ francis = App.Human.create()
 francis.get('name') #=> 'Señor Bacon'
 ```
 ```javascript
-App.Human = Ember.Object.extend()
+App.Human = Ember.Object.extend();
 
-App.Human.reopen({ name: 'Señor Bacon' })
+App.Human.reopen({ name: 'Señor Bacon' });
 
-var francis = App.Human.create()
+var francis = App.Human.create();
 francis.get('name') #=> 'Señor Bacon'
 ```
 
@@ -326,7 +326,7 @@ App.Human.reopenClass
   sayUncle: -> alert("uncle")
 ```
 ```javascript
-App.Human = Ember.Object.extend()
+App.Human = Ember.Object.extend();
 
 App.Human.reopenClass({
   sayUncle: function() { alert("uncle"); }
@@ -339,7 +339,7 @@ Then call the class method on the object definition itself:
 App.Human.sayUncle()
 ```
 ```javascript
-App.Human.sayUncle()
+App.Human.sayUncle();
 ```
 
 Ember Objects provide us with the ability to write object-oriented javascript. This is one of Ember's best features.

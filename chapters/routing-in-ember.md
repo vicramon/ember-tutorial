@@ -44,7 +44,7 @@ App.Router.reopen
   location: 'history'
 ```
 ```javascript
-# app/assets/javascripts/router.js
+// app/assets/javascripts/router.js
 App.Router.reopen({
   location: 'history'
 })
@@ -79,7 +79,7 @@ App.Router.map ->
     @route 'edit'
 ```
 ```javascript
-# app/assets/javascripts/router.js
+// app/assets/javascripts/router.js
 App.Router.map(function() {
   this.resource('users');
   this.route('user.new', { path: '/users/new' });

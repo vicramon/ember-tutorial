@@ -175,7 +175,7 @@ App.MyController = Ember.Controller.extend
 App.MyController = Ember.Controller.extend({
 
   actions: {
-    tickle: function() { alert('hahaha'); }
+    tickle: function() { alert('hahaha') }
   }
 
 })

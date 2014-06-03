@@ -35,7 +35,7 @@ App.Router.reopen
   rootURL: '/'
 ```
 ```javascript
-# app/assets/javascripts/router.js
+// app/assets/javascripts/router.js
 App.Router.reopen({
   location: 'auto',
   rootURL: '/'
