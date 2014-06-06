@@ -56,13 +56,13 @@ Ember Rails provides a generator that will create a skeleton for our Ember app. 
 For Javascript:
 
 ```shell
-rails g ember:bootstrap -g -n App
+rails g ember:bootstrap -n App
 ```
 
 If you want the generated files to use CoffeeScript then add a flag:
 
 ```shell
-rails g ember:bootstrap -g -n App --javascript-engine coffee
+rails g ember:bootstrap -n App --javascript-engine coffee
 ```
 
 Ember Rails comes with default Ember versions, but let's explicitly install Ember 1.5.0 and Ember Data 1.0.0 beta 7 so that your version is the same as mine. They will be installed to `vendor/assets/ember`.
