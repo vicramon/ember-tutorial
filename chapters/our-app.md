@@ -12,7 +12,7 @@ The main object in this system is the **lead**. If you don't know the term, a le
 
 You can use the Hello World app we built earlier as the base for this app. I'm going to provide you with styles so that you can just focus on the Ember stuff:
 
-[Download this stylesheet](/tutorial/application.css) and save it to `app/assets/stylesheets/application.css`, replacing your existing `application.css`.
+[Download this stylesheet](https://gist.githubusercontent.com/vicramon/a6cc84a06cf92f4aa191/raw/be5d148eaaf1b28d56d6e57e1653ff3f43158192/application.css) and save it to `app/assets/stylesheets/application.css`, replacing your existing `application.css`.
 
 ## Vim Projections
 
