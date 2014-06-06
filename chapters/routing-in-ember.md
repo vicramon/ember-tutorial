@@ -2,6 +2,8 @@
 
 Everything in Ember starts with routes. If you're familiar with routing systems in other frameworks then I don't think Ember's will cause you much trouble.
 
+**Note: do not add the following code to your app -- the code in the next few chapters is here just to show you how things work.**
+
 ## Location APIs
 
 First, let's cover the mechanics of routing in Ember. By default Ember uses the `hashchange` event in the browser to know when you've changed routes. It implements its own [HashLocation](http://emberjs.com/api/classes/Ember.HashLocation.html) object to handle this.
