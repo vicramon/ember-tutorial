@@ -126,7 +126,7 @@ App.Router.map ->
 App.Router.map(function() {
   this.resource('posts', { path: '/posts' }, function() {
     this.route('new', { path: '/new' });
-  }
+  })
 })
 ```
 
@@ -136,7 +136,7 @@ This is very different from server-side development where every route can have t
 
 ## See Your Routes
 
-I recommend playing around with the router in your hello world app. It's located in `app/assets/javascripts/router.js.coffee`. Once you've added routes you can refresh your page and look at the Ember inspector to see what routes Ember has generated. The Ember Inspector will also show you which Route, Controller, View, and Template that route will look for. This is extremely useful for making sure your object names match up.
+I recommend playing around with the router in your hello world app. It's located in `app/assets/javascripts/router.js`. Once you've added routes you can refresh your page and look at the Ember inspector to see what routes Ember has generated. The Ember Inspector will also show you which Route, Controller, View, and Template that route will look for. This is extremely useful for making sure your object names match up.
 
 ## Conclusion
 
