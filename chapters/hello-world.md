@@ -56,7 +56,7 @@ Ember Rails provides a generator that will create a skeleton for our Ember app. 
 For Javascript:
 
 ```shell
-rails g ember:bootstrap -n App
+rails g ember:bootstrap -n App --javascript-engine js
 ```
 
 If you want the generated files to use CoffeeScript then add a flag:
