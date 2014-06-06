@@ -54,7 +54,7 @@ Now, open up `application.js` and tell Ember that the `rootElement` is `ember-ap
 window.App = Ember.Application.create(rootElement: '#ember-app')
 ```
 ```javascript
-window.App = Ember.Application.create({rootElement: '#ember-app'})
+App = Ember.Application.create({rootElement: '#ember-app'})
 ```
 
 Now Ember will render everything inside the `ember-app` div.
@@ -74,7 +74,7 @@ In our app we only have a single page with Ember, so we could build our layout i
 Ember always renders the `application` template, so we'll use that for the layout:
 
 ```
-# app/assets/javascripts/templates/application.emblem.js
+// app/assets/javascripts/templates/application.emblem.js
 header
   article
     .logo
