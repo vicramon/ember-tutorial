@@ -57,7 +57,7 @@ App.UsersRoute = Ember.Route.extend
   deactivate: ->
 ```
 ```javascript
-App.UsersRoute = Ember.Route.extend
+App.UsersRoute = Ember.Route.extend({
 
   beforeModel: function(transition) { },
 
@@ -73,6 +73,8 @@ App.UsersRoute = Ember.Route.extend
   },
 
   deactivate: function() { }
+
+})
 ```
 
 `beforeModel` is called immediately before `model` is called.

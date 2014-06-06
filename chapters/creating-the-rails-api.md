@@ -1,6 +1,6 @@
 # Creating the Rails API
 
-We need a Rails API for Ember to communicate with to handle persistence.
+We need a Rails API for Ember to communicate with in order to store and retrieve data.
 
 ## The Active Model Adapter
 
@@ -13,8 +13,8 @@ App.ApplicationAdapter = DS.ActiveModelAdapter.extend()
 ```
 ```javascript
 // app/assets/javascripts/store.js
-App.Store = DS.Store.extend();
-App.ApplicationAdapter = DS.ActiveModelAdapter.extend();
+App.Store = DS.Store.extend({});
+App.ApplicationAdapter = DS.ActiveModelAdapter.extend({});
 ```
 
 If you don't see this code then replace whatever is in your store with this.

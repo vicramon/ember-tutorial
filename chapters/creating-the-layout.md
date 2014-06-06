@@ -42,9 +42,10 @@ First, put a div with the id `ember-app` right above the footer.
 </body>
 ```
 
-<div class="coffee">
+<div class="coffeescript">
 Now, open up `application.js.coffee` and tell Ember that the `rootElement` is `ember-app`:
 </div>
+
 <div class="javascript">
 Now, open up `application.js` and tell Ember that the `rootElement` is `ember-app`:
 </div>

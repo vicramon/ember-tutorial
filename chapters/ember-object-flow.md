@@ -1,5 +1,7 @@
 # Ember Object Flow
 
+(**Again, you don't need to add the following code to your app. You can add it just to play with it, but then delete it.**)
+
 Let's say we have a route called `about`.
 
 ```coffee
@@ -22,20 +24,20 @@ When you go to the about route, which would be `http://localhost:3000/#/about`, 
 
 ```coffee
 # app/assets/javascripts/routes/about.js.coffee
-AboutRoute = Ember.Route.extend
+App.AboutRoute = Ember.Route.extend
   init: ->
     @_super()
     console.log 'route called'
 
 # app/assets/javascripts/controllers/about.js.coffee
-AboutController = Ember.Controller.extend
+App.AboutController = Ember.Controller.extend
   init: ->
     @_super()
     console.log 'controller called'
 
 
 # app/assets/javascripts/views/about.js.coffee
-AboutView = Ember.View.extend
+App.AboutView = Ember.View.extend
   init: ->
     @_super()
     console.log "view called"
@@ -45,7 +47,7 @@ h1 Template rendered!
 ```
 ```javascript
 // app/assets/javascripts/routes/about.js
-AboutRoute = Ember.Route.extend({
+App.AboutRoute = Ember.Route.extend({
   init: function() {
     this._super();
     console.log('route called');
@@ -53,7 +55,7 @@ AboutRoute = Ember.Route.extend({
 })
 
 // app/assets/javascripts/controllers/about.js
-AboutController = Ember.Controller.extend({
+App.AboutController = Ember.Controller.extend({
   init: function() {
     this._super();
     console.log('controller called');
@@ -62,7 +64,7 @@ AboutController = Ember.Controller.extend({
 
 
 // app/assets/javascripts/views/about.js
-AboutView = Ember.View.extend({
+App.AboutView = Ember.View.extend({
   init: function() {
     this._super();
     console.log('view called');
@@ -77,4 +79,4 @@ Ember actually won't complain if it can't find any of these objects. Instead it 
 
 This is what I call the Ember Object Flow. When a route is activated it flows downwards to its associated objects.
 
-Now that you understand the flow of objects in the Ember system, I'm going to provide brief overview of each one.
+Now that you understand the flow of objects in the Ember system I'm going to provide brief overview of each one.
