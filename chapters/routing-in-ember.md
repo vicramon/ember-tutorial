@@ -86,8 +86,8 @@ App.Router.map(function() {
   this.resource('users');
   this.route('user.new', { path: '/users/new' });
   this.resource('user', { path: '/users/:id' }, function () {
-    this.route('edit);
-  }
+    this.route('edit');
+  })
 })
 ```
 

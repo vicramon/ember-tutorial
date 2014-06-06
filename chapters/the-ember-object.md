@@ -37,12 +37,12 @@ You can get a property from the object by calling `.get` on it and passing the s
 ```coffee
 user = Ember.Object.create( firstName: 'Sam', lastName: 'Smith' )
 user.get('firstName') is 'Sam' #=> true
-user.get('lastName') is 'Sam' #=> true
+user.get('lastName') is 'Smith' #=> true
 ```
 ```javascript
 var user = Ember.Object.create({ firstName: 'Sam', lastName: 'Smith' });
 user.get('firstName') == 'Sam' //=> true
-user.get('lastName') == 'Sam' //=> true
+user.get('lastName') == 'Smith' //=> true
 ```
 
 Inquire about the object with `.toString()`. In this case we see that it's just Ember.Object.
@@ -114,7 +114,7 @@ App.User = Ember.Object.extend
 App.User = Ember.Object.extend({
 
   fullName: function() {
-    this.get('firstName') + ' ' + this.get('lastName')
+    return this.get('firstName') + ' ' + this.get('lastName')
   }.property('firstName', 'lastName')
 
 })
@@ -220,7 +220,7 @@ App.Human = App.Animal.extend()
 
 human = App.Human.create()
 
-human.get('likesFood') #=> true
+human.get('likesFood') //=> true
 ```
 ```javascript
 App.Animal = Ember.Object.extend({
