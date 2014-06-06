@@ -15,7 +15,7 @@ App.Router.map ->
 // app/assets/javascripts/router.js
 App.Router.map(function() {
   this.resource('leads', { path: '/' })
-}
+})
 ```
 
 ## Create a Route Object
@@ -31,7 +31,7 @@ App.LeadsRoute = Ember.Route.extend
 ```javascript
 // app/assets/javascripts/routes/leads.js
 App.LeadsRoute = Ember.Route.extend({
-  model: function() { this.store.findAll('lead') }
+  model: function() { return this.store.findAll('lead') }
 })
 ```
 
@@ -67,7 +67,7 @@ fullName: ( ->
 ```javascript
 // app/assets/javascripts/models/lead.js
 fullName: function() {
-  this.get('firstName') + ' ' + this.get('lastName')
+  return this.get('firstName') + ' ' + this.get('lastName')
 }.property('firstName', 'lastName')
 ```
 
@@ -89,7 +89,7 @@ App.LeadsController = Ember.ArrayController.extend
   sortProperties: ['firstName', 'lastName']
 ```
 ```javascript
-// app/assets/javascripts/controllers/leads.js.coffee
+// app/assets/javascripts/controllers/leads.js
 App.LeadsController = Ember.ArrayController.extend({
   sortProperties: ['firstName', 'lastName']
 })
