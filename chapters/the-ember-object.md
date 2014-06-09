@@ -293,7 +293,13 @@ App.Human = Ember.Object.extend({
 })
 ```
 
+<div class="coffeescript">
 This is fine with basic Ember Objects, but if you are using other, more specific Ember Objects like Route or Controller, then you should try to avoid using init and instead opt for other Ember conventions. If you must use it in one of these objects make sure that you call `@_super()` in the `init` function, otherwise you may break things.
+</div>
+
+<div class="javascript">
+This is fine with basic Ember Objects, but if you are using other, more specific Ember Objects like Route or Controller, then you should try to avoid using init and instead opt for other Ember conventions. If you must use it in one of these objects make sure that you call `this._super()` in the `init` function, otherwise you may break things.
+</div>
 
 ## Reopening Objects
 
