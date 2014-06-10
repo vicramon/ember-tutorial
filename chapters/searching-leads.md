@@ -50,14 +50,14 @@ searchedLeads: ( ->
 ```javascript
 // app/assets/javascripts/controllers/leads.js
 leads: function() {
-  return if (this.get('search')) { this.get('searchedLeads') } else { this }
+  return this.get('search') ? this.get('searchedLeads') : this
 }.property('search', 'searchedLeads')
 
 searchedLeads: function() {
-  search = this.get('search').toLowerCase()
-  return this.filter function(lead) {
-   lead.get('fullName').toLowerCase().indexOf(search) != -1
-  }
+  var search = this.get('search').toLowerCase()
+  return this.filter(function(lead) {
+    return lead.get('fullName').toLowerCase().indexOf(search) != -1
+  })
 }.property('search', 'this.each.fullName')
 ```
 
@@ -65,7 +65,7 @@ The `leads` property looks to see if there is a search string. If there is, it r
 
 `searchedLeads` gets the search string and lower cases it. It then runs `filter` on `this`, which is the list of leads, and returns the leads where the full name includes the search string.
 
-`searchedLeads` needs to depend on `thiseach.fullName', which means that the property will be updated whenever the full name of any lead changes.
+`searchedLeads` needs to depend on `this.each.fullName', which means that the property will be updated whenever the full name of any lead changes.
 
 ## Try It
 

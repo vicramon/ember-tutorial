@@ -17,7 +17,7 @@ As always, add a route first. We will place an `edit` route under our existing `
 // app/assets/javascripts/router.js
 this.resource('lead', { path: 'leads/:id' }, function() {
   this.route('edit')
-}
+})
 ```
 
 <p class="coffeescript">

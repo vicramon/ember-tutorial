@@ -10,13 +10,13 @@ First we'll need to add a resource to show a specific lead. Since we want the li
 # app/assets/javascripts/router.js.coffee
 App.Router.map ->
   @resource 'leads', path: '/', ->
-    @resource 'lead', path: '/lead/:id'
+    @resource 'lead', path: '/leads/:id'
 ```
 ```javascript
 // app/assets/javascripts/router.js
 App.Router.map(function() {
   this.resource('leads', { path: '/' }, function() {
-    this.resource('lead', { path: '/lead/:id' });
+    this.resource('lead', { path: '/leads/:id' });
   })
 })
 ```

@@ -16,7 +16,7 @@ App.Lead.reopenClass
   STATUSES: ['new', 'in progress', 'closed', 'bad']
 ```
 ```javascript
-// app/assets/javascripts/models/lead/js
+// app/assets/javascripts/models/lead.js
 App.Lead.reopenClass({
   STATUSES: ['new', 'in progress', 'closed', 'bad']
 });
@@ -101,9 +101,7 @@ saveChanges: -> @get('model').save() if @get('model.isDirty')
 ```
 ```javascript
 saveChanges: function() {
-  if (this.get('model.isDirty')) {
-    this.get('model').save();
-  }
+  if (this.get('model.isDirty')) this.get('model').save();
 }
 ```
 
@@ -154,7 +152,9 @@ App.LeadController = Ember.ObjectController.extend({
 
   showUnsavedMessage: function() {
     return this.get('isDirty') && !this.get('isSaving')
-  }.property('isDirty', 'isSaving')
+  }.property('isDirty', 'isSaving'),
+
+  // actions, etc...
 
 })
 ```

@@ -95,6 +95,7 @@ App.LeadsNewController = Ember.Controller.extend
 ```javascript
 // app/assets/javascripts/controllers/leads_new.js
 App.LeadsNewController = Ember.Controller.extend({
+
   actions: {
     createLead: function() {
       var self = this;
@@ -104,6 +105,7 @@ App.LeadsNewController = Ember.Controller.extend({
       });
     }
   }
+
 });
 ```
 
@@ -172,13 +174,13 @@ createLead: ->
 // app/assets/javascripts/controllers/leads_new.js
 createLead: function() {
 
+  var self = this;
   var fields = this.get('fields')
 
   if (App.Lead.valid(fields)) {
-    var self = this;
     var lead = this.store.createRecord('lead', fields)
     lead.save().then(function(lead) {
-      self.transitionToRoute 'lead', lead
+      self.transitionToRoute('lead', lead)
     });
   } else {
     this.set('showError', true)
@@ -210,7 +212,7 @@ setupController: (controller) ->
 setupController: function(controller) {
    // etc...
    controller.set('showError', false)
-  }
+}
 ```
 
 Now if you create the error, leave, then come back, the form should be fully reset.

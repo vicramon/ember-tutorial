@@ -148,11 +148,11 @@ end
 
 Let's create some records and see our API actually work. 
 
-First add the faker gem:
+First add the ffaker gem:
 
 ```ruby
 # Gemfile
-gem 'faker'
+gem 'ffaker'
 ```
 
 Then create a populate task:
@@ -175,13 +175,15 @@ namespace :db do
         email: Faker::Internet.email,
         phone: Faker::PhoneNumber.phone_number,
         status: random_status,
-        notes: Faker::Lorem.paragraph(2)
+        notes: Faker::HipsterIpsum.words(10).join(' ')
         )
     end
 
   end
 end
 ```
+
+I'm using [Hipster Ipsum](http://hipsum.co/) for the notes to spice things up.
 
 Run the populate task:
 
