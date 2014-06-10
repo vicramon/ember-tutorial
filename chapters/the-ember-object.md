@@ -10,7 +10,7 @@ The following few chapters will be a whirlwind tour of Ember Objects, Routing, R
 
 Ember implements its own object system. The base object is Ember.Object. All of the other objects in Ember extend Ember.Object.
 
-Most of the time you will be using an object that extends Ember.Object like Ember.Controller or Ember.View, but you can also use Ember.Object itself. One common use for Ember.Object is for service objects that handle some specific non-persisted logic.
+Most of the time you will be using an object that extends Ember.Object like Ember.Controller or Ember.View, but you can also use Ember.Object itself. One common use for Ember.Object is to create service objects that handle some specific logic.
 
 If you open your browser's console in your Hello World app you'll be able to follow along with these commands<span class="coffeescript">, though you'll need to convert the CoffeeScript to Javascript (or just click the toggle at the op of the page)</span>.
 
@@ -58,7 +58,7 @@ user.toString() //=> <Ember.Object:ember{objectId}>
 
 ## Defining Objects
 
-So far we've just been using Ember.Object. You can create a "subclass" of Ember.Object by using `extend`. Say we want to make a user Object class:
+So far we've just been using Ember.Object. You can create a "subclass" of Ember.Object by using `extend`. Say we want to make a user Object "class":
 
 ```coffee
 App.User = Ember.Object.extend()
