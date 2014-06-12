@@ -119,4 +119,4 @@ Routes are the one place where you can reach across your app. Usually you do thi
 
 `this.controllerFor('controllerName')` will get that controller object. Sometimes you may want to get the model for that controller, in which case you would do `this.controllerFor('controllerName').get('model')`.
 
-Route objects are your friend. You'll find that all of their hooks are extremely handy when you start trying to do fancy things in your app.
+Route objects are your friends. You'll find that all of their hooks are extremely handy when you start trying to do fancy things in your app.
