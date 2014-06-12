@@ -152,11 +152,14 @@ The first thing I usually do if things aren't working is place a `debugger` in t
 ```coffee
 # app/assets/javascripts/application.js.coffee
 window.App = Ember.Application.create
+  LOG_TRANSITIONS: true
   LOG_TRANSITIONS_INTERNAL: true
+  LOG_VIEW_LOOKUPS: true
+
 ```
 ```javascript
 // app/assets/javascripts/application.js
-window.App = Ember.Application.create({LOG_TRANSITIONS_INTERNAL: true})
+window.App = Ember.Application.create({LOG_TRANSITIONS: true, LOG_TRANSITIONS_INTERNAL: true, LOG_VIEW_LOOKUPS: true})
 ```
 
 Beyond that I suggest reading in the guides for more detailed tips on debugging, and of course using the Ember Inspector...
