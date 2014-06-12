@@ -127,7 +127,7 @@ Last but not least, we need to create a template for Ember to render. Ember look
 h1 Hello World
 ```
 
-Restart your server then visit http://localhost:3000. You should see 'Hello World' printed on the screen. If you see it then congratulations! You're one step closer to being an Embereño. Yes, Embereño is a thing, though I kind of like Emberista. 
+Restart your server then visit http://localhost:3000. You should see 'Hello World' printed on the screen. If you see it then congratulations! You're one step closer to being an Embereño. Yes, Embereño is a thing, though I kind of like Emberista.
 
 If you don't see `Hello World`, you should clone my hello world repo and see what you've done differently.
 
@@ -150,8 +150,9 @@ There's a whole page on [debugging Ember](http://emberjs.com/guides/understandin
 The first thing I usually do if things aren't working is place a `debugger` in the code and open Chrome dev tools. If that doesn't help then the next thing I'll do is log my route transitions to get more insight:
 
 ```coffee
-# app/assets/javascripts/application.js.coffe
-window.App = Ember.Application.create(LOG_TRANSITIONS_INTERNAL: true)
+# app/assets/javascripts/application.js.coffee
+window.App = Ember.Application.create
+  LOG_TRANSITIONS_INTERNAL: true
 ```
 ```javascript
 // app/assets/javascripts/application.js
