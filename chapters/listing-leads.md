@@ -61,7 +61,7 @@ Let's create a property to display the leads' full names. Open the lead model an
 ```coffee
 # app/assets/javascripts/models/lead.js.coffee
 fullName: ( ->
-  @get('firstName') + ' ' + @get('lastName')
+  "#{@get('firstName')} #{@get('lastName')}"
 ).property('firstName', 'lastName')
 ```
 ```javascript
