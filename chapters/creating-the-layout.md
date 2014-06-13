@@ -74,7 +74,7 @@ In our app we only have a single page with Ember, so we could build our layout i
 Ember always renders the `application` template, so we'll use that for the layout:
 
 ```
-// app/assets/javascripts/templates/application.emblem.js
+// app/assets/javascripts/templates/application.js.emblem
 header
   article
     .logo
