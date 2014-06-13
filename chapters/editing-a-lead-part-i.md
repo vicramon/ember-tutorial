@@ -11,7 +11,7 @@ First we need to tell the app about the different statuses a lead can have. The 
 Add this code after your `Lead` model in the same file:
 
 ```coffee
-# app/assets/javascripts/models/lead/js.coffee
+# app/assets/javascripts/models/lead.js.coffee
 App.Lead.reopenClass
   STATUSES: ['new', 'in progress', 'closed', 'bad']
 ```
