@@ -40,7 +40,7 @@ App.UserView = Ember.View.extend({
 
 This isn't related specifically to views, but I'm about to use a computed alias so I need to explain what they are. Computed aliases are essentially shorthand for grabbing properties from other objects.
 
-You just pass `Em.computed.alias` the string name of the property you want to look up. It will look up the property and watch it at the same time. For example:
+You just pass `Em.computed.alias` the string name of the property you want to look up. (`Em.` is an alias for `Ember.`). This will look up the property and watch it at the same time. For example:
 
 ```coffee
 App.MyController = Ember.Controller.extend
