@@ -163,7 +163,7 @@ You can specify what are called **actions** on any element in a template. Action
 h1 click="tickle" Tickle Me
 ```
 
-This would call a `gotClicked` method in the controller when a user clicks on the `h1`. The method must be defined inside an `actions` object:
+This would call a `tickle` method in the controller when a user clicks on the `h1`. The method must be defined inside an `actions` object:
 
 ```coffee
 App.MyController = Ember.Controller.extend

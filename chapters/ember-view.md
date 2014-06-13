@@ -138,9 +138,9 @@ App.AnimalView = Ember.View.extend({
 
   soundClass: function() {
     if (this.get('model.kind') == "cat") {
-      "meow"
+      return "meow"
     } else {
-      "woof"
+      return "woof"
     }
   }.property('model.kind')
 ```
