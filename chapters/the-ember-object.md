@@ -220,7 +220,7 @@ App.Human = App.Animal.extend()
 
 human = App.Human.create()
 
-human.get('likesFood') //=> true
+human.get('likesFood') #=> true
 ```
 ```javascript
 App.Animal = Ember.Object.extend({
@@ -229,9 +229,9 @@ App.Animal = Ember.Object.extend({
 
 App.Human = App.Animal.extend()
 
-var human = App.Human.create();
+var human = App.Human.create()
 
-human.get('likesFood') #=> true
+human.get('likesFood') //=> true
 ```
 
 Properties, functions, and observers in the child object will override those in the parent:
@@ -244,6 +244,7 @@ App.Bird = App.Animal.extend
   likesFood: false
 
 bird = App.Bird.create()
+
 bird.get('likesFood') #=> false
 ```
 ```javascript
@@ -251,7 +252,8 @@ App.Animal = Ember.Object.extend({ likesFood: true })
 
 App.Bird = App.Animal.extend({ likesFood: false })
 
-var bird = App.Bird.create();
+var bird = App.Bird.create()
+
 bird.get('likesFood') //=> false
 ```
 
