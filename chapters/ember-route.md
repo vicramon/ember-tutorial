@@ -83,7 +83,7 @@ App.UsersRoute = Ember.Route.extend({
 
 `afterModel` is called after the model is resolved (i.e. either pulled down from the server or pulled out of the store).
 
-`activate` is called after the all the model hooks have completed, meaning that the route is now active.
+`activate` is called after all of the model hooks have completed, meaning that the route is now active.
 
 `setupController` is where you would do any controller setup. You get access to the controller itself as an argument. Note that if you implement `setupController` you will need to set the `model` property of the controller to the `model` argument, because this hook overrides the parent. If you don't do this then the controller will not have its `model` property set. You could also call `@_super(arguments...)` to accomplish the same thing.
 
