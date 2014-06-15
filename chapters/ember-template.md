@@ -21,7 +21,7 @@ Emblem:
 name
 ```
 
-Emblem expects the the first word on each line to be either a controller property, a Handlebars helper, or an html tag, so if you want to immediately output plain text then use a pipe: `|`. Emblem parses everything after a pipe as a string.
+Emblem expects the first word on each line to be either a controller property, a Handlebars helper, or an html tag, so if you want to immediately output plain text then use a pipe: `|`. Emblem parses everything after a pipe as a string.
 
 
 ## Outputting View Properties
