@@ -1,6 +1,6 @@
 # Ember View
 
-The View is one of the most powerful objects in Ember. You can think of a view as a wrapper for a template. It contains all the javascript you might want to execute on the template and all it manages the logic around attributes and class names.
+The View is one of the most powerful objects in Ember. You can think of a view as a wrapper for a template. It contains all the javascript you might want to execute on the template and manages the logic around attributes and class names.
 
 ## Talking to the Controller
 
