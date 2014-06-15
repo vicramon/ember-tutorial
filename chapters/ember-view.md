@@ -32,7 +32,7 @@ App.UserView = Ember.View.extend({
 
 `willInsertElement` is called before the view is inserted into the DOM.
 
-`didInsertElement` is called immediately after the view is inserted into the DOM. This is what you'll use most often for running any template-specific javascript. It's also helpful for debugging -- you can place a `debugger` or `console.log` in didInsertElement to get more insight if things aren't working.
+`didInsertElement` is called immediately after the view is inserted into the DOM. This is what you'll use most often for running any template-specific javascript. It's also helpful for debugging -- you can place a `debugger` or `console.log` in `didInsertElement` to get more insight if things aren't working.
 
 `willDestroyElement` is called when view is about to be removed from the DOM. You can use this for any teardown you need to do.
 
