@@ -191,7 +191,7 @@ createLead: function() {
 We check to see if these fields are valid. If they are, create the record. If they aren't, set the `showError` property to true. Now we can use the `showError` property to display a message to the user:
 
 ```
-// app/assets/javascripts/templates/leads/new.js.coffee
+// app/assets/javascripts/templates/leads/new.js.emblem
 article#lead
   h1 New Lead
 
