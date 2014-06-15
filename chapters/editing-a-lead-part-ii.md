@@ -88,7 +88,7 @@ App.LeadEditController = Ember.ObjectController.extend
       @transitionToRoute 'lead'
 ```
 ```javascript
-// app/assets/javascripts/controllers/lead_edit.js.coffee
+// app/assets/javascripts/controllers/lead_edit.js
 App.LeadEditController = Ember.ObjectController.extend({
 
   actions: {
