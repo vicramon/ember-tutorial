@@ -50,7 +50,7 @@ Handlebars:
 ```handlebars
 {{#if isBirthday}}
   <div class="celebrate">Happy Birthday!</div>
-{{#else}}
+{{else}}
   <div class="too_bad">Nope.</div>
 {{/if}}
 ```
