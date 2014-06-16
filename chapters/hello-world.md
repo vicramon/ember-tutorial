@@ -129,7 +129,7 @@ h1 Hello World
 
 Restart your server then visit http://localhost:3000. You should see 'Hello World' printed on the screen. If you see it then congratulations! You're one step closer to being an Embereño. Yes, Embereño is a thing, though I kind of like Emberista. 
 
-If you don't see `Hello World`, you should clone my hello world repo and see what you've done differently.
+If you don't see `Hello World`, you should clone my [hello world repo](https://github.com/vicramon/ember-hello-world) and see what you've done differently.
 
 ## Very Basic Debugging
 
@@ -145,7 +145,7 @@ DEBUG: -------------------------------
 
 If you don't see this output then your Ember javascripts are not being loaded properly.
 
-There's a whole page on [debugging Ember](http://emberjs.com/guides/understanding-ember/debugging/) in the guides.  I suggest that you check it out if ever get stuck.
+There's a whole page on [debugging Ember](http://emberjs.com/guides/understanding-ember/debugging/) in the guides.  I suggest that you check it out if you ever get stuck.
 
 The first thing I usually do if things aren't working is place a `debugger` in the code and open Chrome dev tools. If that doesn't help then the next thing I'll do is log my route transitions to get more insight:
 

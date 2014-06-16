@@ -1,6 +1,6 @@
 # Ember View
 
-The View is one of the most powerful objects in Ember. You can think of a view as a wrapper for a template. It contains all the javascript you might want to execute on the template and all it manages the logic around attributes and class names.
+The View is one of the most powerful objects in Ember. You can think of a view as a wrapper for a template. It contains all the javascript you might want to execute on the template and manages the logic around attributes and class names.
 
 ## Talking to the Controller
 
@@ -262,7 +262,7 @@ This would look for `.someClass` inside your current view and fade it out.
 
 ## Handling Events
 
-UI events like click, doubleClick, and mouseEnter are accessibly by the view. Just define a function with the event name and it will get called when the event occurs:
+UI events like click, doubleClick, and mouseEnter are accessible by the view. Just define a function with the event name and it will get called when the event occurs:
 
 ```coffee
 App.UserView = Ember.View.extend
