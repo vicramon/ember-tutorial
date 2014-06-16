@@ -32,13 +32,13 @@ App.UserView = Ember.View.extend({
 
 `willInsertElement` is called before the view is inserted into the DOM.
 
-`didInsertElement` is called immediately after the view is inserted into the DOM. This is what you'll use most often for running any template-specific javascript. It's also helpful for debugging -- you can place a `debugger` or `console.log` in didInsertElement to get more insight if things aren't working.
+`didInsertElement` is called immediately after the view is inserted into the DOM. This is what you'll use most often for running any template-specific javascript. It's also helpful for debugging -- you can place a `debugger` or `console.log` in `didInsertElement` to get more insight if things aren't working.
 
 `willDestroyElement` is called when view is about to be removed from the DOM. You can use this for any teardown you need to do.
 
 ## Computed Aliases
 
-This isn't related specifically to views, but I'm about to use a computed alias so I need to explain what they are. Computed aliases are essentially shorthand for grabbing properties from other objects.
+This isn't related specifically to views, but I need to explain what they are. Computed aliases are essentially shorthand for grabbing properties from other objects.
 
 You just pass `Em.computed.alias` the string name of the property you want to look up. (`Em.` is an alias for `Ember.`). This will look up the property and watch it at the same time. For example:
 
