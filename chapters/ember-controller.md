@@ -17,7 +17,6 @@ So what's left? Properties, observers, and functions. These are your bread and b
 ```coffee
 # app/assets/javascripts/controllers/user.js.coffee
 App.UserController = ObjectController.extend
-
   someFunction: -> alert('so functional')
 
   someProperty: ( ->
@@ -34,7 +33,6 @@ App.UserController = ObjectController.extend
 ```javascript
 // app/assets/javascripts/controllers/user.js
 App.UserController = ObjectController.extend({
-
   someFunction: function() { alert('so functional') },
 
   someProperty: function() {
@@ -66,7 +64,6 @@ App.Excited = Ember.Mixin.create
 # app/assets/javascripts/controllers/user.js.coffee
 App.UserController = ObjectController.extend App.Excited,
   # your controller code
-
 ```
 ```javascript
 // app/assets/javascripts/mixins/excited.js
@@ -89,23 +86,16 @@ Another major use for controllers is handling actions from templates. For exampl
 ```coffee
 # app/assets/javascripts/controllers/user.js.coffee
 App.UserController = ObjectController.extend
-
   actions:
-
     deleteUser: -> @get('model').destroyRecord()
-
     saveChanges: -> @get('model').save()
 ```
 ```javascript
 // app/assets/javascripts/controllers/user.js
 App.UserController = ObjectController.extend({
-
   actions: {
-
     deleteUser: function() { this.get('model').destroyRecord() },
-
     saveChanges: function() { this.get('model').save() }
-
     }
 })
 ```

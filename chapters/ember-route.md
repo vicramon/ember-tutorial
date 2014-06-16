@@ -18,14 +18,11 @@ Now when you visit `/users`, Ember will look for a `UsersRoute` object. Here's h
 
 ```coffee
 App.UsersRoute = Ember.Route.extend
-
   model: -> @store.findAll 'user'
 ```
 ```javascript
 App.UsersRoute = Ember.Route.extend({
-
   model: function() { this.store.findAll('user') }
-
 })
 ```
 

@@ -5,10 +5,12 @@
 Let's say we have a route called `about`.
 
 ```coffee
+# app/assets/javascripts/router.js.coffee
 App.Router.map ->
   @route 'about'
 ```
 ```javascript
+// app/assets/javascripts/router.js
 App.Router.map(function() {
   this.route('about');
 })

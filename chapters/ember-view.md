@@ -12,7 +12,6 @@ Like Routes, views have a series of hooks that you can use. Here are three of th
 
 ```coffee
 App.UserView = Ember.View.extend
-
   willInsertElement: ->
 
   didInsertElement: ->
@@ -21,7 +20,6 @@ App.UserView = Ember.View.extend
 ```
 ```javascript
 App.UserView = Ember.View.extend({
-
   willInsertElement: function() {  },
 
   didInsertElement: function() {  },
@@ -47,7 +45,6 @@ App.MyController = Ember.Controller.extend
   name: 'Zelda'
 
 App.MyView = Ember.View.extend
-
   # this is kind of lame
   name: ( ->
     @get('controller.name')
@@ -224,17 +221,14 @@ Often times you'll need the current element. It's available to you as `element`,
 
 ```coffee
 App.UserView = Ember.View.extend
-
   didInsertElement: ->
     console.log @get('element')
 ```
 ```javascript
 App.UserView = Ember.View.extend({
-
   didInsertElement: function() {
     console.log this.get('element')
   }
-
 })
 ```
 
@@ -244,17 +238,14 @@ Need to get the element and run some jQuery on it? You could do `$(this.get('ele
 
 ```coffee
 App.UserView = Ember.View.extend
-
   didInsertElement: ->
     @$('.someClass').fadeOut()
 ```
 ```javascript
 App.UserView = Ember.View.extend({
-
   didInsertElement: function() {
     this.$('.someClass').fadeOut()
   }
-
 })
 ```
 
@@ -266,7 +257,6 @@ UI events like click, doubleClick, and mouseEnter are accessible by the view. Ju
 
 ```coffee
 App.UserView = Ember.View.extend
-
   click: -> console.log 'clicked'
   mouseEnter: -> console.log 'mouse entered'
   mouseLeave: -> console.log 'mouse left'

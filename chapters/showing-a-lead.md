@@ -32,15 +32,12 @@ We need a Route Object to pull down our specific lead.
 ```coffee
 # app/assets/javascripts/routes/lead.js.coffee
 App.LeadRoute = Ember.Route.extend
-
   model: (params) -> @store.find 'lead', params.id
 ```
 ```javascript
 // app/assets/javascripts/routes/lead.js
 App.LeadRoute = Ember.Route.extend({
-
   model: function(params) { this.store.find('lead', params.id) }
-
 })
 ```
 

@@ -27,18 +27,15 @@ We set `fields` to an empty object in the route so that it's reset every time we
 ```coffee
 # app/assets/javascripts/routes/leads_new.js.coffee
 App.LeadsNewRoute = Ember.Route.extend
-
   setupController: (controller) ->
     controller.set 'fields', {}
 ```
 ```javascript
 // app/assets/javascripts/routes/leads_new.js
 App.LeadsNewRoute = Ember.Route.extend({
-
   setupController: function(controller) {
     controller.set('fields', {})
   }
-
 });
 ```
 
@@ -84,9 +81,7 @@ Create a controller to handle the `createLead` action:
 ```coffee
 # app/assets/javascripts/controllers/leads_new.js.coffee
 App.LeadsNewController = Ember.Controller.extend
-
   actions:
-
     createLead: ->
       lead = @store.createRecord 'lead', @get('fields')
       lead.save().then =>
@@ -95,7 +90,6 @@ App.LeadsNewController = Ember.Controller.extend
 ```javascript
 // app/assets/javascripts/controllers/leads_new.js
 App.LeadsNewController = Ember.Controller.extend({
-
   actions: {
     createLead: function() {
       var self = this;
@@ -140,18 +134,15 @@ First let's define a valid method on the Lead class. Let's say we just care that
 ```coffee
 # app/assets/javascripts/models/lead.js.coffee
 App.Lead.reopenClass
-
   valid: (fields) ->
     fields.firstName and fields.lastName
 ```
 ```javascript
 // app/assets/javascripts/models/lead.js
 App.Lead.reopenClass({
-
   valid: function(fields) {
     return fields.firstName && fields.lastName
   }
-
 });
 ```
 
@@ -173,7 +164,6 @@ createLead: ->
 ```javascript
 // app/assets/javascripts/controllers/leads_new.js
 createLead: function() {
-
   var self = this;
   var fields = this.get('fields')
 

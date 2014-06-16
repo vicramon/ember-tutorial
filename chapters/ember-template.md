@@ -167,17 +167,14 @@ This would call a `tickle` method in the controller when a user clicks on the `h
 
 ```coffee
 App.MyController = Ember.Controller.extend
-
   actions:
     tickle: -> alert('hahaha')
 ```
 ```javascript
 App.MyController = Ember.Controller.extend({
-
   actions: {
     tickle: function() { alert('hahaha') }
   }
-
 })
 ```
 
