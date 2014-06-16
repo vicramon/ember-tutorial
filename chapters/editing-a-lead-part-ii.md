@@ -88,7 +88,7 @@ App.LeadEditController = Ember.ObjectController.extend
       @transitionToRoute 'lead'
 ```
 ```javascript
-// app/assets/javascripts/controllers/lead_edit.js.coffee
+// app/assets/javascripts/controllers/lead_edit.js
 App.LeadEditController = Ember.ObjectController.extend({
 
   actions: {
@@ -140,7 +140,7 @@ Add an outlet to the top of the `lead` template:
 outlet
 ```
 
-Now try it. It should work, but now we have a new problem: the show UI for a lead is still be present. That's because **nested routes means nested UI**. Since the `lead` resource is still active, the UI is still active.
+Now try it. It should work, but now we have a new problem: the show UI for a lead is still present. That's because **nested routes means nested UI**. Since the `lead` resource is still active, the UI is still active.
 
 There's a simple fix to this -- we'll just hide the show UI when we're editing.
 

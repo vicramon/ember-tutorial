@@ -7,6 +7,7 @@ We need to create our layout so we can build stuff inside it. Let's do that now.
 Your Rails layout should look like this to start:
 
 ```erb
+<!-- app/views/layouts/application.html.erb -->
 <!DOCTYPE html>
 <html>
   <head>
