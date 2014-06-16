@@ -35,7 +35,7 @@ You'll need to remove Turbolinks because it conflicts with Ember. Make sure to r
 
 ## Add Ember Rails
 
-I am going to use [Ember Rails](https://github.com/emberjs/ember-rails) for this tutorial. It's stable and works great. I think [Ember Appkit Rails](https://github.com/dockyard/ember-appkit-rails) may eventually replace Ember Rails as the default Rails/Ember integration gem, but it's pre 1.0 right now so I'm going with Ember Rails for this tutorial.
+I am going to use [Ember Rails](https://github.com/emberjs/ember-rails) for this tutorial. It's stable and works great. I think [Ember CLI](https://github.com/stefanpenner/ember-cli) may replace Ember Rails as the default Rails/Ember integration gem, but it's pre 1.0 right now so I'm going with Ember Rails for this tutorial.
 
 Add following gems to your Gemfile:
 
