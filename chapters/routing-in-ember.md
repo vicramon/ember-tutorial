@@ -26,7 +26,7 @@ App.Router.reopen
   rootURL: '/some/path/'
 ```
 ```javascript
-// app/assets/javascripts/router.js.coffee
+// app/assets/javascripts/router.js
 App.Router.reopen({
   rootURL: '/some/path/'
 })
