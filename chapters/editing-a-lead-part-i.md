@@ -73,7 +73,7 @@ App.LeadController = Ember.ObjectController.extend
     saveChanges: -> @get('model').save()
 ```
 ```javascript
-// app/assets/javascripts/controllers/lead.js.coffee
+// app/assets/javascripts/controllers/lead.js
 App.LeadController = Ember.ObjectController.extend({
   actions: {
     saveChanges: function() {
