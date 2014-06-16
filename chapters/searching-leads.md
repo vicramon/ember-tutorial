@@ -51,7 +51,7 @@ searchedLeads: ( ->
 // app/assets/javascripts/controllers/leads.js
 leads: function() {
   return this.get('search') ? this.get('searchedLeads') : this
-}.property('search', 'searchedLeads')
+}.property('search', 'searchedLeads'),
 
 searchedLeads: function() {
   var search = this.get('search').toLowerCase()
