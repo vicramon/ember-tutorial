@@ -69,20 +69,17 @@ Since we're in the middle of the lead object flow, Create a `LeadController` to 
 ```coffee
 # app/assets/javascripts/controllers/lead.js.coffee
 App.LeadController = Ember.ObjectController.extend
-
   actions:
     saveChanges: -> @get('model').save()
 ```
 ```javascript
 // app/assets/javascripts/controllers/lead.js.coffee
 App.LeadController = Ember.ObjectController.extend({
-
   actions: {
     saveChanges: function() {
       this.get('model').save();
     }
   }
-
 });
 ```
 
@@ -141,7 +138,6 @@ Open the controller and add the property:
 ```coffee
 # app/assets/javascripts/controllers/lead.js.coffee
 App.LeadController = Ember.ObjectController.extend
-
   showUnsavedMessage: ( ->
     @get('isDirty') and !@get('isSaving')
   ).property('isDirty', 'isSaving')
@@ -149,13 +145,11 @@ App.LeadController = Ember.ObjectController.extend
 ```javascript
 // app/assets/javascripts/controllers/lead.js
 App.LeadController = Ember.ObjectController.extend({
-
   showUnsavedMessage: function() {
     return this.get('isDirty') && !this.get('isSaving')
   }.property('isDirty', 'isSaving'),
 
   // actions, etc...
-
 })
 ```
 

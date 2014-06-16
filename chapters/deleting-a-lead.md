@@ -21,7 +21,6 @@ Template actions are handled in the controller, so open up the `LeadController` 
 ```coffee
 # app/assets/javascripts/controllers/lead.js.coffee
 actions:
-
   delete: ->
     @get('model').destroyRecord().then =>
       @transitionToRoute 'leads'
@@ -29,14 +28,12 @@ actions:
 ```javascript
 // app/assets/javascripts/controllers/lead.js
 actions: {
-
   delete: function() {
     var self = this;
     this.get('model').destroyRecord().then(function() {
       self.transitionToRoute('leads');
     });
   },
-
 }
 ```
 

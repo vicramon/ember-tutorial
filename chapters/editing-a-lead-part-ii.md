@@ -76,9 +76,7 @@ This template has two actions: `saveChanges` and `cancel`. Let's implement them 
 ```coffee
 # app/assets/javascripts/controllers/lead_edit.js.coffee
 App.LeadEditController = Ember.ObjectController.extend
-
   actions:
-
     saveChanges: ->
       @get('model').save().then =>
         @transitionToRoute 'lead'
@@ -90,9 +88,7 @@ App.LeadEditController = Ember.ObjectController.extend
 ```javascript
 // app/assets/javascripts/controllers/lead_edit.js
 App.LeadEditController = Ember.ObjectController.extend({
-
   actions: {
-
     saveChanges: function() {
       var self = this;
       this.get('model').save().then(function() {
@@ -104,9 +100,7 @@ App.LeadEditController = Ember.ObjectController.extend({
       this.get('model').rollback();
       this.transitionToRoute('lead');
     }
-
   }
-
 })
 ```
 
@@ -167,17 +161,14 @@ Now whenever we visit the edit route we need to set `isEditing` to true. We can 
 ```coffee
 # app/assets/javascripts/routes/lead_edit.js.coffee
 App.LeadEditRoute = Ember.Route.extend
-
   activate:   -> @controllerFor('lead').set 'isEditing', true
   deactivate: -> @controllerFor('lead').set 'isEditing', false
 ```
 ```javascript
 // app/assets/javascripts/routes/lead_edit.js
 App.LeadEditRoute = Ember.Route.extend({
-
   activate:   function() { this.controllerFor('lead').set('isEditing', true) },
   deactivate: function() { this.controllerFor('lead').set('isEditing', false) }
-
 })
 ```
 
@@ -188,19 +179,14 @@ We could do one last thing for clarity -- add `isEditing` to the `LeadController
 ```coffee
 # app/assets/javascripts/controllers/lead.js.coffee
 App.LeadController = Ember.ObjectController.extend
-
   isEditing: false
-
   #etc...
 ```
 ```javascript
 // app/assets/javascripts/controllers/lead.js
 App.LeadController = Ember.ObjectController.extend({
-
   isEditing: false,
-
   // etc...
-
 })
 ```
 
