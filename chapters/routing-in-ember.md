@@ -57,10 +57,12 @@ Boom, it's that simple.
 Not all browsers implement the history API. Luckily Ember comes to the rescue again with AutoLocation, which  will use HistoryLocation if the user's browser supports it, otherwise it will use HashLocation.
 
 ```coffee
+# app/assets/javascripts/router.js.coffee
 App.Router.reopen
   location: 'auto'
 ```
 ```javascript
+// app/assets/javascripts/router.js
 App.Router.reopen({
   location: 'auto'
 })
