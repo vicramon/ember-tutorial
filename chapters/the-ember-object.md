@@ -166,7 +166,7 @@ user.showMessage('it works')
 
 ## Observers
 
-Observers are functions that fire whenever the any of the things they observe change. They look like properties but they end with `observes()` instead of `property()`
+Observers are functions that fire whenever any of the things they observe change. They look like properties but they end with `observes()` instead of `property()`
 
 ```coffee
 App.User = Ember.Object.extend

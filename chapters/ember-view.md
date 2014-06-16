@@ -153,12 +153,12 @@ There's actually an abbreviated version of this that you can use:
 App.AnimalView = Ember.View.extend
   classNameBindings: ['isCat:moew:woof']
 
-  isCat: Em.comptued.equal 'model.kind', 'cat'
+  isCat: Em.computed.equal 'model.kind', 'cat'
 ```
 ```javascript
 App.AnimalView = Ember.View.extend({
   classNameBindings: ['isCat:moew:woof'],
-  isCat: Em.comptued.equal('model.kind', 'cat')
+  isCat: Em.computed.equal('model.kind', 'cat')
 })
 ```
 
