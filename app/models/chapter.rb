@@ -27,6 +27,10 @@ class Chapter
     ]
   end
 
+  def self.all_chapters
+    self.all.map { |name| Chapter.new(name) }
+  end
+
   attr_reader :name
 
   def initialize(name)
