@@ -100,7 +100,23 @@ App.User = Ember.Object.extend({
 })
 ```
 
-`isHuman`, `temperature`, and `favoriteDirector` would now be accessible with `.get`. These are the basic versions of Ember properties. We can also create computed properties that actually do some work and call other properites:
+`isHuman`, `temperature`, and `favoriteDirector` would now be accessible with `.get`. 
+
+```coffee
+user = App.User.create()
+user.isHuman #=> true
+user.favoriteDirector #=> "Tarantino"
+user.temperature #=> 98.6
+```
+```javascript
+var user = App.User.create();
+
+user.isHuman; //=> true
+user.favoriteDirector; //=> "Tarantino"
+user.temperature; //=> 98.6
+```
+
+These are the basic versions of Ember properties. We can also create computed properties that actually do some work and call other properites:
 
 ```coffee
 App.User = Ember.Object.extend
@@ -128,7 +144,7 @@ Second, we pass it a function that will return the value we want. We can get at 
 
 Third, we call `.property()` on our function to tell Ember that it's a computed property.
 
-Finally, we have to tell `property()` which other properties this property depends on. It expects a list of the property names as strings. In this case, `fullName` should change any time `firstName` or `lastName` changes, so it neds to watch both of them.
+Finally, we have to tell `property()` which other properties this property depends on. It expects a list of the property names as strings. In this case, `fullName` should change any time `firstName` or `lastName` changes, so it needs to watch both of them.
 
 # Functions
 
