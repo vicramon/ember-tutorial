@@ -33,7 +33,7 @@ actions: {
     this.get('model').destroyRecord().then(function() {
       self.transitionToRoute('leads');
     });
-  },
+  }
 }
 ```
 
