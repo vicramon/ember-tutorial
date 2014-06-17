@@ -113,7 +113,7 @@ Here I'm using `afterModel`, because the model is resolved and I can ask for it'
 
 ## Grabbing Other Objects
 
-Routes are the one place where you can reach across your app. Usually you do this give the controller the information it needs.
+Routes are the one place where you can reach across your app. Usually you do this to give the controller the information it needs.
 
 `this.modelFor('routeName')` will return the current model for that route.
 
