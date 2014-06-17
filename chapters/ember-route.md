@@ -19,19 +19,19 @@ Now when you visit `/users`, Ember will look for a `UsersRoute` object. Here's h
 ```coffee
 App.UsersRoute = Ember.Route.extend
 
-  model: -> @store.findAll 'user'
+  model: -> @store.find 'user'
 ```
 ```javascript
 App.UsersRoute = Ember.Route.extend({
 
-  model: function() { this.store.findAll('user') }
+  model: function() { this.store.find('user') }
 
 })
 ```
 
 `model` is a function hook that's called upon entering a route. The result of the model function is then accessible by other objects.
 
-The `store` is an Ember data construct that you go through when dealing with persisted records. `findAll` fetches all the records of the type you pass it. It returns a promise, which will return a `DS.RecordArray` object once you call `then` on it. `DS.RecordArray` is essentially an array of models.
+The `store` is an Ember data construct that you go through when dealing with persisted records. `find` fetches records of the type you pass it. It returns a promise, which in this case will return a `DS.RecordArray` object once you call `then` on it. `DS.RecordArray` is essentially an array of models.
 
 ## Route Hooks
 

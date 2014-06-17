@@ -26,12 +26,12 @@ Next we need to fetch all lead records. Let's create a `LeadsRoute`:
 # app/assets/javascripts/routes/leads.js.coffee
 App.LeadsRoute = Ember.Route.extend
 
-  model: -> @store.findAll 'lead'
+  model: -> @store.find 'lead'
 ```
 ```javascript
 // app/assets/javascripts/routes/leads.js
 App.LeadsRoute = Ember.Route.extend({
-  model: function() { return this.store.findAll('lead') }
+  model: function() { return this.store.find('lead') }
 })
 ```
 
