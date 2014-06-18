@@ -58,14 +58,14 @@ searchedLeads: function() {
   return this.filter(function(lead) {
     return lead.get('fullName').toLowerCase().indexOf(search) != -1
   })
-}.property('search', 'this.each.fullName')
+}.property('search', 'this.@each.fullName')
 ```
 
 The `leads` property looks to see if there is a search string. If there is, it returns `searchedLeads`. If there isn't, it returns `this`. `this` in an `ArrayController` references the array of models that it is wrapping.
 
 `searchedLeads` gets the search string and lower cases it. It then runs `filter` on `this`, which is the list of leads, and returns the leads where the full name includes the search string.
 
-`searchedLeads` needs to depend on `this.each.fullName', which means that the property will be updated whenever the full name of any lead changes.
+`searchedLeads` needs to depend on `this.@each.fullName', which means that the property will be updated whenever the full name of any lead changes.
 
 ## Try It
 
