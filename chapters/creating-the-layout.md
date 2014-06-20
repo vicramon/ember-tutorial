@@ -22,24 +22,14 @@ Your Rails layout should look like this to start:
 </html>
 ```
 
-Add a footer under yield:
+Ember will insert itself at the end of your body tag by default. This is fine for our application. If you ever need to specifically tell Ember where to render you can do the following:
 
-```erb
-<body>
-  <%= yield %>
-  <footer></footer>
-</body>
-```
-
-Ember will insert itself at the end of your body tag by default, which is a problem because we need the footer to be below it. The workaround here is to explicitly tell Ember where to render.
-
-First, put a div with the id `ember-app` right above the footer.
+First, create a div with the id `ember-app`.
 
 ```erb
 <body>
   <%= yield %>
   <div id="ember-app"></div>
-  <footer></footer>
 </body>
 ```
 
@@ -84,6 +74,8 @@ header
 
 section#main
   = outlet
+
+footer
 ```
 
 Now if you refresh you should see the orange Ember CRM banner across the top. Next we'll be dealing with getting and showing data.
