@@ -16,7 +16,7 @@ So what's left? Properties, observers, and functions. These are your bread and b
 
 ```coffee
 # app/assets/javascripts/controllers/user.js.coffee
-App.UserController = ObjectController.extend
+App.UserController = Ember.ObjectController.extend
 
   someFunction: -> alert('so functional')
 
@@ -33,7 +33,7 @@ App.UserController = ObjectController.extend
 ```
 ```javascript
 // app/assets/javascripts/controllers/user.js
-App.UserController = ObjectController.extend({
+App.UserController = Ember.ObjectController.extend({
 
   someFunction: function() { alert('so functional') },
 
@@ -64,7 +64,7 @@ App.Excited = Ember.Mixin.create
   levelOfExcitement: "I'm so freaking excited right now!!!"
 
 # app/assets/javascripts/controllers/user.js.coffee
-App.UserController = ObjectController.extend App.Excited,
+App.UserController = Ember.ObjectController.extend App.Excited,
   # your controller code
 
 ```
@@ -75,7 +75,7 @@ App.Excited = Ember.Mixin.create({
 })
 
 // app/assets/javascripts/controllers/user.js
-App.UserController = ObjectController.extend(App.Excited, {
+App.UserController = Ember.ObjectController.extend(App.Excited, {
   // your controller code
 })
 ```
@@ -88,7 +88,7 @@ Another major use for controllers is handling actions from templates. For exampl
 
 ```coffee
 # app/assets/javascripts/controllers/user.js.coffee
-App.UserController = ObjectController.extend
+App.UserController = Ember.ObjectController.extend
 
   actions:
 
@@ -98,7 +98,7 @@ App.UserController = ObjectController.extend
 ```
 ```javascript
 // app/assets/javascripts/controllers/user.js
-App.UserController = ObjectController.extend({
+App.UserController = Ember.ObjectController.extend({
 
   actions: {
 
