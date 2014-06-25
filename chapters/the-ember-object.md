@@ -104,16 +104,16 @@ App.User = Ember.Object.extend({
 
 ```coffee
 user = App.User.create()
-user.isHuman #=> true
-user.favoriteDirector #=> "Tarantino"
-user.temperature #=> 98.6
+user.get('isHuman') #=> true
+user.get('favoriteDirector') #=> "Tarantino"
+user.get('temperature') #=> 98.6
 ```
 ```javascript
 var user = App.User.create();
 
-user.isHuman; //=> true
-user.favoriteDirector; //=> "Tarantino"
-user.temperature; //=> 98.6
+user.get('isHuman'); //=> true
+user.get('favoriteDirector'); //=> "Tarantino"
+user.get('temperature'); //=> 98.6
 ```
 
 These are the basic versions of Ember properties. We can also create computed properties that actually do some work and call other properites:
