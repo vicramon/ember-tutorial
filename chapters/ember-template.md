@@ -82,7 +82,7 @@ Handlebars:
 {{/each}}
 ```
 
-In Emblem the call to `this` call is implicit. However, you still have access to `this` if you need it.
+In Emblem the call to `this` is implicit. However, you still have access to `this` if you need it.
 
 ```emblem
 each users
