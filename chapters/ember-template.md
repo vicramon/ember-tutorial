@@ -6,7 +6,7 @@ In our app we're going to use [Emblem](http://emblemjs.com/), which compiles to 
 
 ## Outputting Controller Properties
 
-Views have direct access to controller properties. Just throw 'em in:
+Templates have direct access to controller properties. Just throw 'em in:
 
 Handlebars:
 
