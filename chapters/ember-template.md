@@ -127,7 +127,7 @@ The `render` helper calls a controller:
 render 'user'
 ```
 
-This will look for `UserController` and instantiate it. The controller will will then look for `UserView`, and a `user` template, as per the usual Ember Object Flow.
+This will look for `UserController` and instantiate it. The controller will then look for `UserView`, and a `user` template, as per the usual Ember Object Flow.
 
 You can optionally pass the render method a model object:
 
