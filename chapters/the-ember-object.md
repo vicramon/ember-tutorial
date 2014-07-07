@@ -26,7 +26,7 @@ var user = Ember.Object.create();
 Initialize it with properties by just passing them to create:
 
 ```coffee
-user = Ember.Object.create(firstName: 'Sam', lastName: 'Smith')
+user = Ember.Object.create({ firstName: 'Sam', lastName: 'Smith' })
 ```
 ```javascript
 var user = Ember.Object.create({ firstName: 'Sam', lastName: 'Smith' });
@@ -35,7 +35,7 @@ var user = Ember.Object.create({ firstName: 'Sam', lastName: 'Smith' });
 You can get a property from the object by calling `.get` on it and passing the string name of the property:
 
 ```coffee
-user = Ember.Object.create( firstName: 'Sam', lastName: 'Smith' )
+user = Ember.Object.create({ firstName: 'Sam', lastName: 'Smith' })
 user.get('firstName') is 'Sam' #=> true
 user.get('lastName') is 'Smith' #=> true
 ```
