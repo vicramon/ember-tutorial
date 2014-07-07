@@ -18,7 +18,7 @@ You can use the Hello World app we built earlier as the base for this app. I'm g
 
 If you use Vim then you're in luck! Vim projections are great for quickly opening and creating Ember files.
 
-Here's a Gist with the projections that I use: [Vim Projections for Ember](https://gist.github.com/vicramon/6488603). Just copy that file into `config/projections.json` and restart Vim.
+Here's are Gists with the projections that I use: [Coffeescript Projections](https://gist.github.com/vicramon/6488603) or [Javascript Projections](https://gist.github.com/vicramon/b626f24df31a1f64780b). Just copy that file into `config/projections.json` and restart Vim.
 
 These projections use `Rj` as a prefix for all things Ember, so you have `Rjmodel`, `Rjcontroller`, `Rjview`, etc. `Rjini` will open your Ember router, which is consistent with `Rini` opening your Rails router.
 
