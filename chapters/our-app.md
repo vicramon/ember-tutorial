@@ -1,6 +1,6 @@
 # Our App
 
-(**Now we're actually going to code**.)
+**Now we're actually going to code**.
 
 We are going to build a CRM. This is a good project for Ember because we'll be searching, listing, showing, creating, and editing records. If you can build this app and understand how it works then you will be well on your way to developing your own complex front-end apps.
 
