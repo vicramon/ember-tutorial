@@ -41,6 +41,7 @@ Ember provides a built in select view which we can use. We point `content` to ou
 Add this code after the status select:
 
 ```
+// app/assets/javascripts/templates/lead.js.emblem
 p
   label Notes:
   br
@@ -54,6 +55,7 @@ Here we use Ember's text area view and bind it to `model.notes`.
 Add a submit button below the notes field:
 
 ```
+// app/assets/javascripts/templates/lead.js.emblem
 p
   input type='submit' value='Save Changes' click='saveChanges'
 ```
@@ -114,6 +116,7 @@ Now we're going to get fancy and give the user some nice feedback around saving.
 Add these messages immediately below the submit button:
 
 ```
+// app/assets/javascripts/templates/lead.js.emblem
 p
   input type='submit' value='Save Changes' click="saveChanges"
   if isDirty
@@ -134,6 +137,7 @@ We have a little problem here. "unsaved changes" is still visible while you are 
 We'll make a property called `showUnsavedMessage`. Replace `isDirty` with `showUnsavedMessage` in the template:
 
 ```
+// app/assets/javascripts/templates/lead.js.emblem
 if showUnsavedMessage
   .unsaved unsaved changes
 ```
