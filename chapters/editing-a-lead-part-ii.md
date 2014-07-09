@@ -2,7 +2,7 @@
 
 Now let's finish the second half of editing. In this scenario a user clicks on the "edit" link and sees fields to edit the lead's name, phone, and email.
 
-This UI need will replace the UI that shows the lead, so we'll have to do some special work to handle that.
+This UI will need to replace the UI that shows the lead, so we'll have to do some special work to handle that.
 
 ## Add a Route
 
