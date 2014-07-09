@@ -33,13 +33,13 @@ First, create a div with the id `ember-app`.
 </body>
 ```
 
-<div class="coffeescript">
-Now, open up `application.js.coffee` and tell Ember that the `rootElement` is `ember-app`:
-</div>
+<p class="coffeescript">
+Now, open up <code>application.js.coffee</code> and tell Ember that the <code>rootElement</code> is <code>ember-app</code>:
+</p>
 
-<div class="javascript">
-Now, open up `application.js` and tell Ember that the `rootElement` is `ember-app`:
-</div>
+<p class="javascript">
+Now, open up <code>application.js</code> and tell Ember that the <code>rootElement</code> is <code>ember-app</code>:
+</p>
 
 ```coffee
 window.App = Ember.Application.create(rootElement: '#ember-app')

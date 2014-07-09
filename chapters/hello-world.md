@@ -86,9 +86,9 @@ config.ember.variant = :production
 ```
 
 <p class="coffeescript">
-Ember Rails generates an `application.js.coffee` for us, so lets use that. Delete `application.js`.
+Ember Rails generates an <code>application.js.coffee</code> for us, so lets use that. Delete <code>application.js</code>.
 
-The generated `application.js.coffee` requires `jquery`, but not `jquery_ujs`, so make sure to require it right below `jquery`:
+The generated <code>application.js.coffee</code> requires <code>jquery</code>, but not <code>jquery_ujs</code>, so make sure to require it right below <code>jquery</code>:
 </p>
 
 ```coffee

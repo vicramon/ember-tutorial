@@ -21,7 +21,7 @@ this.resource('lead', { path: 'leads/:id' }, function() {
 ```
 
 <p class="coffeescript">
-Make sure to add `, ->` after the lead resource.
+Make sure to add <code>, -></code> after the lead resource.
 </p>
 
 This route is going to look for a `LeadEdit` controller, view, and template.

@@ -21,9 +21,9 @@ App.Router.map(function() {
 })
 ```
 
-<div class="coffeescript">
-Make sure to add `, ->` after the leads resource.
-</div>
+<p class="coffeescript">
+Make sure to add <code>, -></code> after the leads resource.
+</p>
 
 ## Create a Route Object
 
