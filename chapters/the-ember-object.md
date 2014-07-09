@@ -273,25 +273,6 @@ var bird = App.Bird.create()
 bird.get('likesFood') //=> false
 ```
 
-You can even extend multiple objects:
-
-```coffee
-App.One = Ember.Object.extend()
-App.Two = Ember.Object.extend()
-
-App.Three = App.One.extend(App.Two)
-# or
-App.Three = Ember.Object.extend(App.One, App.Two)
-```
-```javascript
-App.One = Ember.Object.extend()
-App.Two = Ember.Object.extend()
-
-App.Three = App.One.extend(App.Two)
-// or
-App.Three = Ember.Object.extend(App.One, App.Two)
-```
-
 Extending objects is a pattern you will use all the time while developing in Ember. You can use it to extract out common functionality or pull in functionality from some other object.
 
 ## Init
