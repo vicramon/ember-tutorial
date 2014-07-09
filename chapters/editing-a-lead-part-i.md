@@ -92,6 +92,8 @@ Our submit button will call the `saveChanges` function. This function must be wi
 
 `save()` will actually send an ajax put request to our Rails API, and everything should just work. Try it out in your browser. Edit a record, click "Save Changes", and look at the Network tab in the Chrome console. You should see a put request to `api/v1/leads/(id of record)`. If you refresh the page the saved record should show your changes.
 
+**Note:** If you get a 422 error stating "Invalid Authenticity Token" then check to make sure that you've required `jquery_ujs` in your application javascript.
+
 Saving is that easy! Just bind and call `save()`. It's fun and it's healthy.
 
 Ember will always send an API request on save, even if the record isn't dirty. You can prevent this behavior with a simple if:
