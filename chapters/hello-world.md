@@ -125,6 +125,7 @@ Last but not least, we need to create a template for Ember to render. Ember look
 ```haml
 // app/assets/javascripts/templates/application.js.emblem
 h1 Hello World
+outlet
 ```
 
 Restart your server then visit http://localhost:3000. You should see 'Hello World' printed on the screen. If you see it then congratulations! You're one step closer to being an Embereño. Yes, Embereño is a thing, though I kind of like Emberista. 
