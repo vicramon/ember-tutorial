@@ -22,7 +22,7 @@ Your Rails layout should look like this to start:
 </html>
 ```
 
-Ember will insert itself at the end of your body tag by default. This is fine for our application. If you ever need to specifically tell Ember where to render you can do the following:
+Ember will insert itself at the end of your body tag by default. However, you can tell Ember to render into a specific element. Let's do that:
 
 First, create a div with the id `ember-app`.
 
