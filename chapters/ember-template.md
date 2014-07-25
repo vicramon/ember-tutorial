@@ -115,7 +115,7 @@ each user in controller
   user.name
 ```
 
-I think by now you may be getting the idea of Handlebars, so I'm going to switch just showing Emblem.
+I think by now you may be getting the idea of Handlebars, so I'm going to switch to just showing Emblem.
 
 ## Render, View, and Partial Helpers
 

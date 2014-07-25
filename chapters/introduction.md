@@ -8,7 +8,7 @@ My intent with this guide is to provide enough instruction on how to use Ember t
 
 Ember is a front-end Javascript framework. You can use it to write
 complex, front-end heavy web apps. It gives you an organized
-structure, conventions, and built-in ways to some of the hard things.
+structure, conventions, and built-in ways to do some of the hard things.
 
 Like Angular, Backbone and Knockout, Ember arrived recently to help
 developers build great front-end applications while maintaining a clean code base.
@@ -47,7 +47,7 @@ This tutorial is designed for developers with basic knowledge of Javascript and 
 
 I originally wrote this tutorial in CoffeeScript because I use CoffeeScript when I write Ember. I think it results in cleaner code. If you're going to do full-time development with Ember then I feel like you are better off with CoffeeScript.
 
-However, I know that there are many people don't know or like CoffeeScript, so I went ahead and made a Javascript version too. Just use the toggle in the upper right of the page to switch languages.
+However, I know that there are many people who don't know or like CoffeeScript, so I went ahead and made a Javascript version too. Just use the toggle in the upper right of the page to switch languages.
 
 As a heads up for CoffeeScript learners, [JS2Coffee.org](http://js2coffee.org/) can convert any CoffeeScript code to Javascript and vice versa.
 
