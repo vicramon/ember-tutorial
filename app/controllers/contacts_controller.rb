@@ -1,5 +1,11 @@
 class ContactsController < ApplicationController
   expose(:contact, attributes: :contact_params)
+  http_basic_authenticate_with name: ENV.fetch('ADMIN_NAME'),
+    password: ENV.fetch('ADMIN_PASSWORD'), only: :index
+
+  def index
+    @contacts = Contact.all
+  end
 
   def create
     if contact.save

@@ -17,6 +17,7 @@ gem 'sass-rails'
 gem 'uglifier'
 
 group :test, :development do
+  gem 'dotenv-rails'
   gem 'pry-rails'
 end
 
