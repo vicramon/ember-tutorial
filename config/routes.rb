@@ -5,5 +5,7 @@ EmberTutorial::Application.routes.draw do
   get 'chapters/all', to: 'home#all'
   get 'about', to: 'home#about'
   get 'contact', to: 'home#contact'
+
+  resources :contacts, only: [:create]
   get '*path', to: 'chapters#show', as: 'chapter'
 end

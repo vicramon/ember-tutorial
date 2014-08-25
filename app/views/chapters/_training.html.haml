@@ -1,0 +1,16 @@
+- if flash[:notice]
+  #training
+    Thanks for your interest! I'll be sure to let you know if I host a training near you.
+
+- unless session[:hide_training]
+  #training
+    - if flash[:error]
+      .error Please enter your email address.
+    = form_for contact do |f|
+      Interested in Ember training? I'll arrange a session if I get enough people.
+      %br
+      = f.label :email, "Email:"
+      = f.text_field :email
+      = f.label :location, "Preferred Location (optional):"
+      = f.text_field :location
+      = f.submit "Submit"

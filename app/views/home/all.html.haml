@@ -1,4 +1,5 @@
 %section#chapter
+  = render 'chapters/training'
   - @chapters.each do |chapter|
     %article#markdown
       ~ markdown chapter.text
