@@ -12,7 +12,7 @@ Ember implements its own object system. The base object is Ember.Object. All of 
 
 Most of the time you will be using an object that extends Ember.Object like Ember.Controller or Ember.View, but you can also use Ember.Object itself. One common use for Ember.Object is to create service objects that handle some specific logic.
 
-If you open your browser's console in your Hello World app you'll be able to follow along with these commands<span class="coffeescript">, though you'll need to convert the CoffeeScript to Javascript (or just click the toggle at the op of the page)</span>.
+If you open your browser's console in your Hello World app you'll be able to follow along with these commands<span class="coffeescript">, though you'll need to convert the CoffeeScript to Javascript (or just click the toggle at the top of the page)</span>.
 
 You can instantiate a basic object like this:
 
