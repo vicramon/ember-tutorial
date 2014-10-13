@@ -68,7 +68,7 @@ There are no `and`s or `or`s allowed in Handlebars. It is designed to contain ze
 
 You *can* use nested `if` statements, but that gets ugly quickly.
 
-The above example really shows why I prefer Emblem. That's 112 characters for the Handlebars version and 57 for Emblem. That's almost one half the code! Less code, as long as its readable, is always a win in my book.
+The above example really shows why I prefer Emblem. That's 112 characters for the Handlebars version and 57 for Emblem. That's almost one half the code! Less code, as long as it's readable, is always a win in my book.
 
 ## Loops
 
