@@ -92,7 +92,7 @@ Two things are happening here.
 
 First, our `li` became a `link-to`. We passed it `tagName="li"` so that the html element will be an `li`. You can set any property on a view this same way, `propertyName="value"`, when you are using the view helper.
 
-Second, we've placed an `outlet` tag at the end of the template. Since the lead route is nested under leads, it's content will appear in this outlet. In this case the markup is on the same level in the DOM so this doesn't present a problem. If you had a situation where you needed to output the content elsewhere on the page you could use the [renderTemplate](http://emberjs.com/api/classes/Ember.Route.html#method_renderTemplate) method in the route to specify an outlet somewhere else.
+Second, we've placed an `outlet` tag at the end of the template. Since the lead route is nested under leads, its content will appear in this outlet. In this case the markup is on the same level in the DOM so this doesn't present a problem. If you had a situation where you needed to output the content elsewhere on the page you could use the [renderTemplate](http://emberjs.com/api/classes/Ember.Route.html#method_renderTemplate) method in the route to specify an outlet somewhere else.
 
 One nice thing about the `link-to` helper is that it automatically adds a class of `active` to the element when you are on the route it's linking to. Our stylesheet takes advantage of this to highlight the currently selected lead.
 

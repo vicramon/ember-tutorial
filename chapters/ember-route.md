@@ -109,7 +109,7 @@ App.HouseRoute = Ember.Route.extend({
 })
 ```
 
-Here I'm using `afterModel`, because the model is resolved and I can ask for it's color property. If you abort, Ember will just go back to whatever route you came from. This can be handy for error checking, confirmation dialogs, and locking certain parts of your app depending on state.
+Here I'm using `afterModel`, because the model is resolved and I can ask for its color property. If you abort, Ember will just go back to whatever route you came from. This can be handy for error checking, confirmation dialogs, and locking certain parts of your app depending on state.
 
 ## Grabbing Other Objects
 

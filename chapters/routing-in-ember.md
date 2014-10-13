@@ -134,7 +134,7 @@ App.Router.map(function() {
 
 When you visit `http://localhost:3000/posts/new`, you will see both `posts` template and the `posts/new` template. The `posts` template will need an `outlet` tag inside itself to specify where `posts/new` will appear.
 
-This is very different from server-side development where every route can have totally different UI. If you see a route in Ember in the url bar, that means that it is active and it's UI should be visible. This is a feature. It allows you to compartmentalize UI that builds on top of other UI, so this pattern makes a lot of sense for the front-end.
+This is very different from server-side development where every route can have totally different UI. If you see a route in Ember in the url bar, that means that it is active and its UI should be visible. This is a feature. It allows you to compartmentalize UI that builds on top of other UI, so this pattern makes a lot of sense for the front-end.
 
 ## See Your Routes
 
