@@ -4,6 +4,16 @@ Welcome to my Ember Tutorial!
 
 My intent with this guide is to provide enough instruction on how to use Ember that you could start writing your own app when you're done. I have aimed for my writing to be simple, friendly and concise. I'm very interested in getting feedback and improving this tutorial so please don't hesitate to send me [feedback](mailto:vic@vicramon.com) if you have any suggestions.
 
+## Important Notes on Ember CLI
+
+This tutorial was written primarily in May/June of 2014. A lot has changed in Ember-land since then. The biggest change is that [Ember CLI](https://github.com/ember-cli/ember-cli) is now considered the "proper" platform for building your Ember app. Ember CLI has its own learning curve, but it is considered the way forward.
+
+The Ember team is still committed to providing a standalone ember.js distribution that you can use without Ember CLI. So all you really need to run ember is ember.js, jquery, handlebars, and your own ember javascripts. You can throw them all together, point Ember to a back-end, and you're up and running. That being said, if you're starting from scratch, you should probably use Ember CLI, which works well with Rails via [Ember-CLI-Rails](https://github.com/rwz/ember-cli-rails).
+
+The concepts and ideas in this tutorial are still valid, but it really should be ported to Ember-CLI. I'm pretty busy with other projects right now, so if you or someone you know would be interested in doing the port, please have them contact me. This tutorial is also on GitHub, so technically anyone can make a pull request.
+
+As far as I know this tutorial is still the most complete tutorial that covers both the concepts and implementation of Ember, so almost everything you learn here will serve you well even if you are using Ember CLI. So if you're down to learn Ember, you can sit back and enjoy the ride.
+
 ## What is Ember JS
 
 Ember is a front-end Javascript framework. You can use it to write
