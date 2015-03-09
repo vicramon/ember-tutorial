@@ -98,7 +98,7 @@ First we need routes for the API controller. Add them to the top of your Rails r
 ```ruby
 # config/routes.rb
 namespace :api do
-  namespace :v1 do
+  scope module: :v1 do
     resources :leads
   end
 end
@@ -108,39 +108,42 @@ Now create the controller. The actions here are fairly standard:
 
 ```ruby
 # app/controllers/api/v1/leads_controller.rb
-class Api::V1::LeadsController < ApplicationController
-  respond_to :json
+module Api
+  module V1
+    class LeadsController < ApplicationController
+      respond_to :json
 
-  def index
-    respond_with Lead.all
+      def index
+        respond_with Lead.all
+      end
+
+      def show
+        respond_with lead
+      end
+
+      def create
+        respond_with :api, :v1, Lead.create(lead_params)
+      end
+
+      def update
+        respond_with lead.update(lead_params)
+      end
+
+      def destroy
+        respond_with lead.destroy
+      end
+
+      private
+
+      def lead
+        Lead.find(params[:id])
+      end
+
+      def lead_params
+        params.require(:lead).permit(:first_name, :last_name, :email, :phone, :status, :notes)
+      end
+    end
   end
-
-  def show
-    respond_with lead
-  end
-
-  def create
-    respond_with :api, :v1, Lead.create(lead_params)
-  end
-
-  def update
-    respond_with lead.update(lead_params)
-  end
-
-  def destroy
-    respond_with lead.destroy
-  end
-
-  private
-
-  def lead
-    Lead.find(params[:id])
-  end
-
-  def lead_params
-    params.require(:lead).permit(:first_name, :last_name, :email, :phone, :status, :notes)
-  end
-
 end
 ```
 
