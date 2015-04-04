@@ -45,6 +45,10 @@ user.get('firstName') == 'Sam' //=> true
 user.get('lastName') == 'Smith' //=> true
 ```
 
+\\Consideration\\
+It might be worthwhile to explain the use of 'set' to write object property values, AND, explain why use of 'get' and 'set'
+is crucial, as opposed to POJO dot-notation to access object properties.
+
 Inquire about the object with `.toString()`. In this case we see that it's just Ember.Object.
 
 ```coffee
@@ -277,7 +281,7 @@ Extending objects is a pattern you will use all the time while developing in Emb
 
 ## Init
 
-All ember objects call an `init` function when they are first initialized. You can use this to do setup work.
+All Ember objects call an `init` function when they are first initialized. You can use this to do setup work.
 
 ```coffee
 App.Human = Ember.Object.extend
