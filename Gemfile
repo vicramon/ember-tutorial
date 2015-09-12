@@ -25,3 +25,5 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
 end
+
+gem 'nokogiri', '~> 1.6.7.rc3'
