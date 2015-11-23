@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.0.13'
+gem 'rails', '~> 4.1.14'
 
 gem 'coffee-rails'
 gem 'decent_exposure'
@@ -26,4 +26,4 @@ group :development do
   gem 'binding_of_caller'
 end
 
-gem 'nokogiri', '~> 1.6.7.rc3'
+gem 'nokogiri', '~> 1.6.7.rc4'
