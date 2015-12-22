@@ -146,7 +146,7 @@ end
 
 ## See it in Action
 
-Let's create some records and see our API actually work. 
+Let's create some records and see our API actually work.
 
 First add the ffaker gem:
 
@@ -170,12 +170,12 @@ namespace :db do
 
     20.times do
       Lead.create(
-        first_name: Faker::Name.first_name,
-        last_name: Faker::Name.last_name,
-        email: Faker::Internet.email,
-        phone: Faker::PhoneNumber.phone_number,
+        first_name: FFaker::Name.first_name,
+        last_name: FFaker::Name.last_name,
+        email: FFaker::Internet.email,
+        phone: FFaker::PhoneNumber.phone_number,
         status: random_status,
-        notes: Faker::HipsterIpsum.words(10).join(' ')
+        notes: FFaker::HipsterIpsum.words(10).join(' ')
         )
     end
 
