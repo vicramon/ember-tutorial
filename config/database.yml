@@ -3,10 +3,6 @@ development:
   encoding: unicode
   database: ember-tutorial_development
   host: localhost
-<% if Gem.win_platform? %>
-  username: ember-tutorial_development
-  password: only_need_in_windows
-<% end %>
 
 test:
   adapter: postgresql
