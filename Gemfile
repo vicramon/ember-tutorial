@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~> 4.1.14'
+gem 'rails', '~> 4.1.15'
 
 gem 'coffee-rails'
 gem 'decent_exposure'
@@ -26,4 +26,5 @@ group :development do
   gem 'binding_of_caller'
 end
 
-gem 'nokogiri', '~> 1.6.7.rc4'
+# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
+gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
